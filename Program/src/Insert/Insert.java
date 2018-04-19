@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,11 +32,11 @@ import javax.swing.DefaultComboBoxModel;
 
 public class Insert extends JFrame {
 	
-	
-	Statement stment = null ;
 	Connect conn = new Connect();
 	String qry = null;
-	ResultSet rs = null;
+	String rs = null;
+	int Rowsize;
+	
 	private JPanel contentPane;
 	private JTextField tfProID;
 	private JTextField tfPattern;
@@ -49,7 +50,9 @@ public class Insert extends JFrame {
 	private double Price;
 	private String Pic_Name;
 	private JTextField tfPic;
-
+	private JTextField tfPicture;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -70,8 +73,16 @@ public class Insert extends JFrame {
 	 * Create the frame.
 	 */
 	public Insert() {
+		try
+		{
+			conn = DriverManager.getConnection("jdbc:ucanaccess://D:/583020470-5/DB/Database1.mdb", "", "");
+			stment = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e2)
+		{
+			e2.printStackTrace();
+		}
 		getContentPane().setLayout(null);
-		
+
 		tfPic = new JTextField();
 		tfPic.setBounds(144, 193, 96, 19);
 		getContentPane().add(tfPic);
@@ -154,45 +165,27 @@ public class Insert extends JFrame {
 		lblPicture.setBounds(65, 284, 45, 13);
 		contentPane.add(lblPicture);
 
+		tfPicture = new JTextField();
+		tfPicture.setBounds(165, 281, 96, 19);
+		contentPane.add(tfPicture);
+		tfPicture.setColumns(10);
+		
 		JButton btnInsert = new JButton("Insert");
 		btnInsert.setBounds(346, 361, 85, 21);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Pic_Name) VALUES ('"
-				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+",'"+ tfProID.getText() + ".jpg'" + ");";	
+				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+",'"+ tfPicture.getText() + "'" + ");";	
 				System.out.print(qry);
-
 				try {
-					rs = conn.stmt.executeQuery(qry);
 					
-					if (rs.next()) {
-						Pro_ID = rs.getString("Pro_ID");
-						Type = rs.getString("Type");
-						Pattern = rs.getString("Pattern");
-						Color = rs.getString("Color");
-						Price = rs.getDouble("Price");
-						Pic_Name = rs.getString("Pic_Name");
-						status = true;
-					}else {
-						status = false;
-					}
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					rs = conn.stmt.executeUpdate(qry);
 				}
-				if(status){
-					JOptionPane.showMessageDialog(null,"เพิ่มสินค้าเรียบร้อยแล้ว","Insert",JOptionPane.PLAIN_MESSAGE);	
-				}else {
-					JOptionPane.showMessageDialog(null, "Incorrect!","Insert",0);
-					tfProID.setText(null);
-					cbType.setSelectedItem("Shirt");
-					tfPattern.setText(null);
-					tfColor.setText(null);
-					tfPrice.setText(null);
+				catch (SQLException e) 
+				{
+					System.out.print(e);
 				}
-			
 			}
 		});
 		contentPane.add(btnInsert);
@@ -223,10 +216,11 @@ public class Insert extends JFrame {
 				tfPattern.setText(null);
 				tfColor.setText(null);
 				tfPrice.setText(null);
-				tfPic.setText(null);
+				tfPicture.setText(null);
 			}
 		});
 		btnRefresh.setBounds(441, 361, 85, 21);
 		contentPane.add(btnRefresh);
+
 	}
 }
