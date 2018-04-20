@@ -11,6 +11,7 @@ import java.awt.EventQueue;
 import java.awt.event.*;
 import javax.swing.JMenuItem;
 
+
 public class Home extends JFrame {
 	
 	private JPanel contentPane;
@@ -58,6 +59,9 @@ public class Home extends JFrame {
 		JButton btnStock = new JButton("Stock");
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				dispose();
+//				admin.main admin1 = new admin.main();
+//				admin1.setVisible(true);
 				
 			}
 		});
@@ -65,10 +69,22 @@ public class Home extends JFrame {
 		contentPane.add(btnStock);
 
 		JButton btnCalTheProduct = new JButton("Calculate \r\nthe product");
+		btnCalTheProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnCalTheProduct.setBounds(96, 110, 243, 50);
 		contentPane.add(btnCalTheProduct);
 		
 		JButton btnAdmin = new JButton("Admin");
+		btnAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				admin.main admin1 = new admin.main();
+				admin1.setVisible(true);
+			}
+		});
 		btnAdmin.setBounds(96, 177, 243, 50);
 		contentPane.add(btnAdmin);
 		
