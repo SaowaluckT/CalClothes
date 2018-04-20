@@ -6,7 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Home.Home;
+
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -43,15 +47,23 @@ public class main extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAdmin = new JLabel("Admin");
-		lblAdmin.setBounds(68, 11, 46, 14);
+		lblAdmin.setBounds(96, 12, 46, 14);
 		contentPane.add(lblAdmin);
 		
-		JButton btnNewButton = new JButton("Home");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnHome = new JButton("");
+		btnHome.setBounds(0, 0, 65, 38);
+		contentPane.add(btnHome);
+		btnHome.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\Program\\src\\Home\\home.png")
+				.getImage().getScaledInstance(btnHome.getWidth(), btnHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		 
+		btnHome.setBorderPainted(false); 
+		btnHome.setContentAreaFilled(false);
+		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Home home = new Home();
+				home.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(0, 0, 55, 38);
-		contentPane.add(btnNewButton);
 	}
 }
