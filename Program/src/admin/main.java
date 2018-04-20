@@ -107,9 +107,6 @@ public class main extends JFrame {
 		btnHome.setContentAreaFilled(false);
 
 		
-		
-		
-		
 		JLabel lblUser = new JLabel("Username");
 		lblUser.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
 		lblUser.setBounds(32, 91, 73, 14);
@@ -176,11 +173,7 @@ public class main extends JFrame {
 				try {
 					switch (cbbOption.getSelectedIndex()){
 					case 0:
-						qry = "SELECT * FROM members where "
-							+ "Username = '" + tfSearch.getText() + "' OR "
-							+ "Name = '"     + tfSearch.getText() + "' OR "
-							+ "Surname = '"  + tfSearch.getText() + "' OR "
-							+ "Phone = '"    + tfSearch.getText() + "'";
+						qry = "SELECT * FROM members";
 						break;
 					case 1:
 						qry = "SELECT * FROM members where Username = '" + tfSearch.getText() + "'";
@@ -249,6 +242,27 @@ public class main extends JFrame {
 		btnDel.setContentAreaFilled(false);
 		
 		JButton btnFirst = new JButton("");
+		btnFirst.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if (result.first()) {
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+	
+					}
+
+					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnFirst.setBounds(59, 266, 46, 37);
 		contentPane.add(btnFirst);
 		btnFirst.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\first.png")
@@ -257,6 +271,26 @@ public class main extends JFrame {
 		btnFirst.setContentAreaFilled(false);
 		
 		JButton btnPrevious = new JButton("");
+		btnPrevious.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (result.previous()) {
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+						
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+					}
+
+					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
+				} catch (SQLException e1) {
+
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPrevious.setBounds(117, 266, 46, 38);
 		contentPane.add(btnPrevious);
 		btnPrevious.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\previous.png")
@@ -265,6 +299,27 @@ public class main extends JFrame {
 		btnPrevious.setContentAreaFilled(false);
 		
 		JButton btnLast = new JButton("");
+		btnLast.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (result.last()) {
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+						
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+					}
+
+					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnLast.setBounds(274, 265, 46, 38);
 		contentPane.add(btnLast);
 		btnLast.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\last.png")
@@ -273,6 +328,28 @@ public class main extends JFrame {
 		btnLast.setContentAreaFilled(false);
 		
 		JButton btnNext = new JButton("");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (result.next()) {
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+				
+						tfUser.setText(result.getString("Username"));
+						tfName.setText(result.getString("Name"));
+						tfSurname.setText(result.getString("Surname"));
+					
+					}
+
+					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnNext.setBounds(217, 266, 46, 37);
 		contentPane.add(btnNext);
 		btnNext.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\next2.png")
