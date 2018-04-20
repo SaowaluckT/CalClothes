@@ -50,7 +50,7 @@ public class calculate extends JFrame {
 	 */
 	public calculate() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1235, 834);
+		setBounds(100, 100, 958, 626);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 182, 193));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,18 +67,28 @@ public class calculate extends JFrame {
 		});
 		btnHome.setBounds(10, 11, 60, 60);
 		contentPane.add(btnHome);
-		btnHome.setIcon(
-				new ImageIcon(((new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")).getImage()).getScaledInstance(
+		btnHome.setIcon(new ImageIcon(((new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")).getImage()).getScaledInstance(
 						btnHome.getWidth(), btnHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnHome.setBorderPainted(false);
 		btnHome.setContentAreaFilled(false);
 
-		JButton btnCalculate = new JButton("Calculate");
-		btnCalculate.setForeground(new Color(255, 69, 0));
-		btnCalculate.setBackground(new Color(0, 250, 154));
-		btnCalculate.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnCalculate.setBounds(643, 314, 124, 33);
-		contentPane.add(btnCalculate);
+		JButton btnCal = new JButton("");
+		btnCal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				cal.summary cal1 = new cal.summary();
+				cal1.setVisible(true);
+			}
+		});
+		
+		btnCal.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnCal.setBounds(643, 314, 80, 60);
+		contentPane.add(btnCal);
+		btnCal.setIcon(new ImageIcon(((new ImageIcon("D:\\CalClothes\\icon\\cal2.png")).getImage()).getScaledInstance(
+						btnCal.getWidth(), btnCal.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnCal.setBorderPainted(false);
+		btnCal.setContentAreaFilled(false);
+		
 
 		JLabel lblId = new JLabel("ID :");
 		lblId.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -106,28 +116,9 @@ public class calculate extends JFrame {
 		textField_1.setColumns(10);
 
 		textField_2 = new JTextField();
-		textField_2.setBounds(133, 272, 46, 20);
+		textField_2.setBounds(95, 272, 46, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
-
-		JButton btnNewButton_1 = new JButton("-");
-		btnNewButton_1.setForeground(Color.RED);
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton_1.setBounds(78, 270, 45, 20);
-		contentPane.add(btnNewButton_1);
-
-		JButton btnNewButton_2 = new JButton("+");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton_2.setForeground(Color.RED);
-		btnNewButton_2.setBounds(189, 270, 45, 20);
-		contentPane.add(btnNewButton_2);
-
-		JButton btnCalculateTheProduct = new JButton("Calculate the Product");
-		btnCalculateTheProduct.setForeground(new Color(255, 69, 0));
-		btnCalculateTheProduct.setBackground(new Color(175, 238, 238));
-		btnCalculateTheProduct.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCalculateTheProduct.setBounds(133, 22, 260, 40);
-		contentPane.add(btnCalculateTheProduct);
 
 		JButton btnNewButton_3 = new JButton("");
 		btnNewButton_3.setBackground(new Color(255, 255, 255));
@@ -164,22 +155,10 @@ public class calculate extends JFrame {
 		label_2.setBounds(263, 269, 73, 22);
 		contentPane.add(label_2);
 		
-		JButton button_1 = new JButton("-");
-		button_1.setForeground(Color.RED);
-		button_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button_1.setBounds(331, 270, 45, 20);
-		contentPane.add(button_1);
-		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(386, 272, 46, 20);
+		textField_5.setBounds(348, 272, 46, 20);
 		contentPane.add(textField_5);
-		
-		JButton button_2 = new JButton("+");
-		button_2.setForeground(Color.RED);
-		button_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button_2.setBounds(442, 270, 45, 20);
-		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("");
 		button_3.setBackground(Color.WHITE);
@@ -211,21 +190,15 @@ public class calculate extends JFrame {
 		label_5.setBounds(543, 269, 73, 22);
 		contentPane.add(label_5);
 		
-		JButton button_4 = new JButton("-");
-		button_4.setForeground(Color.RED);
-		button_4.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button_4.setBounds(611, 270, 45, 20);
-		contentPane.add(button_4);
-		
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(666, 272, 46, 20);
+		textField_8.setBounds(628, 272, 46, 20);
 		contentPane.add(textField_8);
 		
-		JButton button_5 = new JButton("+");
-		button_5.setForeground(Color.RED);
-		button_5.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button_5.setBounds(722, 270, 45, 20);
-		contentPane.add(button_5);
+		JLabel lblNewLabel = new JLabel("Calculate the Product");
+		lblNewLabel.setForeground(new Color(255, 0, 0));
+		lblNewLabel.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
+		lblNewLabel.setBounds(116, 14, 319, 57);
+		contentPane.add(lblNewLabel);
 	}
 }
