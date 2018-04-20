@@ -11,10 +11,11 @@ import javax.swing.border.EmptyBorder;
 import Home.Home;
 import connect.Connect;
 
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
@@ -37,11 +38,6 @@ public class main extends JFrame {
 	String qry = null;
 	ResultSet result = null;
 	int Rowsize;
-	private String Name;
-	private String Surname;
-	private String Username;
-	private String Phone;
-	private boolean status;
 	private JTextField tfSearch;
 
 	/**
@@ -94,6 +90,14 @@ public class main extends JFrame {
 		contentPane.add(lblAdmin);
 		
 		JButton btnHome = new JButton("");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Home home = new Home();
+				home.setVisible(true);
+			}
+
+		});
 		btnHome.setBounds(0, 0, 65, 38);
 		contentPane.add(btnHome);
 		btnHome.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\Program\\src\\Home\\home.png")
@@ -101,6 +105,8 @@ public class main extends JFrame {
 		 
 		btnHome.setBorderPainted(false); 
 		btnHome.setContentAreaFilled(false);
+
+		
 		
 		
 		

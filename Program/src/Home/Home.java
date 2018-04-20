@@ -11,7 +11,6 @@ import java.awt.EventQueue;
 import java.awt.event.*;
 import javax.swing.JMenuItem;
 
-
 public class Home extends JFrame {
 	
 	private JPanel contentPane;
@@ -48,6 +47,7 @@ public class Home extends JFrame {
 		JMenuItem menuItem = new JMenuItem("\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A");
 		mnMember.add(menuItem);
 		
+		
 		JMenuItem menuItem_1 = new JMenuItem("");
 		mnMember.add(menuItem_1);
 		contentPane = new JPanel();
@@ -55,20 +55,18 @@ public class Home extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Stock");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnStock = new JButton("Stock");
+		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Home home = new Home();
-				home.setVisible(true);
+				
 			}
 		});
-		btnNewButton.setBounds(96, 34, 243, 50);
-		contentPane.add(btnNewButton);
-		
-		JButton btnCalculateTheProduct = new JButton("Calculate \r\nthe product");
-		btnCalculateTheProduct.setBounds(96, 110, 243, 50);
-		contentPane.add(btnCalculateTheProduct);
+		btnStock.setBounds(96, 34, 243, 50);
+		contentPane.add(btnStock);
+
+		JButton btnCalTheProduct = new JButton("Calculate \r\nthe product");
+		btnCalTheProduct.setBounds(96, 110, 243, 50);
+		contentPane.add(btnCalTheProduct);
 		
 		JButton btnAdmin = new JButton("Admin");
 		btnAdmin.setBounds(96, 177, 243, 50);
