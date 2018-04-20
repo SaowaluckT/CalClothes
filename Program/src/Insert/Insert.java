@@ -73,14 +73,7 @@ public class Insert extends JFrame {
 	 * Create the frame.
 	 */
 	public Insert() {
-		try
-		{
-			conn = DriverManager.getConnection("jdbc:ucanaccess://D:/583020470-5/DB/Database1.mdb", "", "");
-			stment = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-		} catch (SQLException e2)
-		{
-			e2.printStackTrace();
-		}
+		
 		getContentPane().setLayout(null);
 
 		tfPic = new JTextField();
@@ -178,14 +171,6 @@ public class Insert extends JFrame {
 				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Pic_Name) VALUES ('"
 				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+",'"+ tfPicture.getText() + "'" + ");";	
 				System.out.print(qry);
-				try {
-					
-					rs = conn.stmt.executeUpdate(qry);
-				}
-				catch (SQLException e) 
-				{
-					System.out.print(e);
-				}
 			}
 		});
 		contentPane.add(btnInsert);
