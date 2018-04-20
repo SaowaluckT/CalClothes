@@ -32,7 +32,9 @@ import javax.swing.DefaultComboBoxModel;
 
 public class Insert extends JFrame {
 	
-	Connect conn = new Connect();
+	public Connection conn;
+	public Statement stmt = null;
+	
 	String qry = null;
 	String rs = null;
 	int Rowsize;
@@ -169,8 +171,9 @@ public class Insert extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Pic_Name) VALUES ('"
-				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+",'"+ tfPicture.getText() + "'" + ");";	
+				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+",'"+ tfPicture.getText() + "'" + ")";	
 				System.out.print(qry);
+				
 			}
 		});
 		contentPane.add(btnInsert);
