@@ -59,7 +59,7 @@ public class stock extends JFrame {
 		btnNewButton.setBounds(10, 2, 60, 60);
 		contentPane.add(btnNewButton);
 		
-		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\knicon\\dog-house.png")).getImage()).getScaledInstance(btnNewButton.getWidth(), btnNewButton.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(btnNewButton.getWidth(), btnNewButton.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
 		JButton btnNewButton_2 = new JButton("");
 		btnNewButton_2.setBackground(new Color(224, 255, 255));
@@ -70,7 +70,7 @@ public class stock extends JFrame {
 		btnNewButton_2.setBounds(120, 174, 60, 60);
 		contentPane.add(btnNewButton_2);
 		
-		btnNewButton_2.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\knicon\\notes-pen-writing-document-article-correspondence-paper-signature-contract-agreement-37d67c9719ffe2fc-512x512.png")).getImage()).getScaledInstance(btnNewButton_2.getWidth(), btnNewButton_2.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnNewButton_2.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\edit.png")).getImage()).getScaledInstance(btnNewButton_2.getWidth(), btnNewButton_2.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -82,7 +82,7 @@ public class stock extends JFrame {
 		btnNewButton_1.setBounds(120, 89, 60, 60);
 		contentPane.add(btnNewButton_1);
 		
-		btnNewButton_1.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\knicon\\User-Interface-Plus-icon.png")).getImage()).getScaledInstance(btnNewButton_1.getWidth(), btnNewButton_1.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnNewButton_1.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\insert.png")).getImage()).getScaledInstance(btnNewButton_1.getWidth(), btnNewButton_1.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
 		btnStock = new JButton("Stock");
 		btnStock.setForeground(new Color(255, 140, 0));
@@ -102,7 +102,7 @@ public class stock extends JFrame {
 		btnEditdelete.setBackground(new Color(250, 235, 215));
 		btnEditdelete.setForeground(new Color(255, 0, 0));
 		btnEditdelete.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnEditdelete.setBounds(218, 198, 120, 30);
+		btnEditdelete.setBounds(218, 198, 135, 30);
 		contentPane.add(btnEditdelete);
 		
 		
