@@ -59,10 +59,10 @@ public class Home extends JFrame {
 		JButton btnStock = new JButton("Stock");
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				dispose();
-//				admin.main admin1 = new admin.main();
-//				admin1.setVisible(true);
-				
+				dispose();
+				Stock.stock admin1 = new Stock.stock();
+				admin1.setVisible(true);
+			
 			}
 		});
 		btnStock.setBounds(96, 34, 243, 50);
@@ -71,6 +71,9 @@ public class Home extends JFrame {
 		JButton btnCalTheProduct = new JButton("Calculate \r\nthe product");
 		btnCalTheProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Calculate.calculate admin1 = new Calculate.calculate();
+				admin1.setVisible(true);
 				
 			}
 		});

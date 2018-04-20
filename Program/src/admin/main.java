@@ -224,7 +224,7 @@ public class main extends JFrame {
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 qry = "UPDATE members SET UserName = '"
+				String qry1 = "UPDATE members SET UserName = '"
 						+ tfUser.getText()
 						+ "',"
 						+ "Password = '"
@@ -243,11 +243,11 @@ public class main extends JFrame {
 						+ tfUser.getText()
 						+ "';";
 
-				System.out.print(qry);
+				System.out.print(qry1);
 				try {
-					stmt.executeUpdate(qry);
+					stmt.execute(qry1);
 				} catch (SQLException ee) {
-					System.out.print(ee);
+					ee.printStackTrace();
 				}
 
 			}
@@ -263,6 +263,15 @@ public class main extends JFrame {
 		JButton btnDel = new JButton("");
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String qry = "DELETE FROM members WHERE Username like '"
+						+ tfSearch.getText()
+						+"'";
+				System.out.print(qry);
+				try {
+					stmt.executeUpdate(qry);
+				} catch (SQLException e) {
+					System.out.print(e);
+				}
 			}
 		});
 		btnDel.setBounds(386, 180, 38, 38);
@@ -404,15 +413,15 @@ public class main extends JFrame {
 		JButton btnInsert = new JButton("");
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				try {
 				qry = "INSERT INTO members(Username,Password,Name,Surname,Phone) VALUES ('" + tfUser.getText() + "','"
 						+ tfPass.getText() + "','" + tfName.getText() + "','" + tfSurname.getText() + "','"
 						+ tfPhone.getText() + "')";
 				//System.out.println(qry);
-				try {
+			
 					stmt.executeUpdate(qry);
 				} catch (SQLException ee) {
-					System.out.print(ee);
+					ee.printStackTrace();
 				}
 
 			}
