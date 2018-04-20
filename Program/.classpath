@@ -6,6 +6,31 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="E:/compro2/commons-lang-2.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/compro2/commons-logging-1.1.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/compro2/hsqldb.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/compro2/jackcess-2.1.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/compro2/ucanaccess-4.0.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/hsqldb.jar"/>
