@@ -11,7 +11,6 @@ import java.sql.Statement;
 public class Connect {
 	public Connection conn;
 	public Statement stmt = null;
-	
 	public Connect() {
 		try {	
 			conn = DriverManager.getConnection("jdbc:ucanaccess://D:/CalClothes/DB.mdb", "", "");

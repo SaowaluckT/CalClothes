@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import EditDelete.EditDelete;
 import Home.Home;
+import Insert.Insert;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -17,11 +19,11 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class stock extends JFrame {
 
 	private JPanel contentPane;
-	private JButton btnStock;
 	private JButton btnInsert;
 	private JButton btnEditdelete;
 
@@ -99,14 +101,14 @@ public class stock extends JFrame {
 		
 		btnNewButton_1.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\insert.png")).getImage()).getScaledInstance(btnNewButton_1.getWidth(), btnNewButton_1.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
-		btnStock = new JButton("Stock");
-		btnStock.setForeground(new Color(255, 140, 0));
-		btnStock.setBackground(new Color(250, 235, 215));
-		btnStock.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnStock.setBounds(120, 11, 90, 30);
-		contentPane.add(btnStock);
-		
 		btnInsert = new JButton("Insert");
+		btnInsert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Insert in = new Insert();
+				in.setVisible(true);
+			}
+		});
 		btnInsert.setBackground(new Color(250, 235, 215));
 		btnInsert.setForeground(new Color(0, 0, 255));
 		btnInsert.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -114,11 +116,25 @@ public class stock extends JFrame {
 		contentPane.add(btnInsert);
 		
 		btnEditdelete = new JButton("Edit/Delete");
+		btnEditdelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				EditDelete ed = new EditDelete();
+				ed.setVisible(true);
+			}
+		});
 		btnEditdelete.setBackground(new Color(250, 235, 215));
 		btnEditdelete.setForeground(new Color(255, 0, 0));
 		btnEditdelete.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEditdelete.setBounds(218, 198, 135, 30);
 		contentPane.add(btnEditdelete);
+		
+		JLabel lblNewLabel = new JLabel("Stock");
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
+		lblNewLabel.setBounds(92, 21, 120, 41);
+		contentPane.add(lblNewLabel);
 		
 		
 	}

@@ -12,6 +12,9 @@ import java.awt.event.*;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
 
 
 public class Home extends JFrame {
@@ -47,6 +50,7 @@ public class Home extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnMember = new JMenu("Member");
+		mnMember.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuBar.add(mnMember);
 		
 		JMenuItem menuItem = new JMenuItem("\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A");
@@ -61,6 +65,8 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnStock = new JButton("Stock");
+		btnStock.setBackground(new Color(255, 153, 153));
+		btnStock.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -73,6 +79,8 @@ public class Home extends JFrame {
 		contentPane.add(btnStock);
 
 		JButton btnCalTheProduct = new JButton("Calculate \r\nthe product");
+		btnCalTheProduct.setBackground(new Color(255, 255, 102));
+		btnCalTheProduct.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 25));
 		btnCalTheProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -85,6 +93,8 @@ public class Home extends JFrame {
 		contentPane.add(btnCalTheProduct);
 		
 		JButton btnAdmin = new JButton("Admin");
+		btnAdmin.setBackground(new Color(204, 255, 102));
+		btnAdmin.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

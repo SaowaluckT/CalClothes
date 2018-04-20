@@ -3,6 +3,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Home.Home;
+import Stock.stock;
+import connect.Connect;
+
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -29,10 +34,9 @@ public class EditDelete extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	Connection conn = null;
+	Connect conn = new Connect();
 	String qry = null;
-	Statement stment = null ;
-	ResultSet rs = null;
+	ResultSet result = null;
 	int Rowsize;
 	Statement s = null;
 	
@@ -61,19 +65,8 @@ public class EditDelete extends JFrame {
 	}
 	public void initialize() {
 		
-		try
-		{
-			
-			
-			conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/User/Desktop/CalClothes/DB.mdb", "", "");
-			stment = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE,ResultSet.TYPE_SCROLL_SENSITIVE);
-			
-		} catch (SQLException e2)
-		{
-			e2.printStackTrace();
-		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 469);
+		setBounds(100, 100, 524, 495);
 		frame = new JPanel();
 		frame.setBackground(Color.ORANGE);
 		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,25 +74,34 @@ public class EditDelete extends JFrame {
 		frame.setLayout(null);
 		
 		JLabel lblEditdelete = new JLabel("Edit/Delete");
+		lblEditdelete.setBounds(127, 6, 107, 31);
 		lblEditdelete.setForeground(Color.BLACK);
 		lblEditdelete.setBackground(Color.WHITE);
-		lblEditdelete.setBounds(127, 6, 107, 31);
 		frame.add(lblEditdelete);
 		
 		JLabel label = new JLabel("\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E23\u0E2B\u0E31\u0E2A\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32");
-		label.setBackground(Color.GREEN);
 		label.setBounds(31, 78, 128, 14);
+		label.setBackground(Color.GREEN);
 		frame.add(label);
 		
-		JButton btHome = new JButton("");
-		btHome.addActionListener(new ActionListener() {
+		JButton btnHome = new JButton("");
+		btnHome.setBounds(10, 2, 60, 60);
+		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Home home = new Home();
+				home.setVisible(true);
 			}
 		});
-		btHome.setBackground(Color.ORANGE);
-		btHome.setBounds(28, 6, 71, 52);
-		frame.add(btHome);
-		btHome.setIcon(new ImageIcon(((new ImageIcon("C:\\Users\\User\\Desktop\\icon\\home.png")).getImage()).getScaledInstance(btHome.getWidth(), btHome.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnHome.setBackground(Color.ORANGE);
+		btnHome.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		frame.add(btnHome);
+		btnHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
+						.getImage().getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),
+								java.awt.Image.SCALE_AREA_AVERAGING)));
+
+		btnHome.setBorderPainted(false);
+		btnHome.setContentAreaFilled(false);
 		
 		tfSearch = new JTextField();
 		tfSearch.setBounds(127, 70, 150, 31);
@@ -107,6 +109,7 @@ public class EditDelete extends JFrame {
 		tfSearch.setColumns(10);
 		
 		JButton btSearch = new JButton("");
+		btSearch.setBounds(289, 70, 39, 31);
 		btSearch.setBackground(Color.ORANGE);
 		btSearch.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent arg0) {
@@ -114,20 +117,20 @@ public class EditDelete extends JFrame {
 						qry = "SELECT * FROM clothes where Pro_ID = '" +
 						tfSearch.getText() + "'";
 						
-						rs = stment.executeQuery(qry);
+						result = conn.stmt.executeQuery(qry);
 					   
-						if (rs.last()) {
-							  Rowsize = rs.getRow();
-					          rs.beforeFirst(); 
+						if (result.last()) {
+							  Rowsize = result.getRow();
+							  result.beforeFirst(); 
 					    }
 						
 						
-						if (rs.next()) {
-							tfPro_ID.setText(rs.getString("Pro_ID"));
-							tfType.setText(rs.getString("Type"));
-							tfTexture.setText(rs.getString("Pattern"));
-							tfColor.setText(rs.getString("Color"));
-							tfPrice.setText(rs.getString("Price"));
+						if (result.next()) {
+							tfPro_ID.setText(result.getString("Pro_ID"));
+							tfType.setText(result.getString("Type"));
+							tfTexture.setText(result.getString("Pattern"));
+							tfColor.setText(result.getString("Color"));
+							tfPrice.setText(result.getString("Price"));
 							//tfPicture.setText(rs.getString("Pic_Name"));
 							
 						}						
@@ -139,7 +142,6 @@ public class EditDelete extends JFrame {
 				
 			}
 		});
-		btSearch.setBounds(289, 70, 39, 31);
 		frame.add(btSearch);
 		btSearch.setIcon(new ImageIcon(((new ImageIcon("C:\\Users\\User\\Desktop\\icon\\search.png")).getImage()).getScaledInstance(btSearch.getWidth(), btSearch.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
@@ -199,6 +201,7 @@ public class EditDelete extends JFrame {
 		tfPicture.setColumns(10);
 		
 		JButton btDelete = new JButton("Delete");
+		btDelete.setBounds(228, 396, 89, 23);
 		btDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -207,17 +210,18 @@ public class EditDelete extends JFrame {
 		});
 		btDelete.setBackground(Color.RED);
 		btDelete.setForeground(Color.WHITE);
-		btDelete.setBounds(228, 396, 89, 23);
 		frame.add(btDelete);
 		
 		JButton btEdit = new JButton("Edit");
+		btEdit.setBounds(327, 396, 89, 23);
 		btEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String qry = "UPDATE clothes SET Pro_ID = '" + tfPro_ID.getText() + "',Type = '"
-						+ tfType.getText() + "',Texture= '" + tfTexture.getText() + "',Color= '" + tfColor.getText()
-						+ "',Price= '" + tfPrice.getText();
+				
 				try {
-					stment.executeUpdate(qry);
+					String qry = "UPDATE clothes SET Pro_ID = '" + tfPro_ID.getText() + "',Type = '"
+							+ tfType.getText() + "',Texture= '" + tfTexture.getText() + "',Color= '" + tfColor.getText()
+							+ "',Price= '" + tfPrice.getText();
+					result = conn.stmt.executeQuery(qry);
 					}
 				catch (SQLException e2) {
 					e2.printStackTrace();
@@ -226,7 +230,24 @@ public class EditDelete extends JFrame {
 		});
 		btEdit.setForeground(Color.WHITE);
 		btEdit.setBackground(Color.BLUE);
-		btEdit.setBounds(327, 396, 89, 23);
 		frame.add(btEdit);
+		
+		JButton btnBack = new JButton("");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				stock st = new stock();
+				st.setVisible(true);
+			}
+		});
+		btnBack.setBounds(10, 390, 71, 55);
+		frame.add(btnBack);
+		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png")
+						.getImage().getScaledInstance(btnBack.getWidth(), btnBack.getHeight(),
+								java.awt.Image.SCALE_AREA_AVERAGING)));
+
+		btnBack.setBorderPainted(false);
+		btnBack.setContentAreaFilled(false);
+		
 	}
 }
