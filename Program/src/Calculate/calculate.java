@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Home.Home;
+
 public class calculate extends JFrame {
 
 	private JPanel contentPane;
@@ -55,17 +57,21 @@ public class calculate extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnHome = new JButton("");
+		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Home home = new Home();
+				home.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(10, 11, 60, 60);
-		contentPane.add(btnNewButton);
-
-		btnNewButton.setIcon(
-				new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(
-						btnNewButton.getWidth(), btnNewButton.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnHome.setBounds(10, 11, 60, 60);
+		contentPane.add(btnHome);
+		btnHome.setIcon(
+				new ImageIcon(((new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")).getImage()).getScaledInstance(
+						btnHome.getWidth(), btnHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnHome.setBorderPainted(false);
+		btnHome.setContentAreaFilled(false);
 
 		JButton btnCalculate = new JButton("Calculate");
 		btnCalculate.setForeground(new Color(255, 69, 0));
