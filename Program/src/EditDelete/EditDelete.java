@@ -1,5 +1,4 @@
 package EditDelete;
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,26 +15,27 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 public class EditDelete extends JFrame {
 
 	private JPanel frame;
 	private JTextField tfSearch;
 	private JTextField tfPro_ID;
 	private JTextField tfType;
-	private JTextField tfPattern;
+	private JTextField tfTexture;
 	private JTextField tfColor;
 	private JTextField tfPrice;
+	private JTextField tfPicture;
 
 	/**
 	 * Launch the application.
 	 */
-	Connection conn;
+	Connection conn = null;
 	String qry = null;
-	Statement stmt = null ;
+	Statement stment = null ;
 	ResultSet rs = null;
 	int Rowsize;
+	Statement s = null;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -54,8 +54,24 @@ public class EditDelete extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
 	public EditDelete() {
+		initialize();
+				 
+	}
+	public void initialize() {
 		
+		try
+		{
+			
+			
+			conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/User/Desktop/CalClothes/DB.mdb", "", "");
+			stment = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE,ResultSet.TYPE_SCROLL_SENSITIVE);
+			
+		} catch (SQLException e2)
+		{
+			e2.printStackTrace();
+		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 469);
 		frame = new JPanel();
@@ -70,9 +86,9 @@ public class EditDelete extends JFrame {
 		lblEditdelete.setBounds(127, 6, 107, 31);
 		frame.add(lblEditdelete);
 		
-		JLabel label = new JLabel("\u0E04\u0E49\u0E19\u0E2B\u0E32");
+		JLabel label = new JLabel("\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E23\u0E2B\u0E31\u0E2A\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32");
 		label.setBackground(Color.GREEN);
-		label.setBounds(31, 78, 39, 14);
+		label.setBounds(31, 78, 128, 14);
 		frame.add(label);
 		
 		JButton btHome = new JButton("");
@@ -86,67 +102,36 @@ public class EditDelete extends JFrame {
 		btHome.setIcon(new ImageIcon(((new ImageIcon("C:\\Users\\User\\Desktop\\icon\\home.png")).getImage()).getScaledInstance(btHome.getWidth(), btHome.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
 		tfSearch = new JTextField();
-		tfSearch.setBounds(205, 70, 150, 31);
+		tfSearch.setBounds(127, 70, 150, 31);
 		frame.add(tfSearch);
 		tfSearch.setColumns(10);
 		
-		JComboBox cbOption = new JComboBox();
-		cbOption.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		cbOption.setModel(new DefaultComboBoxModel(new String[] {"Pro_ID", "Type", "Pattern", "Color", "Price"}));
-		cbOption.setSelectedIndex(0);
-		cbOption.setBounds(72, 69, 123, 32);
-		frame.add(cbOption);
-		
 		JButton btSearch = new JButton("");
 		btSearch.setBackground(Color.ORANGE);
-		System.out.print("hacker");
 		btSearch.addActionListener(new ActionListener() {	
-			private JComboBox cbOption;
-			private JLabel lbDBBar;
-
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					 switch (cbOption.getSelectedIndex()) 
-					 {
-						case 0:
-						qry = "SELECT * FROM clothes where Pro_ID";
-						break;
-						case 1:
-						qry = "SELECT * FROM clothes where Type = '" +
+						qry = "SELECT * FROM clothes where Pro_ID = '" +
 						tfSearch.getText() + "'";
-						break;
-						case 2:
-						qry = "SELECT * FROM clothes where Pattern = '" +
-						tfSearch.getText() + "'";
-						break;
-						case 3:
-						qry = "SELECT * FROM clothes where Color = '" +
-						tfSearch.getText() + "'";
-						break;
-						case 4:
-						qry = "SELECT * FROM clothes where Price = '" +
-						tfSearch.getText() + "'";
-						break;
-					 }
-						rs = stmt.executeQuery(qry);
-					   //------------------------fine maximum value---------------------
+						
+						rs = stment.executeQuery(qry);
+					   
 						if (rs.last()) {
 							  Rowsize = rs.getRow();
 					          rs.beforeFirst(); 
 					    }
-						//---------------------------end------------------------------
+						
+						
 						if (rs.next()) {
 							tfPro_ID.setText(rs.getString("Pro_ID"));
 							tfType.setText(rs.getString("Type"));
-							tfPattern.setText(rs.getString("Pattern"));
+							tfTexture.setText(rs.getString("Pattern"));
 							tfColor.setText(rs.getString("Color"));
 							tfPrice.setText(rs.getString("Price"));
+							//tfPicture.setText(rs.getString("Pic_Name"));
+							
 						}						
-						lbDBBar.setText(Integer.toString(rs.getRow()) + "/" + Integer.toString(Rowsize));
-						
+						//lbDBBar.setText(Integer.toString(rs.getRow()) + "/" + Integer.toString(Rowsize));
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -154,7 +139,7 @@ public class EditDelete extends JFrame {
 				
 			}
 		});
-		btSearch.setBounds(377, 70, 39, 31);
+		btSearch.setBounds(289, 70, 39, 31);
 		frame.add(btSearch);
 		btSearch.setIcon(new ImageIcon(((new ImageIcon("C:\\Users\\User\\Desktop\\icon\\search.png")).getImage()).getScaledInstance(btSearch.getWidth(), btSearch.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
@@ -167,7 +152,7 @@ public class EditDelete extends JFrame {
 		lblType.setBounds(53, 171, 46, 14);
 		frame.add(lblType);
 		
-		JLabel lblTexture = new JLabel("Pattern");
+		JLabel lblTexture = new JLabel("Texture");
 		lblTexture.setBounds(53, 213, 46, 14);
 		frame.add(lblTexture);
 		
@@ -179,6 +164,10 @@ public class EditDelete extends JFrame {
 		lblPrice.setBounds(53, 297, 46, 14);
 		frame.add(lblPrice);
 		
+		JLabel lblPicture = new JLabel("Picture");
+		lblPicture.setBounds(53, 339, 46, 14);
+		frame.add(lblPicture);
+		
 		tfPro_ID = new JTextField();
 		tfPro_ID.setBounds(111, 117, 166, 31);
 		frame.add(tfPro_ID);
@@ -189,10 +178,10 @@ public class EditDelete extends JFrame {
 		frame.add(tfType);
 		tfType.setColumns(10);
 		
-		tfPattern = new JTextField();
-		tfPattern.setBounds(111, 205, 166, 31);
-		frame.add(tfPattern);
-		tfPattern.setColumns(10);
+		tfTexture = new JTextField();
+		tfTexture.setBounds(111, 205, 166, 31);
+		frame.add(tfTexture);
+		tfTexture.setColumns(10);
 		
 		tfColor = new JTextField();
 		tfColor.setBounds(111, 247, 166, 31);
@@ -204,43 +193,40 @@ public class EditDelete extends JFrame {
 		frame.add(tfPrice);
 		tfPrice.setColumns(10);
 		
+		tfPicture = new JTextField();
+		tfPicture.setBounds(111, 331, 166, 31);
+		frame.add(tfPicture);
+		tfPicture.setColumns(10);
+		
 		JButton btDelete = new JButton("Delete");
+		btDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			}
+		});
 		btDelete.setBackground(Color.RED);
 		btDelete.setForeground(Color.WHITE);
 		btDelete.setBounds(228, 396, 89, 23);
 		frame.add(btDelete);
 		
 		JButton btEdit = new JButton("Edit");
+		btEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String qry = "UPDATE clothes SET Pro_ID = '" + tfPro_ID.getText() + "',Type = '"
+						+ tfType.getText() + "',Texture= '" + tfTexture.getText() + "',Color= '" + tfColor.getText()
+						+ "',Price= '" + tfPrice.getText();
+				try {
+					stment.executeUpdate(qry);
+					}
+				catch (SQLException e2) {
+					e2.printStackTrace();
+					}
+			}
+		});
 		btEdit.setForeground(Color.WHITE);
 		btEdit.setBackground(Color.BLUE);
 		btEdit.setBounds(327, 396, 89, 23);
 		frame.add(btEdit);
-		
-		
-		
-		JButton btFirst = new JButton("l<");
-		btFirst.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btFirst.setBounds(31, 338, 54, 23);
-		frame.add(btFirst);
-		
-		JButton btPrevious = new JButton("<");
-		btPrevious.setBounds(95, 338, 54, 23);
-		frame.add(btPrevious);
-		
-		JButton btNext = new JButton(">");
-		btNext.setBounds(274, 338, 54, 23);
-		frame.add(btNext);
-		
-		JButton btLast = new JButton(">l");
-		btLast.setBounds(333, 338, 54, 23);
-		frame.add(btLast);
-		
-		JLabel lbDBBar = new JLabel("/");
-		lbDBBar.setBounds(198, 342, 61, 14);
-		frame.add(lbDBBar);
 	}
 }

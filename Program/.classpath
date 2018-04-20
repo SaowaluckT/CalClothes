@@ -6,10 +6,30 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/hsqldb.jar"/>
-	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/jackcess-2.1.6.jar"/>
-	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/ucanaccess-4.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/CalClothes/Program/Lib_Ucanaccess/commons-lang-2.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/CalClothes/Program/Lib_Ucanaccess/commons-logging-1.1.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/CalClothes/Program/Lib_Ucanaccess/hsqldb.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/CalClothes/Program/Lib_Ucanaccess/jackcess-2.1.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/CalClothes/Program/Lib_Ucanaccess/ucanaccess-4.0.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
