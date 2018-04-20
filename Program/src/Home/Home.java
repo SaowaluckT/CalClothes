@@ -75,7 +75,7 @@ public class Home extends JFrame {
 			
 			}
 		});
-		btnStock.setBounds(96, 34, 243, 50);
+		btnStock.setBounds(115, 35, 243, 50);
 		contentPane.add(btnStock);
 
 		JButton btnCalTheProduct = new JButton("Calculate \r\nthe product");
@@ -89,7 +89,7 @@ public class Home extends JFrame {
 				
 			}
 		});
-		btnCalTheProduct.setBounds(96, 110, 243, 50);
+		btnCalTheProduct.setBounds(115, 108, 243, 50);
 		contentPane.add(btnCalTheProduct);
 		
 		JButton btnAdmin = new JButton("Admin");
@@ -102,7 +102,7 @@ public class Home extends JFrame {
 				admin1.setVisible(true);
 			}
 		});
-		btnAdmin.setBounds(96, 177, 243, 50);
+		btnAdmin.setBounds(115, 177, 243, 50);
 		contentPane.add(btnAdmin);
 		
 		JButton btHome = new JButton();
