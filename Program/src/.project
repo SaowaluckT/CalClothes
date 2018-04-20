@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
-	<name>Project</name>
-=======
-	<name>CalClothes</name>
->>>>>>> a8cd97b5b8740a2d0c8ed3aae21cb3b26bbaa35c
+	<name>src</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
-<<<<<<< HEAD
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -18,9 +13,5 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-=======
-	</buildSpec>
-	<natures>
->>>>>>> a8cd97b5b8740a2d0c8ed3aae21cb3b26bbaa35c
 	</natures>
 </projectDescription>
