@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class Login extends JFrame {
 
@@ -61,6 +62,8 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\icon\\lg.png"));
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -75,16 +78,17 @@ public class Login extends JFrame {
 		tfUser.setColumns(10);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblUsername.setBounds(71, 91, 104, 27);
+		lblUsername.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblPassword.setBounds(71, 131, 83, 32);
+		lblPassword.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblPassword);
 		
 		JButton btnLogIn = new JButton("");
+		btnLogIn.setBounds(182, 188, 104, 32);
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -123,9 +127,8 @@ public class Login extends JFrame {
 				}
 			}
 		});
-		btnLogIn.setBounds(164, 191, 104, 32);
 		contentPane.add(btnLogIn);
-		btnLogIn.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\login2.png")
+		btnLogIn.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\login2.png")
 				.getImage().getScaledInstance(btnLogIn.getWidth(), btnLogIn.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
 		btnLogIn.setBorderPainted(false); 
@@ -133,13 +136,23 @@ public class Login extends JFrame {
 		
 		
 		JLabel lblVakandaClothes = new JLabel("VAKANDA CLOTHES");
+		lblVakandaClothes.setBounds(71, 31, 288, 47);
 		lblVakandaClothes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVakandaClothes.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 40));
-		lblVakandaClothes.setBounds(71, 31, 288, 47);
 		contentPane.add(lblVakandaClothes);
 		
 		tfPass = new JPasswordField();
 		tfPass.setBounds(164, 132, 154, 32);
 		contentPane.add(tfPass);
+		
+		JLabel lbLogin = new JLabel("");
+		lbLogin.setBounds(0, 0, 444, 261);
+		contentPane.add(lbLogin);
+		lbLogin.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\image\\bgLogin.jpg")
+				.getImage().getScaledInstance(lbLogin.getWidth(), lbLogin.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		 
+		btnLogIn.setBorderPainted(false); 
+		btnLogIn.setContentAreaFilled(false);
+		
 	}
 }

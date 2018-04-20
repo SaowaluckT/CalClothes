@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Home.Home;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -50,16 +53,30 @@ public class stock extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(new Color(224, 255, 255));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnHome = new JButton("");
+		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Home home = new Home();
+				home.setVisible(true);
 			}
 		});
+<<<<<<< HEAD
 		btnNewButton.setBounds(10, 2, 60, 60);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(btnNewButton.getWidth(), btnNewButton.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+=======
+		btnHome.setBounds(10, 2, 60, 60);
+		contentPane.add(btnHome);
+		btnHome.setIcon(
+				new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
+						.getImage().getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),
+								java.awt.Image.SCALE_AREA_AVERAGING)));
+
+		btnHome.setBorderPainted(false);
+		btnHome.setContentAreaFilled(false);
+>>>>>>> 9c653e0c221afa4c425701c2762056160fe66331
 		
 		JButton btnNewButton_2 = new JButton("");
 		btnNewButton_2.setBackground(new Color(224, 255, 255));
