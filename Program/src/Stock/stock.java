@@ -61,12 +61,11 @@ public class stock extends JFrame {
 				home.setVisible(true);
 			}
 		});
-<<<<<<< HEAD
-		btnNewButton.setBounds(10, 2, 60, 60);
-		contentPane.add(btnNewButton);
+
+		btnHome.setBounds(10, 2, 60, 60);
+		contentPane.add(btnHome);
 		
-		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(btnNewButton.getWidth(), btnNewButton.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
-=======
+		btnHome.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnHome.setBounds(10, 2, 60, 60);
 		contentPane.add(btnHome);
 		btnHome.setIcon(
@@ -76,7 +75,6 @@ public class stock extends JFrame {
 
 		btnHome.setBorderPainted(false);
 		btnHome.setContentAreaFilled(false);
->>>>>>> 9c653e0c221afa4c425701c2762056160fe66331
 		
 		JButton btnNewButton_2 = new JButton("");
 		btnNewButton_2.setBackground(new Color(224, 255, 255));
