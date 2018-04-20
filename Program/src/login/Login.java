@@ -62,7 +62,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\icon\\home.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\icon\\lg.png"));
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
