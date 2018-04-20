@@ -37,7 +37,6 @@ public class main extends JFrame {
 	Connect conn = new Connect();
 	String qry = null;
 	ResultSet result = null;
-	Statement stmt = null;
 	int Rowsize;
 	private JTextField tfSearch;
 
@@ -245,7 +244,7 @@ public class main extends JFrame {
 
 				System.out.print(qry1);
 				try {
-					stmt.execute(qry1);
+					conn.stmt.execute(qry1);
 				} catch (SQLException ee) {
 					ee.printStackTrace();
 				}
@@ -268,7 +267,7 @@ public class main extends JFrame {
 						+"'";
 				System.out.print(qry);
 				try {
-					stmt.executeUpdate(qry);
+					conn.stmt.executeUpdate(qry);
 				} catch (SQLException e) {
 					System.out.print(e);
 				}
@@ -414,12 +413,13 @@ public class main extends JFrame {
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+				
 				qry = "INSERT INTO members(Username,Password,Name,Surname,Phone) VALUES ('" + tfUser.getText() + "','"
 						+ tfPass.getText() + "','" + tfName.getText() + "','" + tfSurname.getText() + "','"
 						+ tfPhone.getText() + "')";
-				//System.out.println(qry);
+				System.out.println(qry);
 			
-					stmt.executeUpdate(qry);
+					conn.stmt.executeUpdate(qry);
 				} catch (SQLException ee) {
 					ee.printStackTrace();
 				}

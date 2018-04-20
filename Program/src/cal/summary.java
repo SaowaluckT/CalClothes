@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Home.Home;
+
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
@@ -91,6 +94,9 @@ public class summary extends JFrame {
 		btHome.setContentAreaFilled(false);
 		btHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Home home = new Home();
+				home.setVisible(true);
 				
 			}
 		});

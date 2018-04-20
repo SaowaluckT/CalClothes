@@ -10,6 +10,8 @@ import javax.swing.JMenu;
 import java.awt.EventQueue;
 import java.awt.event.*;
 import javax.swing.JMenuItem;
+import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 
 public class Home extends JFrame {
@@ -36,8 +38,10 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\Program\\bin\\Home\\home.png"));
+		setTitle("HOME");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 482, 349);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -93,7 +97,7 @@ public class Home extends JFrame {
 		
 		JButton btHome = new JButton();
 		btHome.setBounds(0, 0, 55, 42);
-		btHome.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\Program\\src\\Home\\home.png")
+		btHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
 				.getImage().getScaledInstance(btHome.getWidth(), btHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
 		btHome.setBorderPainted(false); 
@@ -105,6 +109,14 @@ public class Home extends JFrame {
 		});
 		
 		getContentPane().add(btHome);
+		
+		JLabel lbHome = new JLabel("");
+		lbHome.setIcon(new ImageIcon("D:\\CalClothes\\image\\bgLogin.jpg"));
+		lbHome.setBounds(0, 0, 466, 289);
+		contentPane.add(lbHome);
+		lbHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\image\\bgLogin.jpg")
+				.getImage().getScaledInstance(lbHome.getWidth(), lbHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		
 			
 		
 	}
