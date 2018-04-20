@@ -102,7 +102,7 @@ public class main extends JFrame {
 		btnHome.setBounds(0, 0, 65, 38);
 		contentPane.add(btnHome);
 		btnHome.setIcon(
-				new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\Program\\src\\Home\\home.png")
+				new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
 						.getImage().getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),
 								java.awt.Image.SCALE_AREA_AVERAGING)));
 
@@ -214,7 +214,7 @@ public class main extends JFrame {
 		});
 		btnSearch.setBounds(302, 37, 38, 38);
 		contentPane.add(btnSearch);
-		btnSearch.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\search.png")
+		btnSearch.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\search.png")
 				.getImage()
 				.getScaledInstance(btnSearch.getWidth(), btnSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnSearch.setBorderPainted(false);
@@ -254,7 +254,7 @@ public class main extends JFrame {
 		});
 		btnEdit.setBounds(386, 128, 38, 38);
 		contentPane.add(btnEdit);
-		btnEdit.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\edit.png")
+		btnEdit.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\edit.png")
 				.getImage()
 				.getScaledInstance(btnEdit.getWidth(), btnEdit.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnEdit.setBorderPainted(false);
@@ -267,7 +267,7 @@ public class main extends JFrame {
 		});
 		btnDel.setBounds(386, 180, 38, 38);
 		contentPane.add(btnDel);
-		btnDel.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\delete.png")
+		btnDel.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\delete.png")
 				.getImage()
 				.getScaledInstance(btnDel.getWidth(), btnDel.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnDel.setBorderPainted(false);
@@ -299,7 +299,7 @@ public class main extends JFrame {
 		});
 		btnFirst.setBounds(59, 266, 46, 37);
 		contentPane.add(btnFirst);
-		btnFirst.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\first.png")
+		btnFirst.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\first.png")
 				.getImage()
 				.getScaledInstance(btnFirst.getWidth(), btnFirst.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnFirst.setBorderPainted(false);
@@ -331,7 +331,7 @@ public class main extends JFrame {
 		btnPrevious.setBounds(117, 266, 46, 38);
 		contentPane.add(btnPrevious);
 		btnPrevious
-				.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\previous.png")
+				.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\previous.png")
 						.getImage().getScaledInstance(btnPrevious.getWidth(), btnPrevious.getHeight(),
 								java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnPrevious.setBorderPainted(false);
@@ -363,7 +363,7 @@ public class main extends JFrame {
 		});
 		btnLast.setBounds(274, 265, 46, 38);
 		contentPane.add(btnLast);
-		btnLast.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\last.png")
+		btnLast.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\last.png")
 				.getImage()
 				.getScaledInstance(btnLast.getWidth(), btnLast.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnLast.setBorderPainted(false);
@@ -395,7 +395,7 @@ public class main extends JFrame {
 		});
 		btnNext.setBounds(217, 266, 46, 37);
 		contentPane.add(btnNext);
-		btnNext.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\next2.png")
+		btnNext.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\next2.png")
 				.getImage()
 				.getScaledInstance(btnNext.getWidth(), btnNext.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnNext.setBorderPainted(false);
@@ -420,7 +420,7 @@ public class main extends JFrame {
 		btnInsert.setBounds(386, 74, 38, 38);
 		contentPane.add(btnInsert);
 		btnInsert.setIcon(new ImageIcon(
-				new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\Add.png").getImage().getScaledInstance(
+				new ImageIcon("D:\\CalClothes\\icon\\Add.png").getImage().getScaledInstance(
 						btnInsert.getWidth(), btnInsert.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnInsert.setBorderPainted(false);
 		btnInsert.setContentAreaFilled(false);
@@ -428,7 +428,7 @@ public class main extends JFrame {
 		JButton btnReload = new JButton("");
 		btnReload.setBounds(386, 231, 38, 38);
 		contentPane.add(btnReload);
-		btnReload.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\P_SWL\\Desktop\\322118\\Project\\icon\\reload.png")
+		btnReload.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\reload.png")
 				.getImage()
 				.getScaledInstance(btnReload.getWidth(), btnReload.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnReload.setBorderPainted(false);

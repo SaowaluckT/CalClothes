@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class Login extends JFrame {
 
@@ -61,6 +62,8 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\icon\\home.png"));
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -85,7 +88,7 @@ public class Login extends JFrame {
 		contentPane.add(lblPassword);
 		
 		JButton btnLogIn = new JButton("");
-		btnLogIn.setBounds(164, 191, 104, 32);
+		btnLogIn.setBounds(182, 188, 104, 32);
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
