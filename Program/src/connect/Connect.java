@@ -14,7 +14,7 @@ public class Connect {
 	
 	public Connect() {
 		try {	
-			conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/User/Desktop/CalClothes/DB.mdb", "", "");
+			conn = DriverManager.getConnection("jdbc:ucanaccess://D:/CalClothes/DB.mdb", "", "");
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
 		} catch (SQLException e) {
