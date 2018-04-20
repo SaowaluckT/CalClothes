@@ -6,6 +6,31 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Proj/CalClothes/Program/Lib_Ucanaccess/commons-lang-2.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Proj/CalClothes/Program/Lib_Ucanaccess/commons-logging-1.1.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Proj/CalClothes/Program/Lib_Ucanaccess/hsqldb.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Proj/CalClothes/Program/Lib_Ucanaccess/jackcess-2.1.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Proj/CalClothes/Program/Lib_Ucanaccess/ucanaccess-4.0.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/P_SWL/Desktop/322118/Project/Program/Lib_Ucanaccess/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/P_SWL/Desktop/322118/Project/Program/Lib_Ucanaccess/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/P_SWL/Desktop/322118/Project/Program/Lib_Ucanaccess/hsqldb.jar"/>
