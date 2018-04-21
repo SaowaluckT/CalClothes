@@ -206,7 +206,15 @@ public class EditDelete extends JFrame {
 		btDelete.setBounds(444, 388, 91, 31);
 		btDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				String qry = "DELETE FROM clothes WHERE Pro_ID like '"
+						+ tfPro_ID.getText()
+						+"'";
+				System.out.print(qry);
+				try {
+					conn.stmt.executeUpdate(qry);
+				} catch (SQLException e) {
+					System.out.print(e);
+				}
 				
 			}
 		});
