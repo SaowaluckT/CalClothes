@@ -83,7 +83,7 @@ public class Insert extends JFrame {
 		getContentPane().add(tfPic);
 		tfPic.setColumns(10);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 452);
+		setBounds(100, 100, 570, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -166,7 +166,7 @@ public class Insert extends JFrame {
 		tfPicture.setColumns(10);
 		
 		JButton btnInsert = new JButton("Insert");
-		btnInsert.setBounds(346, 361, 85, 21);
+		btnInsert.setBounds(330, 306, 85, 21);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -207,7 +207,7 @@ public class Insert extends JFrame {
 				tfPicture.setText(null);
 			}
 		});
-		btnRefresh.setBounds(441, 361, 85, 21);
+		btnRefresh.setBounds(414, 306, 85, 21);
 		contentPane.add(btnRefresh);
 
 	}

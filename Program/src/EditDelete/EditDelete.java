@@ -66,7 +66,7 @@ public class EditDelete extends JFrame {
 	public void initialize() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 524, 495);
+		setBounds(100, 100, 570, 470);
 		frame = new JPanel();
 		frame.setBackground(Color.ORANGE);
 		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -240,7 +240,7 @@ public class EditDelete extends JFrame {
 				st.setVisible(true);
 			}
 		});
-		btnBack.setBounds(10, 390, 71, 55);
+		btnBack.setBounds(10, 364, 71, 55);
 		frame.add(btnBack);
 		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png")
 						.getImage().getScaledInstance(btnBack.getWidth(), btnBack.getHeight(),

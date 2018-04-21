@@ -44,7 +44,7 @@ public class Home extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\Program\\bin\\Home\\home.png"));
 		setTitle("HOME");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 482, 349);
+		setBounds(100, 100, 570, 470);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
