@@ -20,6 +20,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.awt.Font;
 public class EditDelete extends JFrame {
 
 	private JPanel frame;
@@ -74,7 +75,8 @@ public class EditDelete extends JFrame {
 		frame.setLayout(null);
 		
 		JLabel lblEditdelete = new JLabel("Edit/Delete");
-		lblEditdelete.setBounds(127, 6, 107, 31);
+		lblEditdelete.setBounds(111, 21, 216, 41);
+		lblEditdelete.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
 		lblEditdelete.setForeground(Color.BLACK);
 		lblEditdelete.setBackground(Color.WHITE);
 		frame.add(lblEditdelete);
@@ -110,7 +112,6 @@ public class EditDelete extends JFrame {
 		
 		JButton btSearch = new JButton("");
 		btSearch.setBounds(289, 70, 39, 31);
-		btSearch.setBackground(Color.ORANGE);
 		btSearch.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -143,31 +144,33 @@ public class EditDelete extends JFrame {
 			}
 		});
 		frame.add(btSearch);
-		btSearch.setIcon(new ImageIcon(((new ImageIcon("C:\\Users\\User\\Desktop\\icon\\search.png")).getImage()).getScaledInstance(btSearch.getWidth(), btSearch.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
-		
+		btSearch.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\search2.png")
+				.getImage().getScaledInstance(btSearch.getWidth(), btSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btSearch.setBorderPainted(false);
+		btSearch.setContentAreaFilled(false);
 		
 		JLabel lblProid = new JLabel("Pro_ID");
 		lblProid.setBounds(53, 125, 46, 14);
 		frame.add(lblProid);
 		
 		JLabel lblType = new JLabel("Type");
-		lblType.setBounds(53, 171, 46, 14);
+		lblType.setBounds(301, 125, 46, 14);
 		frame.add(lblType);
 		
 		JLabel lblTexture = new JLabel("Texture");
-		lblTexture.setBounds(53, 213, 46, 14);
+		lblTexture.setBounds(53, 182, 46, 14);
 		frame.add(lblTexture);
 		
 		JLabel lblColor = new JLabel("Color");
-		lblColor.setBounds(53, 255, 46, 14);
+		lblColor.setBounds(301, 182, 46, 14);
 		frame.add(lblColor);
 		
 		JLabel lblPrice = new JLabel("Price");
-		lblPrice.setBounds(53, 297, 46, 14);
+		lblPrice.setBounds(301, 234, 46, 14);
 		frame.add(lblPrice);
 		
 		JLabel lblPicture = new JLabel("Picture");
-		lblPicture.setBounds(53, 339, 46, 14);
+		lblPicture.setBounds(53, 249, 46, 14);
 		frame.add(lblPicture);
 		
 		tfPro_ID = new JTextField();
@@ -176,44 +179,47 @@ public class EditDelete extends JFrame {
 		tfPro_ID.setColumns(10);
 		
 		tfType = new JTextField();
-		tfType.setBounds(111, 163, 166, 31);
+		tfType.setBounds(347, 117, 166, 31);
 		frame.add(tfType);
 		tfType.setColumns(10);
 		
 		tfTexture = new JTextField();
-		tfTexture.setBounds(111, 205, 166, 31);
+		tfTexture.setBounds(111, 174, 166, 31);
 		frame.add(tfTexture);
 		tfTexture.setColumns(10);
 		
 		tfColor = new JTextField();
-		tfColor.setBounds(111, 247, 166, 31);
+		tfColor.setBounds(347, 174, 166, 31);
 		frame.add(tfColor);
 		tfColor.setColumns(10);
 		
 		tfPrice = new JTextField();
-		tfPrice.setBounds(111, 289, 166, 31);
+		tfPrice.setBounds(347, 216, 166, 31);
 		frame.add(tfPrice);
 		tfPrice.setColumns(10);
 		
 		tfPicture = new JTextField();
-		tfPicture.setBounds(111, 331, 166, 31);
+		tfPicture.setBounds(111, 226, 166, 113);
 		frame.add(tfPicture);
 		tfPicture.setColumns(10);
 		
-		JButton btDelete = new JButton("Delete");
-		btDelete.setBounds(228, 396, 89, 23);
+		JButton btDelete = new JButton("");
+		btDelete.setBounds(444, 388, 91, 31);
 		btDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
 			}
 		});
-		btDelete.setBackground(Color.RED);
-		btDelete.setForeground(Color.WHITE);
+		btDelete.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\btDe.png")
+				.getImage()
+				.getScaledInstance(btDelete.getWidth(), btDelete.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btDelete.setBorderPainted(false);
+		btDelete.setContentAreaFilled(false);
 		frame.add(btDelete);
 		
-		JButton btEdit = new JButton("Edit");
-		btEdit.setBounds(327, 396, 89, 23);
+		JButton btEdit = new JButton("");
+		btEdit.setBounds(444, 336, 100, 41);
 		btEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -228,11 +234,15 @@ public class EditDelete extends JFrame {
 					}
 			}
 		});
-		btEdit.setForeground(Color.WHITE);
-		btEdit.setBackground(Color.BLUE);
 		frame.add(btEdit);
+		btEdit.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\btEd.png")
+				.getImage()
+				.getScaledInstance(btEdit.getWidth(), btEdit.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btEdit.setBorderPainted(false);
+		btEdit.setContentAreaFilled(false);
 		
 		JButton btnBack = new JButton("");
+		btnBack.setBounds(10, 364, 71, 55);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -240,7 +250,6 @@ public class EditDelete extends JFrame {
 				st.setVisible(true);
 			}
 		});
-		btnBack.setBounds(10, 364, 71, 55);
 		frame.add(btnBack);
 		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png")
 						.getImage().getScaledInstance(btnBack.getWidth(), btnBack.getHeight(),
