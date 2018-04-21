@@ -87,7 +87,6 @@ public class Insert extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 570, 470);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -146,7 +145,7 @@ public class Insert extends JFrame {
 		tfColor.setColumns(10);
 		
 		JLabel lblInsert = new JLabel("Insert");
-		lblInsert.setForeground(Color.RED);
+		//lblInsert.setForeground(Color.RED);
 		lblInsert.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
 		lblInsert.setBounds(70, 26, 130, 40);
 		contentPane.add(lblInsert);

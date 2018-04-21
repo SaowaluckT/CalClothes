@@ -55,38 +55,46 @@ public class summary extends JFrame {
 		setContentPane(contentPane);
 		
 		txtPriceSummary = new JTextField();
+		txtPriceSummary.setBounds(146, 36, 333, 47);
 		txtPriceSummary.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPriceSummary.setForeground(new Color(0, 0, 0));
-		txtPriceSummary.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtPriceSummary.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
 		txtPriceSummary.setText("Price Summary");
 		txtPriceSummary.setColumns(10);
 		
 		textField = new JTextField();
+		textField.setBounds(73, 118, 494, 199);
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textField.setText("\u0E2A\u0E23\u0E38\u0E1B\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32");
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Price =");
+		lblNewLabel.setBounds(364, 347, 72, 25);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_1 = new JLabel("VAT 7% =");
+		lblNewLabel_1.setBounds(330, 390, 94, 25);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_2 = new JLabel("Total Price =");
+		lblNewLabel_2.setBounds(310, 426, 126, 25);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_3 = new JLabel("_________");
+		lblNewLabel_3.setBounds(454, 347, 113, 25);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel label = new JLabel("_________");
+		label.setBounds(454, 390, 113, 25);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel label_1 = new JLabel("_________");
+		label_1.setBounds(454, 426, 113, 25);
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btHome = new JButton("");
-		btHome.setBounds(0, 0, 55, 42);
+		btHome.setBounds(29, 36, 87, 51);
 		btHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")
 				.getImage().getScaledInstance(btHome.getWidth(), btHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
@@ -100,57 +108,23 @@ public class summary extends JFrame {
 				
 			}
 		});
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(24)
-							.addComponent(btHome)
-							.addGap(30)
-							.addComponent(txtPriceSummary, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(68)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblNewLabel_1)
-									.addGap(30)
-									.addComponent(label, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)))))
-					.addContainerGap(64, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtPriceSummary, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btHome))
-					.addGap(31)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_3)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
-					.addContainerGap(14, Short.MAX_VALUE))
-		);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.setLayout(null);
+		contentPane.add(btHome);
+		contentPane.add(txtPriceSummary);
+		contentPane.add(lblNewLabel_1);
+		contentPane.add(label);
+		contentPane.add(textField);
+		contentPane.add(lblNewLabel_2);
+		contentPane.add(label_1);
+		contentPane.add(lblNewLabel);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lbBG = new JLabel("");
+		lbBG.setBounds(0, 0, 634, 466);
+		contentPane.add(lbBG);
+		
+		lbBG.setIcon(new ImageIcon(new ImageIcon("D:\\\\CalClothes\\\\image\\\\bgLogin.jpg")
+					.getImage().getScaledInstance(lbBG.getWidth(), lbBG.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+
 	}
 }
