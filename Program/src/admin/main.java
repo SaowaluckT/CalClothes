@@ -69,7 +69,7 @@ public class main extends JFrame {
 
 	public main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 570, 470);
+		setBounds(100, 100, 457, 353);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 204, 204));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
