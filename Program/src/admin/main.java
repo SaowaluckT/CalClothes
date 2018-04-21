@@ -78,7 +78,7 @@ public class main extends JFrame {
 
 		JComboBox cbbOption = new JComboBox();
 		cbbOption.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
-		cbbOption.setModel(new DefaultComboBoxModel(new String[] { "All", "Username", "Name", "Surname", "Phone" }));
+		cbbOption.setModel(new DefaultComboBoxModel(new String[] {"Username", "Name", "Surname", "Phone"}));
 		cbbOption.setSelectedIndex(0);
 		cbbOption.setBounds(10, 49, 86, 20);
 		contentPane.add(cbbOption);
@@ -174,18 +174,15 @@ public class main extends JFrame {
 				try {
 					switch (cbbOption.getSelectedIndex()) {
 					case 0:
-						qry = "SELECT * FROM members";
-						break;
-					case 1:
 						qry = "SELECT * FROM members where Username = '" + tfSearch.getText() + "'";
 						break;
-					case 2:
+					case 1:
 						qry = "SELECT * FROM members where Name = '" + tfSearch.getText() + "'";
 						break;
-					case 3:
+					case 2:
 						qry = "SELECT * FROM members where Surname = '" + tfSearch.getText() + "'";
 						break;
-					case 4:
+					case 3:
 						qry = "SELECT * FROM members where Phone = '" + tfSearch.getText() + "'";
 						break;
 					}
