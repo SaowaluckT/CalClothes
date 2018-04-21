@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -46,6 +47,7 @@ public class Login extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -62,7 +64,9 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\icon\\lg.png"));
+		File Icon = new File("/CalClothes/icon");
+		File Image = new File("/CalClothes/image");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\lg.png"));
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -91,7 +95,7 @@ public class Login extends JFrame {
 		btnLogIn.setBounds(182, 188, 104, 32);
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				conn.connect();
 				qry = "SELECT * FROM members WHERE username = '"
 						+ tfUser.getText()
 						+ "' AND password = '"
@@ -99,6 +103,7 @@ public class Login extends JFrame {
 						+ "'"; 
 				
 				try {
+					
 					result = conn.stmt.executeQuery(qry);
 					
 					if (result.next()) {
@@ -116,6 +121,7 @@ public class Login extends JFrame {
 					e.printStackTrace();
 				}
 				if(status){
+					
 					JOptionPane.showMessageDialog(null, "Hello "+Name+" "+Surname,"Welcome to Clothes Shop",JOptionPane.PLAIN_MESSAGE);
 					dispose();
 					Home home = new Home();
@@ -125,10 +131,12 @@ public class Login extends JFrame {
 					tfUser.setText(null);
 					tfPass.setText(null);
 				}
+				conn.disConnect();
 			}
+			
 		});
 		contentPane.add(btnLogIn);
-		btnLogIn.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\login2.png")
+		btnLogIn.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\login2.png")
 				.getImage().getScaledInstance(btnLogIn.getWidth(), btnLogIn.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
 		btnLogIn.setBorderPainted(false); 
@@ -148,7 +156,7 @@ public class Login extends JFrame {
 		JLabel lbLogin = new JLabel("");
 		lbLogin.setBounds(0, 0, 444, 261);
 		contentPane.add(lbLogin);
-		lbLogin.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\image\\bgLogin.jpg")
+		lbLogin.setIcon(new ImageIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgLogin.jpg")
 				.getImage().getScaledInstance(lbLogin.getWidth(), lbLogin.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
 		btnLogIn.setBorderPainted(false); 

@@ -4,6 +4,7 @@ package Insert;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -26,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 
 public class Insert extends JFrame {
@@ -71,6 +73,9 @@ public class Insert extends JFrame {
 	 * Create the frame.
 	 */
 	public Insert() {
+		File Icon = new File("/CalClothes/icon");
+		setTitle("Insert Product");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\insert3.png"));
 		
 		getContentPane().setLayout(null);
 
@@ -95,7 +100,7 @@ public class Insert extends JFrame {
 		contentPane.setLayout(null);
 		btHome.setBounds(0, 24, 55, 42);
 		contentPane.add(btHome); 
-		btHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")
+		btHome.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png")
 				.getImage().getScaledInstance(btHome.getWidth(), btHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 				
 		btHome.setBorderPainted(false); 
@@ -167,7 +172,7 @@ public class Insert extends JFrame {
 		btnInsert.setBounds(387, 306, 61, 55);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-	
+				conn.connect();
 				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price) VALUES ('"
 				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+ ")";	
 				System.out.print(qry);
@@ -176,10 +181,11 @@ public class Insert extends JFrame {
 					} catch (SQLException ee) {
 						ee.printStackTrace();
 					}
+					conn.disConnect();
 			}
 		});
 		contentPane.add(btnInsert);
-		btnInsert.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\insert3.png").getImage().getScaledInstance(
+		btnInsert.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\insert3.png").getImage().getScaledInstance(
 						btnInsert.getWidth(), btnInsert.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnInsert.setBorderPainted(false);
 		btnInsert.setContentAreaFilled(false);
@@ -214,7 +220,7 @@ public class Insert extends JFrame {
 		});
 		btnRefresh.setBounds(458, 306, 61, 55);
 		contentPane.add(btnRefresh);
-		btnRefresh.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\reload.png")
+		btnRefresh.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
 				.getImage()
 				.getScaledInstance(btnRefresh.getWidth(), btnRefresh.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnRefresh.setBorderPainted(false);
@@ -230,7 +236,7 @@ public class Insert extends JFrame {
 			}
 		});
 		contentPane.add(btnBack);
-		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png").getImage()
+		btnBack.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\back.png").getImage()
 				.getScaledInstance(btnBack.getWidth(), btnBack.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 
 		btnBack.setBorderPainted(false);

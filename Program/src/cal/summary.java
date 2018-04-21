@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +32,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import java.awt.Toolkit;
 
 public class summary extends JFrame {
 
@@ -44,6 +46,7 @@ public class summary extends JFrame {
 	private JTextField tfVat;
 	private JTextField tfTotPrice;
 	private JTable table;
+	private JTextField textField;
 	
 	
 	/**
@@ -66,6 +69,9 @@ public class summary extends JFrame {
 	 * Create the frame.
 	 */
 	public summary() {
+		File Icon = new File("/CalClothes/icon");
+		setTitle("Summary product price");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\cal2.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 505);
 		contentPane = new JPanel();
@@ -73,7 +79,7 @@ public class summary extends JFrame {
 		setContentPane(contentPane);
 		
 		txtPriceSummary = new JTextField();
-		txtPriceSummary.setBounds(146, 36, 333, 47);
+		txtPriceSummary.setBounds(146, 11, 333, 47);
 		txtPriceSummary.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPriceSummary.setForeground(new Color(0, 0, 0));
 		txtPriceSummary.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
@@ -93,8 +99,8 @@ public class summary extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btHome = new JButton("");
-		btHome.setBounds(29, 36, 87, 51);
-		btHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")
+		btHome.setBounds(10, 11, 59, 47);
+		btHome.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png")
 				.getImage().getScaledInstance(btHome.getWidth(), btHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
 		btHome.setBorderPainted(false); 
@@ -125,14 +131,13 @@ public class summary extends JFrame {
 			}
 		});
 		contentPane.add(btnBack);
-		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png").getImage()
+		btnBack.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\back.png").getImage()
 				.getScaledInstance(btnBack.getWidth(), btnBack.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 
 		btnBack.setBorderPainted(false);
 		btnBack.setContentAreaFilled(false);
 		
 		JButton btnLoadData = new JButton("Load");
-		
 		btnLoadData.setBounds(29, 117, 80, 39);
 		contentPane.add(btnLoadData);
 		
@@ -142,24 +147,37 @@ public class summary extends JFrame {
 		tfPrice.setColumns(10);
 		
 		tfVat = new JTextField();
-		tfVat.setColumns(10);
 		tfVat.setBounds(441, 383, 152, 25);
+		tfVat.setColumns(10);
 		contentPane.add(tfVat);
 		
 		tfTotPrice = new JTextField();
-		tfTotPrice.setColumns(10);
 		tfTotPrice.setBounds(441, 417, 152, 25);
+		tfTotPrice.setColumns(10);
 		contentPane.add(tfTotPrice);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(146, 110, 453, 202);
+		scrollPane.setBounds(140, 128, 453, 202);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		textField = new JTextField();
+		textField.setBounds(251, 79, 144, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(416, 69, 48, 35);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblSearch = new JLabel("Search");
+		lblSearch.setBounds(195, 84, 46, 14);
+		contentPane.add(lblSearch);
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				conn.connect();
 				try {
 					String qry = "SELECT * FROM clothes ";
 					result =  conn.stmt.executeQuery(qry);
@@ -170,7 +188,7 @@ public class summary extends JFrame {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+				conn.disConnect();
 			}
 		});
 

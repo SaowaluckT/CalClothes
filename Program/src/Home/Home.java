@@ -3,13 +3,19 @@ package Home;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import login.Login;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.EventQueue;
 import java.awt.event.*;
+import java.io.File;
+
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
@@ -41,24 +47,12 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\Program\\bin\\Home\\home.png"));
+		File Icon = new File("/CalClothes/icon");
+		File Image = new File("/CalClothes/image");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\home.png"));
 		setTitle("HOME");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 570, 470);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnMember = new JMenu("Member");
-		mnMember.setHorizontalAlignment(SwingConstants.RIGHT);
-		menuBar.add(mnMember);
-		
-		JMenuItem menuItem = new JMenuItem("\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A");
-		mnMember.add(menuItem);
-		
-		
-		JMenuItem menuItem_1 = new JMenuItem("");
-		mnMember.add(menuItem_1);
+		setBounds(100, 100, 476, 316);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -75,7 +69,7 @@ public class Home extends JFrame {
 			
 			}
 		});
-		btnStock.setBounds(115, 35, 243, 50);
+		btnStock.setBounds(115, 44, 243, 50);
 		contentPane.add(btnStock);
 
 		JButton btnCalTheProduct = new JButton("Calculate \r\nthe product");
@@ -89,7 +83,7 @@ public class Home extends JFrame {
 				
 			}
 		});
-		btnCalTheProduct.setBounds(115, 108, 243, 50);
+		btnCalTheProduct.setBounds(115, 121, 243, 50);
 		contentPane.add(btnCalTheProduct);
 		
 		JButton btnAdmin = new JButton("Admin");
@@ -102,32 +96,52 @@ public class Home extends JFrame {
 				admin1.setVisible(true);
 			}
 		});
-		btnAdmin.setBounds(115, 177, 243, 50);
+		btnAdmin.setBounds(115, 182, 243, 50);
 		contentPane.add(btnAdmin);
 		
 		JButton btHome = new JButton();
 		btHome.setBounds(0, 0, 55, 42);
-		btHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
+		btHome.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png")
 				.getImage().getScaledInstance(btHome.getWidth(), btHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		 
 		btHome.setBorderPainted(false); 
-		btHome.setContentAreaFilled(false);
-		btHome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btHome.setContentAreaFilled(false);		
+		contentPane.add(btHome);
 		
+		
+		JButton btLogOut = new JButton();
+		btLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int confirm = JOptionPane.showConfirmDialog(null,"คุณต้องการออกจากระบบ หรือไม่ ?", "Log out",JOptionPane.OK_CANCEL_OPTION);
+				if(confirm == 0) {
+					dispose();
+					login.Login lg = new login.Login();
+					lg.setVisible(true);
+				}
+				
 			}
 		});
-		
-		getContentPane().add(btHome);
+		btLogOut.setBounds(401, 0, 49, 42);
+		contentPane.add(btLogOut);
+		btLogOut.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\logOff.png")
+				.getImage().getScaledInstance(btLogOut.getWidth(), btLogOut.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btLogOut.setContentAreaFilled(false);
+		btLogOut.setBorderPainted(false);
+			
+		JLabel lblLogout = new JLabel("Log-out");
+		lblLogout.setForeground(Color.RED);
+		lblLogout.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 15));
+		lblLogout.setBounds(401, 33, 49, 25);
+		contentPane.add(lblLogout);
 		
 		JLabel lbHome = new JLabel("");
-		lbHome.setIcon(new ImageIcon("D:\\CalClothes\\image\\bgLogin.jpg"));
-		lbHome.setBounds(0, 0, 466, 289);
+		lbHome.setBounds(0, 0, 466, 283);
 		contentPane.add(lbHome);
-		lbHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\image\\bgLogin.jpg")
+		lbHome.setIcon(new ImageIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgLogin.jpg")
 				.getImage().getScaledInstance(lbHome.getWidth(), lbHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		
-			
+		
+		
 		
 	}
 }

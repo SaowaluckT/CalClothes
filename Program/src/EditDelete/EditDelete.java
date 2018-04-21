@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class EditDelete extends JFrame {
 
@@ -63,12 +65,9 @@ public class EditDelete extends JFrame {
 	 */
 
 	public EditDelete() {
-		initialize();
-
-	}
-
-	public void initialize() {
-
+		File Icon = new File("/CalClothes/icon");
+		setTitle("Edit and Delete the Product");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\edit.png"));	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 570, 470);
 		frame = new JPanel();
@@ -100,10 +99,10 @@ public class EditDelete extends JFrame {
 			}
 		});
 		btnHome.setBackground(Color.ORANGE);
-		btnHome.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage())
+		btnHome.setIcon(new ImageIcon(((new ImageIcon(Icon.getAbsolutePath()+"\\home.png")).getImage())
 				.getScaledInstance(btnHome.getWidth(), btnHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		frame.add(btnHome);
-		btnHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png").getImage()
+		btnHome.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png").getImage()
 				.getScaledInstance(btnHome.getWidth(), btnHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 
 		btnHome.setBorderPainted(false);
@@ -118,6 +117,7 @@ public class EditDelete extends JFrame {
 		btSearch.setBounds(289, 70, 39, 31);
 		btSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				conn.connect();
 				try {
 					qry = "SELECT * FROM clothes where Pro_ID = '" + tfSearch.getText() + "'";
 
@@ -142,11 +142,12 @@ public class EditDelete extends JFrame {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				conn.disConnect();
 
 			}
 		});
 		frame.add(btSearch);
-		btSearch.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\search2.png").getImage()
+		btSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search2.png").getImage()
 				.getScaledInstance(btSearch.getWidth(), btSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btSearch.setBorderPainted(false);
 		btSearch.setContentAreaFilled(false);
@@ -209,6 +210,7 @@ public class EditDelete extends JFrame {
 		btDelete.setBounds(444, 388, 91, 31);
 		btDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				conn.connect();
 				int confirm = JOptionPane.showConfirmDialog(null,
 						"คุณต้องการจะลบข้อมูล " + tfPro_ID.getText() + " หรือไม่ ?", "ยืนยันการลบข้อมูล",
 						JOptionPane.OK_CANCEL_OPTION);
@@ -227,9 +229,10 @@ public class EditDelete extends JFrame {
 						System.out.print(e);
 					}
 				}
+				conn.disConnect();
 			}
 		});
-		btDelete.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\btDe.png").getImage()
+		btDelete.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\btDe.png").getImage()
 				.getScaledInstance(btDelete.getWidth(), btDelete.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btDelete.setBorderPainted(false);
 		btDelete.setContentAreaFilled(false);
@@ -239,7 +242,7 @@ public class EditDelete extends JFrame {
 		btEdit.setBounds(444, 336, 100, 41);
 		btEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				conn.connect();
 				String qry = "UPDATE clothes SET Pro_ID = '" + tfPro_ID.getText() + "',Type = '" + tfType.getText()
 						+ "',Pattern = '" + tfPattern.getText() + "',Color = '" + tfColor.getText() + "',Price = "
 						+ tfPrice.getText() + " WHERE Pro_ID = '" + tfPro_ID.getText() + "';";
@@ -250,10 +253,11 @@ public class EditDelete extends JFrame {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				conn.disConnect();
 			}
 		});
 		frame.add(btEdit);
-		btEdit.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\btEd.png").getImage()
+		btEdit.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\btEd.png").getImage()
 				.getScaledInstance(btEdit.getWidth(), btEdit.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btEdit.setBorderPainted(false);
 		btEdit.setContentAreaFilled(false);
@@ -268,7 +272,7 @@ public class EditDelete extends JFrame {
 			}
 		});
 		frame.add(btnBack);
-		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png").getImage()
+		btnBack.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\back.png").getImage()
 				.getScaledInstance(btnBack.getWidth(), btnBack.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 
 		btnBack.setBorderPainted(false);

@@ -20,12 +20,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.io.File;
+
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Toolkit;
 
 public class main extends JFrame {
 
@@ -69,6 +72,9 @@ public class main extends JFrame {
 	}
 
 	public main() {
+		File Icon = new File("/CalClothes/icon");
+		setTitle("Admin");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\228853-200.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 457, 353);
 		contentPane = new JPanel();
@@ -102,7 +108,7 @@ public class main extends JFrame {
 		btnHome.setBounds(0, 0, 65, 38);
 		contentPane.add(btnHome);
 		btnHome.setIcon(
-				new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
+				new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png")
 						.getImage().getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),
 								java.awt.Image.SCALE_AREA_AVERAGING)));
 
@@ -171,6 +177,7 @@ public class main extends JFrame {
 		JButton btnSearch = new JButton("");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				conn.connect();
 				clearTf();
 				try {
 					switch (cbbOption.getSelectedIndex()) {
@@ -206,12 +213,12 @@ public class main extends JFrame {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-
+				conn.disConnect();
 			}
 		});
 		btnSearch.setBounds(302, 37, 38, 38);
 		contentPane.add(btnSearch);
-		btnSearch.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\search.png")
+		btnSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search.png")
 				.getImage()
 				.getScaledInstance(btnSearch.getWidth(), btnSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnSearch.setBorderPainted(false);
@@ -220,7 +227,7 @@ public class main extends JFrame {
 		JButton btnEdit = new JButton("");
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				conn.connect();
 				String qry1 = "UPDATE members SET UserName = '"
 						+ tfUser.getText()
 						+ "',"
@@ -246,12 +253,13 @@ public class main extends JFrame {
 				} catch (SQLException ee) {
 					ee.printStackTrace();
 				}
+				conn.disConnect();
 
 			}
 		});
 		btnEdit.setBounds(386, 128, 38, 38);
 		contentPane.add(btnEdit);
-		btnEdit.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\edit.png")
+		btnEdit.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\edit.png")
 				.getImage()
 				.getScaledInstance(btnEdit.getWidth(), btnEdit.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnEdit.setBorderPainted(false);
@@ -260,7 +268,7 @@ public class main extends JFrame {
 		JButton btnDel = new JButton("");
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				conn.connect();
 				int confirm = JOptionPane.showConfirmDialog(null,
 						"คุณต้องการจะลบคุณ " + tfUser.getText() + " ออกจากระบบหรือไม่ ?", "ยืนยันการลบผู้จัดการโปรแกรม",
 						JOptionPane.OK_CANCEL_OPTION);
@@ -276,11 +284,12 @@ public class main extends JFrame {
 					System.out.print(e);
 				}
 				}
+				conn.disConnect();
 			}
 		});
 		btnDel.setBounds(386, 180, 38, 38);
 		contentPane.add(btnDel);
-		btnDel.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\delete.png")
+		btnDel.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\delete.png")
 				.getImage()
 				.getScaledInstance(btnDel.getWidth(), btnDel.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnDel.setBorderPainted(false);
@@ -312,7 +321,7 @@ public class main extends JFrame {
 		});
 		btnFirst.setBounds(59, 266, 46, 37);
 		contentPane.add(btnFirst);
-		btnFirst.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\first.png")
+		btnFirst.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\first.png")
 				.getImage()
 				.getScaledInstance(btnFirst.getWidth(), btnFirst.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnFirst.setBorderPainted(false);
@@ -344,7 +353,7 @@ public class main extends JFrame {
 		btnPrevious.setBounds(117, 266, 46, 38);
 		contentPane.add(btnPrevious);
 		btnPrevious
-				.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\previous.png")
+				.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\previous.png")
 						.getImage().getScaledInstance(btnPrevious.getWidth(), btnPrevious.getHeight(),
 								java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnPrevious.setBorderPainted(false);
@@ -376,7 +385,7 @@ public class main extends JFrame {
 		});
 		btnLast.setBounds(274, 265, 46, 38);
 		contentPane.add(btnLast);
-		btnLast.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\last.png")
+		btnLast.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\last.png")
 				.getImage()
 				.getScaledInstance(btnLast.getWidth(), btnLast.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnLast.setBorderPainted(false);
@@ -408,7 +417,7 @@ public class main extends JFrame {
 		});
 		btnNext.setBounds(217, 266, 46, 37);
 		contentPane.add(btnNext);
-		btnNext.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\next2.png")
+		btnNext.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\next2.png")
 				.getImage()
 				.getScaledInstance(btnNext.getWidth(), btnNext.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnNext.setBorderPainted(false);
@@ -417,6 +426,7 @@ public class main extends JFrame {
 		JButton btnInsert = new JButton("");
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				conn.connect();
 				try {
 				
 				qry = "INSERT INTO members(Username,Password,Name,Surname,Phone) VALUES ('" + tfUser.getText() + "','"
@@ -428,13 +438,14 @@ public class main extends JFrame {
 				} catch (SQLException ee) {
 					ee.printStackTrace();
 				}
+				conn.disConnect();
 
 			}
 		});
 		btnInsert.setBounds(386, 74, 38, 38);
 		contentPane.add(btnInsert);
 		btnInsert.setIcon(new ImageIcon(
-				new ImageIcon("D:\\CalClothes\\icon\\Add.png").getImage().getScaledInstance(
+				new ImageIcon(Icon.getAbsolutePath()+"\\Add.png").getImage().getScaledInstance(
 						btnInsert.getWidth(), btnInsert.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnInsert.setBorderPainted(false);
 		btnInsert.setContentAreaFilled(false);
@@ -442,7 +453,7 @@ public class main extends JFrame {
 		JButton btnReload = new JButton("");
 		btnReload.setBounds(386, 231, 38, 38);
 		contentPane.add(btnReload);
-		btnReload.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\reload.png")
+		btnReload.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
 				.getImage()
 				.getScaledInstance(btnReload.getWidth(), btnReload.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnReload.setBorderPainted(false);

@@ -16,11 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Home.Home;
-import Stock.stock;
-import Calculate.calculate2;
+import Calculate.calculate;
 import java.awt.Toolkit;
 
-public class calculate extends JFrame {
+public class calculate2 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -40,7 +39,7 @@ public class calculate extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					calculate frame = new calculate();
+					calculate2 frame = new calculate2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,10 +51,10 @@ public class calculate extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public calculate() {
+	public calculate2() {
 		File Icon = new File("/CalClothes/icon");
+		setTitle("Product Page2");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\p.png"));
-		setTitle("Product Page1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 813, 527);
 		contentPane = new JPanel();
@@ -80,7 +79,7 @@ public class calculate extends JFrame {
 		btnHome.setContentAreaFilled(false);
 
 		JButton btnCal = new JButton("");
-		btnCal.setBounds(663, 314, 80, 60);
+		btnCal.setBounds(669, 314, 80, 60);
 		btnCal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -128,12 +127,12 @@ public class calculate extends JFrame {
 		textField_2.setColumns(10);
 
 		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setBounds(78, 97, 100, 100);
+		btnNewButton_3.setBounds(98, 97, 100, 100);
 		btnNewButton_3.setBackground(new Color(255, 255, 255));
 		contentPane.add(btnNewButton_3);
 		
 		JButton button = new JButton("");
-		button.setBounds(331, 97, 100, 100);
+		button.setBounds(348, 97, 100, 100);
 		button.setBackground(Color.WHITE);
 		contentPane.add(button);
 		
@@ -168,7 +167,7 @@ public class calculate extends JFrame {
 		contentPane.add(textField_5);
 		
 		JButton button_3 = new JButton("");
-		button_3.setBounds(611, 97, 100, 100);
+		button_3.setBounds(626, 97, 100, 100);
 		button_3.setBackground(Color.WHITE);
 		contentPane.add(button_3);
 		
@@ -211,13 +210,9 @@ public class calculate extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				calculate2 st = new calculate2();
-				st.setVisible(true);
 			}
 		});
 		btnNext.setBounds(682, 419, 80, 58);
-		contentPane.add(btnNext);
 		contentPane.add(btnNext);
 		btnNext.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\next.png").getImage()
 				.getScaledInstance(btnNext.getWidth(), btnNext.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
@@ -229,5 +224,21 @@ public class calculate extends JFrame {
 		lblGoToCalculate.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblGoToCalculate.setBounds(659, 373, 105, 35);
 		contentPane.add(lblGoToCalculate);
+		
+		JButton btBack = new JButton("");
+		btBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				calculate st = new calculate();
+				st.setVisible(true);
+			}
+		});
+		btBack.setBounds(36, 419, 80, 58);
+		contentPane.add(btBack);
+		btBack.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\back.png").getImage()
+				.getScaledInstance(btBack.getWidth(), btBack.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btBack.setContentAreaFilled(false);
+		btBack.setBorderPainted(false);
+		
 	}
 }

@@ -18,8 +18,10 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 public class stock extends JFrame {
 
@@ -47,6 +49,10 @@ public class stock extends JFrame {
 	 * Create the frame.
 	 */
 	public stock() {
+		File Icon = new File("/CalClothes/icon");
+		
+		setTitle("Stock the Product");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\wh.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 570, 470);
 		contentPane = new JPanel();
@@ -67,11 +73,11 @@ public class stock extends JFrame {
 		btnHome.setBounds(10, 2, 60, 60);
 		contentPane.add(btnHome);
 		
-		btnHome.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\home.png")).getImage()).getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnHome.setIcon(new ImageIcon(((new ImageIcon(Icon.getAbsolutePath()+"\\home.png")).getImage()).getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnHome.setBounds(10, 2, 60, 60);
 		contentPane.add(btnHome);
 		btnHome.setIcon(
-				new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\bin\\Home\\home.png")
+				new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png")
 						.getImage().getScaledInstance(btnHome.getWidth(), btnHome.getHeight(),
 								java.awt.Image.SCALE_AREA_AVERAGING)));
 
@@ -87,19 +93,15 @@ public class stock extends JFrame {
 		btnNewButton_2.setBounds(120, 174, 60, 60);
 		contentPane.add(btnNewButton_2);
 		
-		btnNewButton_2.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\edit.png")).getImage()).getScaledInstance(btnNewButton_2.getWidth(), btnNewButton_2.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnNewButton_2.setIcon(new ImageIcon(((new ImageIcon(Icon.getAbsolutePath()+"\\edit.png")).getImage()).getScaledInstance(btnNewButton_2.getWidth(), btnNewButton_2.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
 		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBackground(new Color(224, 255, 255));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton_1.setBounds(120, 89, 60, 60);
-		contentPane.add(btnNewButton_1);
+		JButton btnAdd = new JButton("");
+		btnAdd.setBackground(new Color(224, 255, 255));
+		btnAdd.setBounds(120, 89, 60, 60);
+		contentPane.add(btnAdd);
 		
-		btnNewButton_1.setIcon(new ImageIcon(((new ImageIcon("D:\\Proj\\CalClothes\\icon\\insert.png")).getImage()).getScaledInstance(btnNewButton_1.getWidth(), btnNewButton_1.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnAdd.setIcon(new ImageIcon(((new ImageIcon(Icon.getAbsolutePath()+"\\insert.png")).getImage()).getScaledInstance(btnAdd.getWidth(), btnAdd.getHeight(),java.awt.Image.SCALE_AREA_AVERAGING)));
 		
 		btnInsert = new JButton("Insert");
 		btnInsert.addActionListener(new ActionListener() {
