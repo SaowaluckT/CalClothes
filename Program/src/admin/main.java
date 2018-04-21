@@ -12,6 +12,7 @@ import Home.Home;
 import connect.Connect;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.*;
@@ -259,14 +260,21 @@ public class main extends JFrame {
 		JButton btnDel = new JButton("");
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				int confirm = JOptionPane.showConfirmDialog(null,
+						"คุณต้องการจะลบคุณ " + tfUser.getText() + " ออกจากระบบหรือไม่ ?", "ยืนยันการลบผู้จัดการโปรแกรม",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (confirm == 0) {
 				String qry = "DELETE FROM members WHERE Username like '"
 						+ tfSearch.getText()
 						+"'";
 				System.out.print(qry);
 				try {
 					conn.stmt.executeUpdate(qry);
+					clearTf();
 				} catch (SQLException e) {
 					System.out.print(e);
+				}
 				}
 			}
 		});

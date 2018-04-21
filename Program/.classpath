@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/hsqldb.jar"/>
 	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/jackcess-2.1.6.jar"/>
 	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/ucanaccess-4.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/CalClothes/Program/Lib_Ucanaccess/rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

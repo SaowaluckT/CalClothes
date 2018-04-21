@@ -1,15 +1,10 @@
 package Insert;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,26 +14,25 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Home.Home;
+import Stock.stock;
 import connect.Connect;
 import login.Login;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
-import java.awt.Color;
+
 
 public class Insert extends JFrame {
 	
-	public Connection conn;
-	public Statement stmt = null;
-	
+	Connect conn = new Connect();
 	String qry = null;
-	String rs = null;
+	//String result = null;
 	int Rowsize;
 	
 	private JPanel contentPane;
@@ -98,6 +92,7 @@ public class Insert extends JFrame {
 				home.setVisible(true);
 			}
 		});
+		contentPane.setLayout(null);
 		btHome.setBounds(0, 24, 55, 42);
 		contentPane.add(btHome); 
 		btHome.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\Program\\src\\Home\\home.png")
@@ -168,18 +163,26 @@ public class Insert extends JFrame {
 		contentPane.add(tfPicture);
 		tfPicture.setColumns(10);
 		
-		JButton btnInsert = new JButton("Insert");
-		btnInsert.setBounds(330, 306, 85, 21);
+		JButton btnInsert = new JButton("");
+		btnInsert.setBounds(387, 306, 61, 55);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Pic_Name) VALUES ('"
-				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+",'"+ tfPicture.getText() + "'" + ")";	
+	
+				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price) VALUES ('"
+				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+ ")";	
 				System.out.print(qry);
-				
+					try {
+						conn.stmt.executeUpdate(qry);
+					} catch (SQLException ee) {
+						ee.printStackTrace();
+					}
 			}
 		});
 		contentPane.add(btnInsert);
+		btnInsert.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\insert3.png").getImage().getScaledInstance(
+						btnInsert.getWidth(), btnInsert.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnInsert.setBorderPainted(false);
+		btnInsert.setContentAreaFilled(false);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 536, 22);
@@ -199,7 +202,7 @@ public class Insert extends JFrame {
 		});
 		mnMember.add(mnLogout);
 		
-		JButton btnRefresh = new JButton("Refresh");
+		JButton btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				tfProID.setText(null);
@@ -207,11 +210,41 @@ public class Insert extends JFrame {
 				tfPattern.setText(null);
 				tfColor.setText(null);
 				tfPrice.setText(null);
-				tfPicture.setText(null);
 			}
 		});
-		btnRefresh.setBounds(414, 306, 85, 21);
+		btnRefresh.setBounds(458, 306, 61, 55);
 		contentPane.add(btnRefresh);
+		btnRefresh.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\reload.png")
+				.getImage()
+				.getScaledInstance(btnRefresh.getWidth(), btnRefresh.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnRefresh.setBorderPainted(false);
+		btnRefresh.setContentAreaFilled(false);
+		
+		JButton btnBack = new JButton("");
+		btnBack.setBounds(10, 365, 72, 55);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				stock st = new stock();
+				st.setVisible(true);
+			}
+		});
+		contentPane.add(btnBack);
+		btnBack.setIcon(new ImageIcon(new ImageIcon("D:\\CalClothes\\icon\\back.png").getImage()
+				.getScaledInstance(btnBack.getWidth(), btnBack.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+
+		btnBack.setBorderPainted(false);
+		btnBack.setContentAreaFilled(false);
+		
+		JLabel lblRefresh = new JLabel("Refresh");
+		lblRefresh.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblRefresh.setBounds(468, 372, 55, 21);
+		contentPane.add(lblRefresh);
+		
+		JLabel lblInsert_1 = new JLabel("Insert");
+		lblInsert_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblInsert_1.setBounds(397, 372, 55, 21);
+		contentPane.add(lblInsert_1);
 
 	}
 }
