@@ -27,7 +27,7 @@ public class EditDelete extends JFrame {
 	private JTextField tfSearch;
 	private JTextField tfPro_ID;
 	private JTextField tfType;
-	private JTextField tfTexture;
+	private JTextField tfPattern;
 	private JTextField tfColor;
 	private JTextField tfPrice;
 	private JTextField tfPicture;
@@ -39,8 +39,7 @@ public class EditDelete extends JFrame {
 	String qry = null;
 	ResultSet result = null;
 	int Rowsize;
-	Statement s = null;
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -129,7 +128,7 @@ public class EditDelete extends JFrame {
 						if (result.next()) {
 							tfPro_ID.setText(result.getString("Pro_ID"));
 							tfType.setText(result.getString("Type"));
-							tfTexture.setText(result.getString("Pattern"));
+							tfPattern.setText(result.getString("Pattern"));
 							tfColor.setText(result.getString("Color"));
 							tfPrice.setText(result.getString("Price"));
 							//tfPicture.setText(rs.getString("Pic_Name"));
@@ -157,7 +156,7 @@ public class EditDelete extends JFrame {
 		lblType.setBounds(301, 125, 46, 14);
 		frame.add(lblType);
 		
-		JLabel lblTexture = new JLabel("Texture");
+		JLabel lblTexture = new JLabel("Pattern");
 		lblTexture.setBounds(53, 182, 46, 14);
 		frame.add(lblTexture);
 		
@@ -183,10 +182,10 @@ public class EditDelete extends JFrame {
 		frame.add(tfType);
 		tfType.setColumns(10);
 		
-		tfTexture = new JTextField();
-		tfTexture.setBounds(111, 174, 166, 31);
-		frame.add(tfTexture);
-		tfTexture.setColumns(10);
+		tfPattern = new JTextField();
+		tfPattern.setBounds(111, 174, 166, 31);
+		frame.add(tfPattern);
+		tfPattern.setColumns(10);
 		
 		tfColor = new JTextField();
 		tfColor.setBounds(347, 174, 166, 31);
@@ -223,14 +222,25 @@ public class EditDelete extends JFrame {
 		btEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				try {
-					String qry = "UPDATE clothes SET Pro_ID = '" + tfPro_ID.getText() + "',Type = '"
-							+ tfType.getText() + "',Texture= '" + tfTexture.getText() + "',Color= '" + tfColor.getText()
-							+ "',Price= '" + tfPrice.getText();
-					result = conn.stmt.executeQuery(qry);
-					}
-				catch (SQLException e2) {
-					e2.printStackTrace();
+					String qry = "UPDATE clothes SET Pro_ID = '" 
+							+ tfPro_ID.getText() 
+							+ "',Type = '"
+							+ tfType.getText() 
+							+ "',Pattern = '" 
+							+ tfPattern.getText() 
+							+ "',Color = '" 
+							+ tfColor.getText()
+							+ "',Price = " 
+							+ tfPrice.getText()
+							+ " WHERE Pro_ID = '"
+							+ tfPro_ID.getText()
+							+ "';";
+							
+					System.out.println(qry);
+					try {
+						conn.stmt.execute(qry);
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
 			}
 		});
