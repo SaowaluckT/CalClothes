@@ -53,6 +53,9 @@ public class Login extends JFrame {
 				try {
 					Login frame = new Login();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -154,7 +157,7 @@ public class Login extends JFrame {
 		contentPane.add(tfPass);
 		
 		JLabel lbLogin = new JLabel("");
-		lbLogin.setBounds(0, 0, 444, 261);
+		lbLogin.setBounds(0, 0, 466, 286);
 		contentPane.add(lbLogin);
 		lbLogin.setIcon(new ImageIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgLogin.jpg")
 				.getImage().getScaledInstance(lbLogin.getWidth(), lbLogin.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));

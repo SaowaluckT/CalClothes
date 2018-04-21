@@ -42,6 +42,8 @@ public class calculate extends JFrame {
 				try {
 					calculate frame = new calculate();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

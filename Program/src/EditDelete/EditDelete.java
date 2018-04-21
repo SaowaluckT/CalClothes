@@ -52,6 +52,8 @@ public class EditDelete extends JFrame {
 				try {
 					EditDelete frame = new EditDelete();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

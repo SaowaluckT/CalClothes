@@ -38,6 +38,8 @@ public class stock extends JFrame {
 				try {
 					stock frame = new stock();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -62,6 +62,8 @@ public class Insert extends JFrame {
 				try {
 					Insert frame = new Insert();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

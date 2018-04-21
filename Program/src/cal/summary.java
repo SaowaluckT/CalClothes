@@ -58,6 +58,8 @@ public class summary extends JFrame {
 				try {
 					summary frame = new summary();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

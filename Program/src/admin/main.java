@@ -53,6 +53,8 @@ public class main extends JFrame {
 				try {
 					main frame = new main();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
