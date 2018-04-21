@@ -53,7 +53,7 @@ public class calculate extends JFrame {
 	 * Create the frame.
 	 */
 	public calculate() {
-		File Icon = new File("/CalClothes/icon");
+		File Icon = new File("icon");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\p.png"));
 		setTitle("Product Page1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

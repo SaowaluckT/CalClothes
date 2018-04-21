@@ -47,8 +47,8 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
-		File Icon = new File("/CalClothes/icon");
-		File Image = new File("/CalClothes/image");
+		File Icon = new File("icon");
+		File Image = new File("image");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\home.png"));
 		setTitle("HOME");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

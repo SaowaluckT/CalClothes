@@ -73,7 +73,7 @@ public class Insert extends JFrame {
 	 * Create the frame.
 	 */
 	public Insert() {
-		File Icon = new File("/CalClothes/icon");
+		File Icon = new File("icon");
 		setTitle("Insert Product");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\insert3.png"));
 		

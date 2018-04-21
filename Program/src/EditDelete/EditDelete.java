@@ -65,7 +65,7 @@ public class EditDelete extends JFrame {
 	 */
 
 	public EditDelete() {
-		File Icon = new File("/CalClothes/icon");
+		File Icon = new File("icon");
 		setTitle("Edit and Delete the Product");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\edit.png"));	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

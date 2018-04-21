@@ -49,7 +49,7 @@ public class stock extends JFrame {
 	 * Create the frame.
 	 */
 	public stock() {
-		File Icon = new File("/CalClothes/icon");
+		File Icon = new File("icon");
 		
 		setTitle("Stock the Product");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\wh.png"));

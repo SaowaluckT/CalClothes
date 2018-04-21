@@ -13,9 +13,10 @@ import java.sql.Statement;
 public class Connect {
 	public Connection conn;
 	public Statement stmt = null;
-	public Connect() {}
+	public Connect() {
+	}
 	public void connect() {
-		File db = new File("/CalClothes");
+		File db = new File("");
 		try {	
 			conn = DriverManager.getConnection("jdbc:ucanaccess://"+db.getAbsoluteFile()+"\\DB.mdb", "", "");
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);

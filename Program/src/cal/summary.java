@@ -69,7 +69,7 @@ public class summary extends JFrame {
 	 * Create the frame.
 	 */
 	public summary() {
-		File Icon = new File("/CalClothes/icon");
+		File Icon = new File("icon");
 		setTitle("Summary product price");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\cal2.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

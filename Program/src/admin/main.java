@@ -72,7 +72,7 @@ public class main extends JFrame {
 	}
 
 	public main() {
-		File Icon = new File("/CalClothes/icon");
+		File Icon = new File("icon");
 		setTitle("Admin");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\228853-200.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
