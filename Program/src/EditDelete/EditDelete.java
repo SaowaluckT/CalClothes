@@ -45,6 +45,7 @@ public class EditDelete extends JFrame {
 	String qry = null;
 	ResultSet result = null;
 	int Rowsize;
+	private JTextField tfQuantity;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -61,7 +62,15 @@ public class EditDelete extends JFrame {
 		});
 
 	}
-
+	
+	public void clearTf() {
+		tfPattern.setText(null);
+		tfColor.setText(null);
+		tfPrice.setText(null);
+		tfQuantity.setText(null);
+		tfPicture.setText(null);
+	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -136,16 +145,16 @@ public class EditDelete extends JFrame {
 						tfPattern.setText(result.getString("Pattern"));
 						tfColor.setText(result.getString("Color"));
 						tfPrice.setText(result.getString("Price"));
-						// tfPicture.setText(rs.getString("Pic_Name"));
+						tfQuantity.setText(result.getString("Quantity"));
+						tfPicture.setText(result.getString("Picture"));
 
 					}
-					// lbDBBar.setText(Integer.toString(rs.getRow()) + "/" +
-					// Integer.toString(Rowsize));
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 				conn.disConnect();
-
+				
 			}
 		});
 		frame.add(btSearch);
@@ -175,7 +184,7 @@ public class EditDelete extends JFrame {
 		frame.add(lblPrice);
 
 		JLabel lblPicture = new JLabel("Picture");
-		lblPicture.setBounds(53, 249, 46, 14);
+		lblPicture.setBounds(53, 234, 46, 14);
 		frame.add(lblPicture);
 
 		tfPro_ID = new JTextField();
@@ -199,12 +208,12 @@ public class EditDelete extends JFrame {
 		tfColor.setColumns(10);
 
 		tfPrice = new JTextField();
-		tfPrice.setBounds(347, 216, 166, 31);
+		tfPrice.setBounds(347, 226, 166, 31);
 		frame.add(tfPrice);
 		tfPrice.setColumns(10);
 
 		tfPicture = new JTextField();
-		tfPicture.setBounds(111, 226, 166, 113);
+		tfPicture.setBounds(111, 226, 166, 31);
 		frame.add(tfPicture);
 		tfPicture.setColumns(10);
 
@@ -221,17 +230,13 @@ public class EditDelete extends JFrame {
 					System.out.print(qry);
 					try {
 						conn.stmt.executeUpdate(qry);
-						tfSearch.setText(null);
-						tfPro_ID.setText(null);
-						tfPattern.setText(null);
-						tfType.setText(null);
-						tfColor.setText(null);
-						tfPrice.setText(null);
+						
 					} catch (SQLException e) {
 						System.out.print(e);
 					}
 				}
 				conn.disConnect();
+				clearTf();
 			}
 		});
 		btDelete.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\btDe.png").getImage()
@@ -245,9 +250,24 @@ public class EditDelete extends JFrame {
 		btEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
-				String qry = "UPDATE clothes SET Pro_ID = '" + tfPro_ID.getText() + "',Type = '" + tfType.getText()
-						+ "',Pattern = '" + tfPattern.getText() + "',Color = '" + tfColor.getText() + "',Price = "
-						+ tfPrice.getText() + " WHERE Pro_ID = '" + tfPro_ID.getText() + "';";
+				String qry = "UPDATE clothes SET Pro_ID = '" 
+				+ tfPro_ID.getText() 
+				+ "', Type = '" 
+				+ tfType.getText()		
+				+ "', Pattern = '" 
+				+ tfPattern.getText() 
+				+ "', Color = '" 
+				+ tfColor.getText() 
+				+ "', Price = "		
+				+ tfPrice.getText() 
+				+ ", Quantity = "
+				+ tfQuantity.getText()
+				+ ", Picture = '"
+				+ tfPicture.getText()
+				+ "'"
+				+ " WHERE Pro_ID = '" 
+				+ tfPro_ID.getText() 
+				+ "';";
 
 				System.out.println(qry);
 				try {
@@ -256,6 +276,7 @@ public class EditDelete extends JFrame {
 					e.printStackTrace();
 				}
 				conn.disConnect();
+				clearTf();
 			}
 		});
 		frame.add(btEdit);
@@ -279,6 +300,15 @@ public class EditDelete extends JFrame {
 
 		btnBack.setBorderPainted(false);
 		btnBack.setContentAreaFilled(false);
+		
+		tfQuantity = new JTextField();
+		tfQuantity.setColumns(10);
+		tfQuantity.setBounds(111, 277, 166, 31);
+		frame.add(tfQuantity);
+		
+		JLabel lblQuantity = new JLabel("Quantity");
+		lblQuantity.setBounds(53, 285, 60, 14);
+		frame.add(lblQuantity);
 
 	}
 }

@@ -52,6 +52,7 @@ public class Insert extends JFrame {
 	private String Pic_Name;
 	private JTextField tfPic;
 	private JTextField tfPicture;
+	private JTextField tfQuantity;
 	
 	
 	/**
@@ -70,6 +71,15 @@ public class Insert extends JFrame {
 				}
 			}
 		});
+	}
+	
+	public void clearTf() {
+		tfProID.setText(null);
+		tfPattern.setText(null);
+		tfColor.setText(null);
+		tfPrice.setText(null);
+		tfQuantity.setText(null);
+		tfPicture.setText(null);
 	}
 
 	/**
@@ -168,7 +178,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblPicture);
 
 		tfPicture = new JTextField();
-		tfPicture.setBounds(165, 281, 154, 91);
+		tfPicture.setBounds(165, 281, 86, 21);
 		contentPane.add(tfPicture);
 		tfPicture.setColumns(10);
 		
@@ -177,8 +187,21 @@ public class Insert extends JFrame {
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
-				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price) VALUES ('"
-				+ tfProID.getText() + "','" + cbType.getSelectedItem().toString() + "','" + tfPattern.getText() + "','" + tfColor.getText() + "',"+ tfPrice.getText()+ ")";	
+				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Quantity,Picture) VALUES ('"
+				+ tfProID.getText() 
+				+ "','" 
+				+ cbType.getSelectedItem().toString() 
+				+ "','" 
+				+ tfPattern.getText() 
+				+ "','" 
+				+ tfColor.getText() 
+				+ "',"
+				+ tfPrice.getText()
+				+ ","
+				+ tfQuantity.getText()
+				+ ",'"
+				+ tfPicture.getText()
+				+ "')";	
 				System.out.print(qry);
 					try {
 						conn.stmt.executeUpdate(qry);
@@ -197,11 +220,8 @@ public class Insert extends JFrame {
 		JButton btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				tfProID.setText(null);
+				clearTf();
 				cbType.setSelectedItem("Shirt");
-				tfPattern.setText(null);
-				tfColor.setText(null);
-				tfPrice.setText(null);
 			}
 		});
 		btnRefresh.setBounds(458, 306, 61, 55);
@@ -237,6 +257,15 @@ public class Insert extends JFrame {
 		lblInsert_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblInsert_1.setBounds(397, 372, 55, 21);
 		contentPane.add(lblInsert_1);
+		
+		tfQuantity = new JTextField();
+		tfQuantity.setColumns(10);
+		tfQuantity.setBounds(329, 245, 86, 25);
+		contentPane.add(tfQuantity);
+		
+		JLabel lblQuantity = new JLabel("Quantity");
+		lblQuantity.setBounds(273, 249, 66, 13);
+		contentPane.add(lblQuantity);
 
 	}
 }

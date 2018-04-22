@@ -12,6 +12,7 @@ import Home.Home;
 import connect.Connect;
 import net.proteanit.sql.DbUtils;
 import Calculate.Calculate;
+import EditDelete.EditDelete;
 
 import net.proteanit.sql.DbUtils;
 
@@ -125,7 +126,7 @@ public class Summary extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnBack = new JButton("New button");
+		JButton btnBack = new JButton("");
 		btnBack.setBounds(25, 404, 80, 51);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
@@ -179,6 +180,7 @@ public class Summary extends JFrame {
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
+				
 				try {
 					model.setRowCount(0);
 					int sum=0;
@@ -209,6 +211,9 @@ public class Summary extends JFrame {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				
+				
+				
 				conn.disConnect();
 			}
 		});

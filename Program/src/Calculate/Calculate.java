@@ -40,6 +40,9 @@ public class Calculate extends JFrame {
 	private JTextField tfSelect;
 	Map<String, Integer> productSelect = new HashMap<String, Integer>();
 	private String pid = null;
+//	public int updatePD(){
+//		return tfQ.setText() = (tfQ.getText() - tfSelect.getText());
+//	}
 	
 	/**
 	 * Launch the application.
@@ -99,6 +102,20 @@ public class Calculate extends JFrame {
 		btnCal.setBounds(408, 171, 80, 60);
 		btnCal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				String qry1 = "UPDATE clothes SET Quantity = " 
+						+  tfSelect.getText()
+						+ ","
+						+ " WHERE Pro_ID = '" 
+						+ tfPro_ID.getText() 
+						+ "';";	
+
+				System.out.println(qry1);
+				try {
+					conn.stmt.execute(qry1);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				Summary cal1 = new Summary();
 				cal1.productSelect = productSelect;
 				dispose();
@@ -393,6 +410,11 @@ public class Calculate extends JFrame {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		label_1.setBounds(287, 345, 46, 14);
 		contentPane.add(label_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("\u0E40\u0E25\u0E37\u0E2D\u0E01");
+		lblNewLabel_2.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblNewLabel_2.setBounds(359, 341, 46, 21);
+		contentPane.add(lblNewLabel_2);
 		
 		
 		JLabel lbCal = new JLabel("");
