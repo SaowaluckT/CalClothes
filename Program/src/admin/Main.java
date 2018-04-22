@@ -1,16 +1,11 @@
 package admin;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
-
 import Home.Home;
 import connect.Connect;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -18,10 +13,8 @@ import javax.swing.JButton;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import java.io.File;
-
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -30,7 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Toolkit;
 
-public class main extends JFrame {
+public class Main extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfUser;
@@ -51,7 +44,7 @@ public class main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main frame = new main();
+					Main frame = new Main();
 					frame.setVisible(true);
 					frame.setResizable(false);
 					frame.setAlwaysOnTop(true);
@@ -73,7 +66,7 @@ public class main extends JFrame {
 		tfPhone.setText(null);
 	}
 
-	public main() {
+	public Main() {
 		File Icon = new File("icon");
 		File Image = new File("Image");
 		setTitle("Admin");

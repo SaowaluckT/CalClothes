@@ -3,23 +3,17 @@ package Home;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Calculate.Calculate;
-import login.Login;
+import admin.Main;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 import java.awt.EventQueue;
 import java.awt.event.*;
 import java.io.File;
-
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -95,7 +89,7 @@ public class Home extends JFrame {
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				admin.main admin1 = new admin.main();
+				Main admin1 = new Main();
 				admin1.setVisible(true);
 			}
 		});
