@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 
-public class stock extends JFrame {
+public class Stock extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnInsert;
@@ -31,7 +31,7 @@ public class stock extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					stock frame = new stock();
+					Stock frame = new Stock();
 					frame.setVisible(true);
 					frame.setResizable(false);
 					frame.setAlwaysOnTop(true);
@@ -45,7 +45,7 @@ public class stock extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public stock() {
+	public Stock() {
 		File Icon = new File("icon");
 		File Image = new File("Image");
 		
@@ -63,8 +63,7 @@ public class stock extends JFrame {
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Home home = new Home();
-				home.setVisible(true);
+				Home.main(null);
 			}
 		});
 		contentPane.setLayout(null);
@@ -104,8 +103,7 @@ public class stock extends JFrame {
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Insert in = new Insert();
-				in.setVisible(true);
+				Insert.main(null);
 			}
 		});
 		btnInsert.setBackground(new Color(255, 153, 153));
@@ -118,8 +116,7 @@ public class stock extends JFrame {
 		btnEditdelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				EditDelete ed = new EditDelete();
-				ed.setVisible(true);
+				EditDelete.main(null);
 			}
 		});
 		btnEditdelete.setBackground(new Color(255, 255, 153));

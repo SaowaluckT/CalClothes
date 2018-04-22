@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -70,13 +71,13 @@ public class Summary extends JFrame {
 		setTitle("Summary product price");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\cal2.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 505);
+		setBounds(100, 100, 786, 502);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		txtPriceSummary = new JTextField();
-		txtPriceSummary.setBounds(146, 11, 333, 47);
+		txtPriceSummary.setBounds(257, 11, 333, 47);
 		txtPriceSummary.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPriceSummary.setForeground(new Color(0, 0, 0));
 		txtPriceSummary.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
@@ -84,15 +85,15 @@ public class Summary extends JFrame {
 		txtPriceSummary.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Price =");
-		lblNewLabel.setBounds(364, 347, 72, 25);
+		lblNewLabel.setBounds(518, 341, 72, 25);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_1 = new JLabel("VAT 7% =");
-		lblNewLabel_1.setBounds(333, 383, 94, 25);
+		lblNewLabel_1.setBounds(487, 377, 94, 25);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_2 = new JLabel("Total Price =");
-		lblNewLabel_2.setBounds(310, 419, 126, 25);
+		lblNewLabel_2.setBounds(464, 413, 126, 25);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btHome = new JButton("");
@@ -105,8 +106,7 @@ public class Summary extends JFrame {
 		btHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Home home = new Home();
-				home.setVisible(true);
+				Home.main(null);
 				
 			}
 		});
@@ -123,8 +123,7 @@ public class Summary extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Calculate ca = new Calculate();
-				ca.setVisible(true);
+				Calculate.main(null);
 			}
 		});
 		contentPane.add(btnBack);
@@ -135,26 +134,26 @@ public class Summary extends JFrame {
 		btnBack.setContentAreaFilled(false);
 		
 		JButton btnLoadData = new JButton("Load");
-		btnLoadData.setBounds(29, 117, 80, 39);
+		btnLoadData.setBounds(25, 128, 80, 39);
 		contentPane.add(btnLoadData);
 		
 		tfPrice = new JTextField();
-		tfPrice.setBounds(441, 347, 152, 25);
+		tfPrice.setBounds(595, 341, 152, 25);
 		contentPane.add(tfPrice);
 		tfPrice.setColumns(10);
 		
 		tfVat = new JTextField();
-		tfVat.setBounds(441, 383, 152, 25);
+		tfVat.setBounds(595, 377, 152, 25);
 		tfVat.setColumns(10);
 		contentPane.add(tfVat);
 		
 		tfTotPrice = new JTextField();
-		tfTotPrice.setBounds(441, 417, 152, 25);
+		tfTotPrice.setBounds(595, 411, 152, 25);
 		tfTotPrice.setColumns(10);
 		contentPane.add(tfTotPrice);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(140, 128, 453, 202);
+		scrollPane.setBounds(140, 128, 607, 202);
 		contentPane.add(scrollPane);
 		
 		DefaultTableModel model = new DefaultTableModel();
@@ -170,42 +169,56 @@ public class Summary extends JFrame {
 		scrollPane.setViewportView(table);
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				conn.connect();
 				
-				try {
-					model.setRowCount(0);
-					int sum=0;
-					for ( String key : productSelect.keySet() ) {
-						String qry = "SELECT * FROM clothes WHERE Pro_ID='"+key+"'";
-
-						System.out.println(qry);
-						result =  conn.stmt.executeQuery(qry);
-						if (result.next()) {
-							sum += Integer.parseInt(result.getString("Price"))*productSelect.get(key);
-							model.addRow(new Object[] {
-									result.getString("Pro_ID"),
-									result.getString("Type"),
-									result.getString("Pattern"),
-									result.getString("Color"),
-									result.getString("Price"),
-									result.getString("Quantity"),
-									productSelect.get(key)
-							});
+				model.setRowCount(0);
+				if(!productSelect.isEmpty()) {
+					conn.connect();
+					try {
+						int sum=0;
+						for ( String key : productSelect.keySet() ) {
+							qry = "SELECT * FROM clothes WHERE Pro_ID='"+key+"'";
+	
+							System.out.println(qry);
+							result =  conn.stmt.executeQuery(qry);
+							if (result.next()) {
+								sum += Integer.parseInt(result.getString("Price"))*productSelect.get(key);
+								model.addRow(new Object[] {
+										result.getString("Pro_ID"),
+										result.getString("Type"),
+										result.getString("Pattern"),
+										result.getString("Color"),
+										result.getString("Price"),
+										result.getString("Quantity"),
+										productSelect.get(key)
+								});
+								productSelect.put(key, Integer.parseInt(result.getString("Quantity"))-productSelect.get(key));
+							}
 						}
+						DecimalFormat df = new DecimalFormat("#.##");
+						tfTotPrice.setText(String.valueOf(df.format(sum+sum*0.07)));
+						tfVat.setText(String.valueOf(df.format(sum*0.07)));
+						tfPrice.setText(String.valueOf(sum));
+						
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
-					DecimalFormat df = new DecimalFormat();
-					df.setMaximumFractionDigits(2);
-					tfTotPrice.setText(String.valueOf(df.format(sum+sum*0.07)));
-					tfVat.setText(String.valueOf(sum*0.07));
-					tfPrice.setText(String.valueOf(sum));
+					try {
+						for ( String key : productSelect.keySet() ) {
+							qry = "UPDATE clothes SET Quantity = "+productSelect.get(key)+" WHERE Pro_ID='"+key+"'";
+							
+							System.out.println(qry);
+							conn.stmt.executeUpdate(qry);
+						}
+						
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					conn.disConnect();
+				}else {
+					JOptionPane.showMessageDialog(null, "Please select product!","WARNING!!!!!!!!!!!!!",JOptionPane.WARNING_MESSAGE);
 					
-				} catch (SQLException e) {
-					e.printStackTrace();
 				}
 				
-				
-				
-				conn.disConnect();
 			}
 		});
 

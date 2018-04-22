@@ -100,8 +100,7 @@ public class EditDelete extends JFrame {
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Home home = new Home();
-				home.setVisible(true);
+				Home.main(null);
 			}
 		});
 		btnHome.setBackground(Color.ORANGE);
@@ -285,8 +284,7 @@ public class EditDelete extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				stock st = new stock();
-				st.setVisible(true);
+				Stock.main(null);
 			}
 		});
 		frame.add(btnBack);
