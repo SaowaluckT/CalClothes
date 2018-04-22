@@ -1,25 +1,20 @@
-package Home;
+package home;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Calculate.Calculate;
-import login.Login;
+import admin.Admin;
+import calculate.Calculate;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 import java.awt.EventQueue;
 import java.awt.event.*;
 import java.io.File;
-
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -67,7 +62,7 @@ public class Home extends JFrame {
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Stock.stock admin1 = new Stock.stock();
+				product.stock admin1 = new product.stock();
 				admin1.setVisible(true);
 			
 			}
@@ -95,8 +90,8 @@ public class Home extends JFrame {
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				admin.main admin1 = new admin.main();
-				admin1.setVisible(true);
+				Admin admin = new Admin();
+				admin.setVisible(true);
 			}
 		});
 		btnAdmin.setBounds(115, 182, 243, 50);

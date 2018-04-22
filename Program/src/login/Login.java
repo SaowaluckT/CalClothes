@@ -1,14 +1,13 @@
 package login;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Home.Home;
 import connect.Connect;
+import home.Home;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -18,11 +17,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Color;
@@ -38,8 +34,6 @@ public class Login extends JFrame {
 	ResultSet result = null;
 	private String Name;
 	private String Surname;
-	private String Username;
-	private String Phone;
 	private boolean status;
 	private JPasswordField tfPass;
 	
@@ -102,7 +96,7 @@ public class Login extends JFrame {
 				qry = "SELECT * FROM members WHERE username = '"
 						+ tfUser.getText()
 						+ "' AND password = '"
-						+ tfPass.getText()
+						+ String.valueOf(tfPass.getPassword())
 						+ "'"; 
 				
 				try {
@@ -111,16 +105,13 @@ public class Login extends JFrame {
 					
 					if (result.next()) {
 						Name = result.getString("Name");
-						Username = result.getString("Username");
 						Surname = result.getString("Surname");
-						Phone = result.getString("Phone");
 						status = true;
 					}else {
 						status = false;
 					}
 					
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if(status){

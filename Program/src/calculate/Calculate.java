@@ -1,4 +1,4 @@
-package Calculate;
+package calculate;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,10 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Home.Home;
-import Stock.stock;
-import cal.Summary;
 import connect.Connect;
+import home.Home;
+
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -297,7 +295,6 @@ public class Calculate extends JFrame {
 
 					
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -351,7 +348,6 @@ public class Calculate extends JFrame {
 						label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
 					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -379,7 +375,6 @@ public class Calculate extends JFrame {
 
 					
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

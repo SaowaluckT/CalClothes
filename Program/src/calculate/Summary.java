@@ -1,6 +1,6 @@
-package cal;
+package calculate;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,26 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import Home.Home;
 import connect.Connect;
-import net.proteanit.sql.DbUtils;
-import Calculate.Calculate;
-import EditDelete.EditDelete;
+import home.Home;
 
-import net.proteanit.sql.DbUtils;
-
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;

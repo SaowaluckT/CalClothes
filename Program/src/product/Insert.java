@@ -1,4 +1,4 @@
-package Insert;
+package product;
 
 
 import java.awt.EventQueue;
@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.SQLException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,14 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Home.Home;
-import Stock.stock;
 import connect.Connect;
-import login.Login;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import home.Home;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -43,13 +36,6 @@ public class Insert extends JFrame {
 	private JTextField tfPattern;
 	private JTextField tfColor;
 	private JTextField tfPrice;
-	private boolean status;
-	private String Pro_ID;
-	private String Type;
-	private String Pattern;
-	private String Color;
-	private double Price;
-	private String Pic_Name;
 	private JTextField tfPic;
 	private JTextField tfPicture;
 	private JTextField tfQuantity;

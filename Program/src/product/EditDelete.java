@@ -1,17 +1,15 @@
-package EditDelete;
+package product;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Home.Home;
-import Stock.stock;
 import connect.Connect;
+import home.Home;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +17,8 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.awt.event.ActionEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.awt.Font;
 import java.awt.Toolkit;
 

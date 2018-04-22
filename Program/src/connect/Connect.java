@@ -5,7 +5,6 @@ package connect;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,7 +24,6 @@ public class Connect {
 			System.out.println("Connect DB");
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -36,7 +34,6 @@ public class Connect {
 			System.out.println("close DB");
 			this.statusDB=false;
 		} catch (SQLException ee) {
-			// TODO Auto-generated catch block
 			ee.printStackTrace();
 		}
 	}	
