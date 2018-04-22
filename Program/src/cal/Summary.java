@@ -6,11 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Home.Home;
 import connect.Connect;
 import net.proteanit.sql.DbUtils;
-import Calculate.calculate;
+import Calculate.Calculate;
 
 import net.proteanit.sql.DbUtils;
 
@@ -28,13 +29,16 @@ import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import java.awt.Toolkit;
 
-public class summary extends JFrame {
+public class Summary extends JFrame {
 
 	Connect conn = new Connect();
 	String qry = null;
@@ -46,8 +50,7 @@ public class summary extends JFrame {
 	private JTextField tfVat;
 	private JTextField tfTotPrice;
 	private JTable table;
-	private JTextField textField;
-	
+	public Map<String, Integer> productSelect = new HashMap<String, Integer>();
 	
 	/**
 	 * Launch the application.
@@ -56,7 +59,7 @@ public class summary extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					summary frame = new summary();
+					Summary frame = new Summary();
 					frame.setVisible(true);
 					frame.setResizable(false);
 					frame.setAlwaysOnTop(true);
@@ -70,7 +73,7 @@ public class summary extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public summary() {
+	public Summary() {
 		File Icon = new File("icon");
 		setTitle("Summary product price");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\cal2.png"));
@@ -128,7 +131,7 @@ public class summary extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				calculate ca = new calculate();
+				Calculate ca = new Calculate();
 				ca.setVisible(true);
 			}
 		});
@@ -162,30 +165,46 @@ public class summary extends JFrame {
 		scrollPane.setBounds(140, 128, 453, 202);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
+		DefaultTableModel model = new DefaultTableModel();
+		table = new JTable(model);
+		model.addColumn("Product ID");
+	    model.addColumn("Type");
+	    model.addColumn("Pattern");
+	    model.addColumn("Color");
+	    model.addColumn("Price");
+	    model.addColumn("Quantity");
+	    model.addColumn("Product Select");
+	    
 		scrollPane.setViewportView(table);
-		
-		textField = new JTextField();
-		textField.setBounds(251, 79, 144, 25);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(416, 69, 48, 35);
-		contentPane.add(btnNewButton);
-		
-		JLabel lblSearch = new JLabel("Search");
-		lblSearch.setBounds(195, 84, 46, 14);
-		contentPane.add(lblSearch);
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
 				try {
-					String qry = "SELECT * FROM clothes ";
-					result =  conn.stmt.executeQuery(qry);
-					table.setModel(DbUtils.resultSetToTableModel(result));
+					model.setRowCount(0);
+					int sum=0;
+					for ( String key : productSelect.keySet() ) {
+						String qry = "SELECT * FROM clothes WHERE Pro_ID='"+key+"'";
 
-					System.out.println(qry);
+						System.out.println(qry);
+						result =  conn.stmt.executeQuery(qry);
+						if (result.next()) {
+							sum += Integer.parseInt(result.getString("Price"))*productSelect.get(key);
+							model.addRow(new Object[] {
+									result.getString("Pro_ID"),
+									result.getString("Type"),
+									result.getString("Pattern"),
+									result.getString("Color"),
+									result.getString("Price"),
+									result.getString("Quantity"),
+									productSelect.get(key)
+							});
+						}
+					}
+					DecimalFormat df = new DecimalFormat();
+					df.setMaximumFractionDigits(2);
+					tfTotPrice.setText(String.valueOf(df.format(sum+sum*0.07)));
+					tfVat.setText(String.valueOf(sum*0.07));
+					tfPrice.setText(String.valueOf(sum));
 					
 				} catch (SQLException e) {
 					e.printStackTrace();

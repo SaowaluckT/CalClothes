@@ -13,6 +13,7 @@ import java.sql.Statement;
 public class Connect {
 	public Connection conn;
 	public Statement stmt = null;
+	public boolean statusDB = false;
 	public Connect() {
 	}
 	public void connect() {
@@ -20,6 +21,7 @@ public class Connect {
 		try {	
 			conn = DriverManager.getConnection("jdbc:ucanaccess://"+db.getAbsoluteFile()+"\\DB.mdb", "", "");
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			this.statusDB=true;
 			System.out.println("Connect DB");
 			
 		} catch (SQLException e) {
@@ -32,6 +34,7 @@ public class Connect {
 			this.conn.close();
 			this.stmt.close();
 			System.out.println("close DB");
+			this.statusDB=false;
 		} catch (SQLException ee) {
 			// TODO Auto-generated catch block
 			ee.printStackTrace();

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Calculate.Calculate;
 import login.Login;
 
 import javax.swing.ImageIcon;
@@ -80,7 +81,7 @@ public class Home extends JFrame {
 		btnCalTheProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Calculate.calculate admin1 = new Calculate.calculate();
+				Calculate admin1 = new Calculate();
 				admin1.setVisible(true);
 				
 			}
