@@ -68,10 +68,11 @@ public class Summary extends JFrame {
 	 */
 	public Summary() {
 		File Icon = new File("icon");
+		File Image = new File("Image");
 		setTitle("Summary product price");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\cal2.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 786, 502);
+		setBounds(100, 100, 775, 499);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -167,6 +168,8 @@ public class Summary extends JFrame {
 	    model.addColumn("Product Select");
 	    
 		scrollPane.setViewportView(table);
+		
+		
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -221,6 +224,11 @@ public class Summary extends JFrame {
 				
 			}
 		});
+		
+		JLabel lbBG = new JLabel("");
+		lbBG.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgSum.jpg"));
+		lbBG.setBounds(0, 0, 796, 481);
+		contentPane.add(lbBG);
 
 	}
 }
