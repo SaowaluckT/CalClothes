@@ -73,7 +73,7 @@ public class EditDelete extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 570, 470);
 		frame = new JPanel();
-		frame.setBackground(Color.ORANGE);
+		frame.setBackground(new Color(255, 255, 153));
 		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(frame);
 		frame.setLayout(null);

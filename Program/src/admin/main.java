@@ -41,7 +41,7 @@ public class main extends JFrame {
 	Connect conn = new Connect();
 	String qry = null;
 	ResultSet result = null;
-	int Rowsize;
+
 	private JTextField tfSearch;
 
 	/**
@@ -75,8 +75,9 @@ public class main extends JFrame {
 
 	public main() {
 		File Icon = new File("icon");
+		File Image = new File("Image");
 		setTitle("Admin");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\228853-200.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\Program\\icon\\users.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 457, 353);
 		contentPane = new JPanel();
@@ -86,19 +87,20 @@ public class main extends JFrame {
 		contentPane.setLayout(null);
 
 		JComboBox cbbOption = new JComboBox();
+		cbbOption.setBounds(10, 52, 86, 20);
 		cbbOption.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
 		cbbOption.setModel(new DefaultComboBoxModel(new String[] {"Username", "Name", "Surname", "Phone"}));
 		cbbOption.setSelectedIndex(0);
-		cbbOption.setBounds(10, 49, 86, 20);
 		contentPane.add(cbbOption);
 
 		JLabel lblAdmin = new JLabel("Admin");
+		lblAdmin.setBounds(114, 12, 192, 26);
 		lblAdmin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAdmin.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
-		lblAdmin.setBounds(114, 12, 192, 26);
 		contentPane.add(lblAdmin);
 
 		JButton btnHome = new JButton("");
+		btnHome.setBounds(0, 0, 65, 38);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -107,7 +109,6 @@ public class main extends JFrame {
 			}
 
 		});
-		btnHome.setBounds(0, 0, 65, 38);
 		contentPane.add(btnHome);
 		btnHome.setIcon(
 				new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\home.png")
@@ -118,65 +119,62 @@ public class main extends JFrame {
 		btnHome.setContentAreaFilled(false);
 
 		JLabel lblUser = new JLabel("Username");
-		lblUser.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
-		lblUser.setBounds(32, 91, 73, 14);
+		lblUser.setBounds(11, 95, 85, 25);
+		lblUser.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblUser);
 
 		JLabel lblPass = new JLabel("Password");
-		lblPass.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
-		lblPass.setBounds(32, 128, 73, 14);
+		lblPass.setBounds(19, 131, 86, 20);
+		lblPass.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblPass);
 
 		JLabel lblName = new JLabel("Name");
-		lblName.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
-		lblName.setBounds(32, 165, 73, 14);
+		lblName.setBounds(32, 172, 73, 14);
+		lblName.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblName);
 
 		JLabel lblSurname = new JLabel("Surname");
-		lblSurname.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
-		lblSurname.setBounds(32, 203, 73, 14);
+		lblSurname.setBounds(32, 209, 73, 14);
+		lblSurname.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblSurname);
 
 		JLabel lblPhone = new JLabel("Phone");
-		lblPhone.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
-		lblPhone.setBounds(32, 235, 73, 14);
+		lblPhone.setBounds(32, 249, 73, 14);
+		lblPhone.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblPhone);
 
 		tfUser = new JTextField();
-		tfUser.setBounds(105, 85, 201, 26);
+		tfUser.setBounds(105, 92, 201, 26);
 		contentPane.add(tfUser);
 		tfUser.setColumns(10);
 
 		tfPass = new JTextField();
+		tfPass.setBounds(105, 129, 201, 26);
 		tfPass.setColumns(10);
-		tfPass.setBounds(105, 122, 201, 26);
 		contentPane.add(tfPass);
 
 		tfName = new JTextField();
+		tfName.setBounds(105, 166, 201, 26);
 		tfName.setColumns(10);
-		tfName.setBounds(105, 159, 201, 26);
 		contentPane.add(tfName);
 
 		tfSurname = new JTextField();
+		tfSurname.setBounds(105, 203, 201, 27);
 		tfSurname.setColumns(10);
-		tfSurname.setBounds(105, 197, 201, 27);
 		contentPane.add(tfSurname);
 
 		tfPhone = new JTextField();
+		tfPhone.setBounds(105, 243, 201, 26);
 		tfPhone.setColumns(10);
-		tfPhone.setBounds(105, 229, 201, 26);
 		contentPane.add(tfPhone);
 
 		tfSearch = new JTextField();
-		tfSearch.setColumns(10);
 		tfSearch.setBounds(106, 49, 183, 26);
+		tfSearch.setColumns(10);
 		contentPane.add(tfSearch);
 
-		JLabel label = new JLabel("0/0");
-		label.setBounds(177, 276, 46, 27);
-		contentPane.add(label);
-
 		JButton btnSearch = new JButton("");
+		btnSearch.setBounds(302, 37, 38, 38);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				conn.connect();
@@ -200,7 +198,7 @@ public class main extends JFrame {
 					result = conn.stmt.executeQuery(qry);
 					// ------------------------fine maximum value---------------------
 					if (result.last()) {
-						Rowsize = result.getRow();
+						
 						result.beforeFirst();
 					}
 					// ---------------------------end------------------------------
@@ -211,14 +209,13 @@ public class main extends JFrame {
 						tfSurname.setText(result.getString("Surname"));
 						tfPhone.setText(result.getString("Phone"));
 					}
-					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 				conn.disConnect();
 			}
 		});
-		btnSearch.setBounds(302, 37, 38, 38);
 		contentPane.add(btnSearch);
 		btnSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search.png")
 				.getImage()
@@ -227,6 +224,7 @@ public class main extends JFrame {
 		btnSearch.setContentAreaFilled(false);
 
 		JButton btnEdit = new JButton("");
+		btnEdit.setBounds(386, 128, 38, 38);
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				conn.connect();
@@ -259,7 +257,6 @@ public class main extends JFrame {
 
 			}
 		});
-		btnEdit.setBounds(386, 128, 38, 38);
 		contentPane.add(btnEdit);
 		btnEdit.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\edit.png")
 				.getImage()
@@ -268,6 +265,7 @@ public class main extends JFrame {
 		btnEdit.setContentAreaFilled(false);
 
 		JButton btnDel = new JButton("");
+		btnDel.setBounds(386, 180, 38, 38);
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
@@ -289,7 +287,6 @@ public class main extends JFrame {
 				conn.disConnect();
 			}
 		});
-		btnDel.setBounds(386, 180, 38, 38);
 		contentPane.add(btnDel);
 		btnDel.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\delete.png")
 				.getImage()
@@ -297,135 +294,9 @@ public class main extends JFrame {
 		btnDel.setBorderPainted(false);
 		btnDel.setContentAreaFilled(false);
 
-		JButton btnFirst = new JButton("");
-		btnFirst.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					if (result.first()) {
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-
-					}
-
-					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnFirst.setBounds(59, 266, 46, 37);
-		contentPane.add(btnFirst);
-		btnFirst.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\first.png")
-				.getImage()
-				.getScaledInstance(btnFirst.getWidth(), btnFirst.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		btnFirst.setBorderPainted(false);
-		btnFirst.setContentAreaFilled(false);
-
-		JButton btnPrevious = new JButton("");
-		btnPrevious.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (result.previous()) {
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-					}
-
-					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
-				} catch (SQLException e1) {
-
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnPrevious.setBounds(117, 266, 46, 38);
-		contentPane.add(btnPrevious);
-		btnPrevious
-				.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\previous.png")
-						.getImage().getScaledInstance(btnPrevious.getWidth(), btnPrevious.getHeight(),
-								java.awt.Image.SCALE_AREA_AVERAGING)));
-		btnPrevious.setBorderPainted(false);
-		btnPrevious.setContentAreaFilled(false);
-
-		JButton btnLast = new JButton("");
-		btnLast.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (result.last()) {
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-					}
-
-					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}
-		});
-		btnLast.setBounds(274, 265, 46, 38);
-		contentPane.add(btnLast);
-		btnLast.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\last.png")
-				.getImage()
-				.getScaledInstance(btnLast.getWidth(), btnLast.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		btnLast.setBorderPainted(false);
-		btnLast.setContentAreaFilled(false);
-
-		JButton btnNext = new JButton("");
-		btnNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (result.next()) {
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-					}
-
-					label.setText(Integer.toString(result.getRow()) + "/" + Integer.toString(Rowsize));
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}
-		});
-		btnNext.setBounds(217, 266, 46, 37);
-		contentPane.add(btnNext);
-		btnNext.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\next2.png")
-				.getImage()
-				.getScaledInstance(btnNext.getWidth(), btnNext.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		btnNext.setBorderPainted(false);
-		btnNext.setContentAreaFilled(false);
-
+		
 		JButton btnInsert = new JButton("");
+		btnInsert.setBounds(386, 74, 38, 38);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				conn.connect();
@@ -444,7 +315,6 @@ public class main extends JFrame {
 
 			}
 		});
-		btnInsert.setBounds(386, 74, 38, 38);
 		contentPane.add(btnInsert);
 		btnInsert.setIcon(new ImageIcon(
 				new ImageIcon(Icon.getAbsolutePath()+"\\Add.png").getImage().getScaledInstance(
@@ -460,6 +330,13 @@ public class main extends JFrame {
 				.getScaledInstance(btnReload.getWidth(), btnReload.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnReload.setBorderPainted(false);
 		btnReload.setContentAreaFilled(false);
+		
+		JLabel lbAdmin = new JLabel("");
+		lbAdmin.setBounds(0, 0, 468, 324);
+		contentPane.add(lbAdmin);
+
+		lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));
+		contentPane.add(lbAdmin);
 		btnReload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tfSearch.setText(null);

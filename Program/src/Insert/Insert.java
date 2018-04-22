@@ -28,6 +28,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.Color;
 
 
 public class Insert extends JFrame {
@@ -86,8 +87,9 @@ public class Insert extends JFrame {
 		getContentPane().add(tfPic);
 		tfPic.setColumns(10);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 570, 470);
+		setBounds(100, 100, 570, 452);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 160, 122));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -111,7 +113,7 @@ public class Insert extends JFrame {
 		
 		
 		JComboBox cbType = new JComboBox();
-		cbType.setBounds(165, 127, 96, 21);
+		cbType.setBounds(165, 127, 175, 21);
 		cbType.setModel(new DefaultComboBoxModel(new String[] {"Shirt", "Dress"}));
 		contentPane.add(cbType);
 		
@@ -120,7 +122,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblProductId);
 		
 		tfProID = new JTextField();
-		tfProID.setBounds(165, 91, 96, 19);
+		tfProID.setBounds(165, 91, 175, 25);
 		contentPane.add(tfProID);
 		tfProID.setColumns(10);
 		
@@ -133,7 +135,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		tfPattern = new JTextField();
-		tfPattern.setBounds(165, 169, 96, 19);
+		tfPattern.setBounds(165, 169, 175, 25);
 		contentPane.add(tfPattern);
 		tfPattern.setColumns(10);
 		
@@ -142,7 +144,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblColor);
 		
 		tfColor = new JTextField();
-		tfColor.setBounds(165, 211, 96, 19);
+		tfColor.setBounds(165, 211, 175, 23);
 		contentPane.add(tfColor);
 		tfColor.setColumns(10);
 		
@@ -157,7 +159,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblPrice);
 		
 		tfPrice = new JTextField();
-		tfPrice.setBounds(165, 246, 96, 19);
+		tfPrice.setBounds(165, 245, 86, 25);
 		contentPane.add(tfPrice);
 		tfPrice.setColumns(10);
 		
@@ -166,7 +168,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblPicture);
 
 		tfPicture = new JTextField();
-		tfPicture.setBounds(165, 281, 96, 19);
+		tfPicture.setBounds(165, 281, 154, 91);
 		contentPane.add(tfPicture);
 		tfPicture.setColumns(10);
 		
@@ -192,24 +194,6 @@ public class Insert extends JFrame {
 		btnInsert.setBorderPainted(false);
 		btnInsert.setContentAreaFilled(false);
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 536, 22);
-		contentPane.add(menuBar);
-		
-		JMenu mnMember = new JMenu("Member");
-		menuBar.add(mnMember);
-		
-		JMenuItem mnLogout = new JMenuItem("\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A");
-		mnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				Login login = new Login();
-				login.setVisible(true);
-				
-			}
-		});
-		mnMember.add(mnLogout);
-		
 		JButton btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -229,7 +213,7 @@ public class Insert extends JFrame {
 		btnRefresh.setContentAreaFilled(false);
 		
 		JButton btnBack = new JButton("");
-		btnBack.setBounds(10, 365, 72, 55);
+		btnBack.setBounds(10, 338, 72, 55);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
