@@ -98,12 +98,13 @@ public class Calculate extends JFrame {
 		btnCal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Summary.main(null);
+				Summary sum = new Summary();
+				sum.productSelect = productSelect;
 				dispose();
 				if(conn.statusDB) {
 					conn.disConnect();
 				}
-				
+				sum.setVisible(true);
 			}
 		});
 		
