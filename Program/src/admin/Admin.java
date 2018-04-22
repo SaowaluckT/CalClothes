@@ -74,7 +74,7 @@ public class Admin extends JFrame {
 		setTitle("Admin");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CalClothes\\Program\\icon\\users.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 457, 353);
+		setBounds(100, 100, 612, 460);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 204, 204));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,25 +82,24 @@ public class Admin extends JFrame {
 		contentPane.setLayout(null);
 
 		JComboBox cbbOption = new JComboBox();
-		cbbOption.setBounds(10, 52, 86, 20);
-		cbbOption.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 16));
+		cbbOption.setBounds(57, 97, 144, 32);
+		cbbOption.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		cbbOption.setModel(new DefaultComboBoxModel(new String[] {"Username", "Name", "Surname", "Phone"}));
 		cbbOption.setSelectedIndex(0);
 		contentPane.add(cbbOption);
 
 		JLabel lblAdmin = new JLabel("Admin");
-		lblAdmin.setBounds(114, 12, 192, 26);
+		lblAdmin.setBounds(207, 11, 192, 47);
 		lblAdmin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAdmin.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
+		lblAdmin.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 58));
 		contentPane.add(lblAdmin);
 
 		JButton btnHome = new JButton("");
-		btnHome.setBounds(0, 0, 65, 38);
+		btnHome.setBounds(0, 0, 58, 58);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Home home = new Home();
-				home.setVisible(true);
+				Home.main(null);
 			}
 
 		});
@@ -114,62 +113,62 @@ public class Admin extends JFrame {
 		btnHome.setContentAreaFilled(false);
 
 		JLabel lblUser = new JLabel("Username");
-		lblUser.setBounds(11, 95, 85, 25);
-		lblUser.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblUser.setBounds(107, 140, 94, 25);
+		lblUser.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblUser);
 
 		JLabel lblPass = new JLabel("Password");
-		lblPass.setBounds(19, 131, 86, 20);
-		lblPass.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblPass.setBounds(107, 186, 86, 20);
+		lblPass.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblPass);
 
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(32, 172, 73, 14);
-		lblName.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblName.setBounds(107, 231, 73, 14);
+		lblName.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblName);
 
 		JLabel lblSurname = new JLabel("Surname");
-		lblSurname.setBounds(32, 209, 73, 14);
-		lblSurname.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblSurname.setBounds(107, 281, 73, 14);
+		lblSurname.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblSurname);
 
 		JLabel lblPhone = new JLabel("Phone");
-		lblPhone.setBounds(32, 249, 73, 14);
-		lblPhone.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblPhone.setBounds(107, 324, 73, 14);
+		lblPhone.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblPhone);
 
 		tfUser = new JTextField();
-		tfUser.setBounds(105, 92, 201, 26);
+		tfUser.setBounds(224, 139, 197, 32);
 		contentPane.add(tfUser);
 		tfUser.setColumns(10);
 
 		tfPass = new JTextField();
-		tfPass.setBounds(105, 129, 201, 26);
+		tfPass.setBounds(224, 182, 197, 32);
 		tfPass.setColumns(10);
 		contentPane.add(tfPass);
 
 		tfName = new JTextField();
-		tfName.setBounds(105, 166, 201, 26);
+		tfName.setBounds(224, 225, 197, 32);
 		tfName.setColumns(10);
 		contentPane.add(tfName);
 
 		tfSurname = new JTextField();
-		tfSurname.setBounds(105, 203, 201, 27);
+		tfSurname.setBounds(224, 273, 197, 32);
 		tfSurname.setColumns(10);
 		contentPane.add(tfSurname);
 
 		tfPhone = new JTextField();
-		tfPhone.setBounds(105, 243, 201, 26);
+		tfPhone.setBounds(224, 316, 197, 32);
 		tfPhone.setColumns(10);
 		contentPane.add(tfPhone);
 
 		tfSearch = new JTextField();
-		tfSearch.setBounds(106, 49, 183, 26);
+		tfSearch.setBounds(224, 97, 197, 32);
 		tfSearch.setColumns(10);
 		contentPane.add(tfSearch);
 
 		JButton btnSearch = new JButton("");
-		btnSearch.setBounds(302, 37, 38, 38);
+		btnSearch.setBounds(438, 87, 44, 42);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				conn.connect();
@@ -219,7 +218,7 @@ public class Admin extends JFrame {
 		btnSearch.setContentAreaFilled(false);
 
 		JButton btnEdit = new JButton("");
-		btnEdit.setBounds(386, 128, 38, 38);
+		btnEdit.setBounds(512, 187, 58, 58);
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				conn.connect();
@@ -260,7 +259,7 @@ public class Admin extends JFrame {
 		btnEdit.setContentAreaFilled(false);
 
 		JButton btnDel = new JButton("");
-		btnDel.setBounds(386, 180, 38, 38);
+		btnDel.setBounds(512, 260, 58, 58);
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
@@ -291,7 +290,7 @@ public class Admin extends JFrame {
 
 		
 		JButton btnInsert = new JButton("");
-		btnInsert.setBounds(386, 74, 38, 38);
+		btnInsert.setBounds(512, 108, 58, 58);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				conn.connect();
@@ -318,7 +317,7 @@ public class Admin extends JFrame {
 		btnInsert.setContentAreaFilled(false);
 
 		JButton btnReload = new JButton("");
-		btnReload.setBounds(386, 231, 38, 38);
+		btnReload.setBounds(512, 329, 58, 58);
 		contentPane.add(btnReload);
 		btnReload.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
 				.getImage()
@@ -327,7 +326,7 @@ public class Admin extends JFrame {
 		btnReload.setContentAreaFilled(false);
 		
 		JLabel lbAdmin = new JLabel("");
-		lbAdmin.setBounds(0, 0, 468, 324);
+		lbAdmin.setBounds(0, 0, 612, 490);
 		contentPane.add(lbAdmin);
 
 		lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));

@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import admin.Admin;
 import calculate.Calculate;
+import login.Login;
+import product.Stock;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,6 +36,7 @@ public class Home extends JFrame {
 					frame.setVisible(true);
 					frame.setResizable(false);
 					frame.setAlwaysOnTop(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,8 +65,7 @@ public class Home extends JFrame {
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				product.stock admin1 = new product.stock();
-				admin1.setVisible(true);
+				Stock.main(null);
 			
 			}
 		});
@@ -76,8 +78,7 @@ public class Home extends JFrame {
 		btnCalTheProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Calculate admin1 = new Calculate();
-				admin1.setVisible(true);
+				Calculate.main(null);
 				
 			}
 		});
@@ -90,8 +91,7 @@ public class Home extends JFrame {
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Admin admin = new Admin();
-				admin.setVisible(true);
+				Admin.main(null);
 			}
 		});
 		btnAdmin.setBounds(115, 182, 243, 50);
@@ -113,8 +113,7 @@ public class Home extends JFrame {
 				int confirm = JOptionPane.showConfirmDialog(null,"คุณต้องการออกจากระบบ หรือไม่ ?", "Log out",JOptionPane.OK_CANCEL_OPTION);
 				if(confirm == 0) {
 					dispose();
-					login.Login lg = new login.Login();
-					lg.setVisible(true);
+					Login.main(null);
 				}
 				
 			}
@@ -137,9 +136,5 @@ public class Home extends JFrame {
 		contentPane.add(lbHome);
 		lbHome.setIcon(new ImageIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgLogin.jpg")
 				.getImage().getScaledInstance(lbHome.getWidth(), lbHome.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		
-		
-		
-		
 	}
 }

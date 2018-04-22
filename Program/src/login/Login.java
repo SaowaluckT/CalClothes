@@ -118,8 +118,8 @@ public class Login extends JFrame {
 					
 					JOptionPane.showMessageDialog(null, "Hello "+Name+" "+Surname,"Welcome to Clothes Shop",JOptionPane.PLAIN_MESSAGE);
 					dispose();
-					Home home = new Home();
-					home.setVisible(true);
+					
+					Home.main(null);
 				}else {
 					JOptionPane.showMessageDialog(null, "Username or Password is incorrect!","Welcome to Clothes Shop",0);
 					tfUser.setText(null);

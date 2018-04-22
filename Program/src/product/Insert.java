@@ -223,8 +223,7 @@ public class Insert extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				stock st = new stock();
-				st.setVisible(true);
+				Stock.main(null);
 			}
 		});
 		contentPane.add(btnBack);

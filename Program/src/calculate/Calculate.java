@@ -38,9 +38,7 @@ public class Calculate extends JFrame {
 	private JTextField tfSelect;
 	Map<String, Integer> productSelect = new HashMap<String, Integer>();
 	private String pid = null;
-//	public int updatePD(){
-//		return tfQ.setText() = (tfQ.getText() - tfSelect.getText());
-//	}
+
 	
 	/**
 	 * Launch the application.
@@ -85,8 +83,7 @@ public class Calculate extends JFrame {
 				if(conn.statusDB) {
 					conn.disConnect();
 				}
-				Home home = new Home();
-				home.setVisible(true);
+				Home.main(null);
 			}
 		});
 		contentPane.setLayout(null);
@@ -101,27 +98,12 @@ public class Calculate extends JFrame {
 		btnCal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String qry1 = "UPDATE clothes SET Quantity = " 
-						+  tfSelect.getText()
-						+ ","
-						+ " WHERE Pro_ID = '" 
-						+ tfPro_ID.getText() 
-						+ "';";	
-
-				System.out.println(qry1);
-				try {
-					conn.stmt.execute(qry1);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				Summary cal1 = new Summary();
-				cal1.productSelect = productSelect;
+				Summary.main(null);
 				dispose();
 				if(conn.statusDB) {
 					conn.disConnect();
 				}
 				
-				cal1.setVisible(true);
 			}
 		});
 		
@@ -417,7 +399,5 @@ public class Calculate extends JFrame {
 		lbCal.setBounds(0, 0, 829, 509);
 		contentPane.add(lbCal);
 		lbCal.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgCal.jpg"));
-
-	
 	}
 }
