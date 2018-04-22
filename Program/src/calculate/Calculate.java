@@ -1,4 +1,4 @@
-package Calculate;
+package calculate;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -17,9 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import Home.Home;
-import cal.Summary;
+
 import connect.Connect;
+import home.Home;
+
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;

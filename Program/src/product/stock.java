@@ -1,12 +1,12 @@
-package Stock;
+package product;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import EditDelete.EditDelete;
-import Home.Home;
-import Insert.Insert;
+
+import home.Home;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;

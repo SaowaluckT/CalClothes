@@ -1,10 +1,11 @@
-package Home;
+package home;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import Calculate.Calculate;
-import admin.Main;
+
+import admin.Admin;
+import calculate.Calculate;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -61,7 +62,7 @@ public class Home extends JFrame {
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Stock.stock admin1 = new Stock.stock();
+				product.stock admin1 = new product.stock();
 				admin1.setVisible(true);
 			
 			}
@@ -89,8 +90,8 @@ public class Home extends JFrame {
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Main admin1 = new Main();
-				admin1.setVisible(true);
+				Admin admin = new Admin();
+				admin.setVisible(true);
 			}
 		});
 		btnAdmin.setBounds(115, 182, 243, 50);

@@ -4,8 +4,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import Home.Home;
+
 import connect.Connect;
+import home.Home;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -23,7 +25,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Toolkit;
 
-public class Main extends JFrame {
+public class Admin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfUser;
@@ -44,7 +46,7 @@ public class Main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame = new Main();
+					Admin frame = new Admin();
 					frame.setVisible(true);
 					frame.setResizable(false);
 					frame.setAlwaysOnTop(true);
@@ -66,7 +68,7 @@ public class Main extends JFrame {
 		tfPhone.setText(null);
 	}
 
-	public Main() {
+	public Admin() {
 		File Icon = new File("icon");
 		File Image = new File("Image");
 		setTitle("Admin");

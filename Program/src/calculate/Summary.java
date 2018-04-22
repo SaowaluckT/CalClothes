@@ -1,4 +1,4 @@
-package cal;
+package calculate;
 
 
 import java.awt.EventQueue;
@@ -8,9 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import Home.Home;
 import connect.Connect;
-import Calculate.Calculate;import javax.swing.ImageIcon;
+import home.Home;
+
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
