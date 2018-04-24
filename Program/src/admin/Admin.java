@@ -49,7 +49,7 @@ public class Admin extends JFrame {
 					Admin frame = new Admin();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.setAlwaysOnTop(true);
+					frame.setAlwaysOnTop(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -166,7 +166,7 @@ public class Admin extends JFrame {
 		tfSearch.setBounds(224, 97, 197, 32);
 		tfSearch.setColumns(10);
 		contentPane.add(tfSearch);
-
+		
 		JButton btnSearch = new JButton("");
 		btnSearch.setBounds(438, 87, 44, 42);
 		btnSearch.addActionListener(new ActionListener() {
@@ -293,6 +293,9 @@ public class Admin extends JFrame {
 		btnInsert.setBounds(512, 108, 58, 58);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(tfUser.getText().equals("") || tfPass.getText().equals("") || tfName.getText().equals("") || tfSurname.getText().equals("") || tfPhone.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Please enter information");
+				}else {
 				conn.connect();
 				try {
 				
@@ -302,11 +305,12 @@ public class Admin extends JFrame {
 				System.out.println(qry);
 			
 					conn.stmt.executeUpdate(qry);
+					JOptionPane.showMessageDialog(null, "Insert admin ''"+tfUser.getText()+"'' successfully");
 				} catch (SQLException ee) {
 					ee.printStackTrace();
 				}
 				conn.disConnect();
-
+				}
 			}
 		});
 		contentPane.add(btnInsert);
@@ -325,12 +329,11 @@ public class Admin extends JFrame {
 		btnReload.setBorderPainted(false);
 		btnReload.setContentAreaFilled(false);
 		
-		JLabel lbAdmin = new JLabel("");
-		lbAdmin.setBounds(0, 0, 612, 490);
-		contentPane.add(lbAdmin);
-
-		lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));
-		contentPane.add(lbAdmin);
+				JLabel lbAdmin = new JLabel("");
+				lbAdmin.setBounds(10, 0, 612, 490);
+				contentPane.add(lbAdmin);
+				lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));
+				contentPane.add(lbAdmin);
 		btnReload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tfSearch.setText(null);

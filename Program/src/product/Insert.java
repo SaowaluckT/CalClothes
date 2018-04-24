@@ -17,12 +17,15 @@ import connect.Connect;
 import home.Home;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.Color;
-
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 
 public class Insert extends JFrame {
 	
@@ -51,7 +54,7 @@ public class Insert extends JFrame {
 					Insert frame = new Insert();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.setAlwaysOnTop(true);
+					frame.setAlwaysOnTop(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,6 +70,8 @@ public class Insert extends JFrame {
 		tfQuantity.setText(null);
 		tfPicture.setText(null);
 	}
+	
+	
 
 	/**
 	 * Create the frame.
@@ -155,6 +160,17 @@ public class Insert extends JFrame {
 		contentPane.add(lblPrice);
 		
 		tfPrice = new JTextField();
+		tfPrice.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char caracter = e.getKeyChar();
+                if (((caracter < '0') || (caracter > '9'))
+                        && (caracter != '\b')) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "Please enter numeric");
+                }
+			}
+		});
 		tfPrice.setBounds(165, 245, 86, 25);
 		contentPane.add(tfPrice);
 		tfPrice.setColumns(10);
@@ -173,6 +189,10 @@ public class Insert extends JFrame {
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
+				if(tfProID.getText().equals("") || tfPattern.getText().equals("") || tfColor.getText().equals("") || tfPrice.getText().equals("") || tfQuantity.getText().equals("") || tfPicture.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Please enter information");
+				}else {
+					try {
 				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Quantity,Picture) VALUES ('"
 				+ tfProID.getText() 
 				+ "','" 
@@ -188,13 +208,14 @@ public class Insert extends JFrame {
 				+ ",'"
 				+ tfPicture.getText()
 				+ "')";	
-				System.out.print(qry);
-					try {
-						conn.stmt.executeUpdate(qry);
+				System.out.print(qry);	
+					conn.stmt.executeUpdate(qry);
+					JOptionPane.showMessageDialog(null, "Insert product ''"+ tfProID.getText() +"'' successfully");
 					} catch (SQLException ee) {
 						ee.printStackTrace();
 					}
 					conn.disConnect();
+				}
 			}
 		});
 		contentPane.add(btnInsert);
@@ -244,6 +265,18 @@ public class Insert extends JFrame {
 		contentPane.add(lblInsert_1);
 		
 		tfQuantity = new JTextField();
+		tfQuantity.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+						char caracter = e.getKeyChar();
+		                if (((caracter < '0') || (caracter > '9'))
+		                        && (caracter != '\b')) {
+		                    e.consume();
+		                    JOptionPane.showMessageDialog(null, "Please enter numeric");
+		                }
+			}
+		});
 		tfQuantity.setColumns(10);
 		tfQuantity.setBounds(329, 245, 86, 25);
 		contentPane.add(tfQuantity);

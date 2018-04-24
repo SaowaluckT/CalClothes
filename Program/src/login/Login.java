@@ -37,6 +37,10 @@ public class Login extends JFrame {
 	private boolean status;
 	private JPasswordField tfPass;
 	
+	public void clearTf() {
+		tfUser.setText(null);
+		tfPass.setText(null);
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -57,9 +61,6 @@ public class Login extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Login() {
 		File Icon = new File("icon");
 		File Image = new File("image");
@@ -136,7 +137,6 @@ public class Login extends JFrame {
 		btnLogIn.setBorderPainted(false); 
 		btnLogIn.setContentAreaFilled(false);
 		
-		
 		JLabel lblVakandaClothes = new JLabel("VAKANDA CLOTHES");
 		lblVakandaClothes.setBounds(71, 31, 288, 47);
 		lblVakandaClothes.setHorizontalAlignment(SwingConstants.CENTER);
@@ -146,15 +146,34 @@ public class Login extends JFrame {
 		tfPass = new JPasswordField();
 		tfPass.setBounds(164, 132, 154, 32);
 		contentPane.add(tfPass);
+		 
+		btnLogIn.setBorderPainted(false); 
+		btnLogIn.setContentAreaFilled(false);
+		
+		
+		JButton btnReload = new JButton("");
+		btnReload.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clearTf();
+			}
+		});
+		btnReload.setBounds(307, 198, 33, 22);
+		contentPane.add(btnReload);
+		btnReload.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
+				.getImage()
+				.getScaledInstance(btnReload.getWidth(), btnReload.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnReload.setBorderPainted(false);
+		btnReload.setContentAreaFilled(false);
+		
+		
 		
 		JLabel lbLogin = new JLabel("");
 		lbLogin.setBounds(0, 0, 466, 286);
 		contentPane.add(lbLogin);
 		lbLogin.setIcon(new ImageIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgLogin.jpg")
 				.getImage().getScaledInstance(lbLogin.getWidth(), lbLogin.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		 
-		btnLogIn.setBorderPainted(false); 
-		btnLogIn.setContentAreaFilled(false);
+		
+		
 		
 	}
 }
