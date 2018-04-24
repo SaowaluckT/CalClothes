@@ -67,7 +67,7 @@ public class Calculate extends JFrame {
 		File Icon = new File("icon");
 		File Image = new File("Image");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\p.png"));
-		setTitle("Product Page1");
+		setTitle("Product Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 562, 525);
 		contentPane = new JPanel();
@@ -116,9 +116,9 @@ public class Calculate extends JFrame {
 		btnCal.setContentAreaFilled(false);
 		
 
-		JLabel lblId = new JLabel("PRO_ID :");
-		lblId.setBounds(159, 276, 86, 19);
-		lblId.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblId = new JLabel("Product ID :");
+		lblId.setBounds(121, 276, 105, 19);
+		lblId.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblId);
 
 		tfPro_ID = new JTextField();
@@ -127,8 +127,8 @@ public class Calculate extends JFrame {
 		tfPro_ID.setColumns(10);
 
 		JLabel lblQuantity = new JLabel("Quantity in stock :");
-		lblQuantity.setBounds(101, 306, 125, 22);
-		lblQuantity.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblQuantity.setBounds(73, 305, 148, 22);
+		lblQuantity.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		contentPane.add(lblQuantity);
 
 		tfQ = new JTextField();
@@ -147,7 +147,7 @@ public class Calculate extends JFrame {
 		btnPD.setBackground(new Color(255, 255, 255));
 		contentPane.add(btnPD);
 		
-		JLabel lblNewLabel = new JLabel("Calculate the Product");
+		JLabel lblNewLabel = new JLabel("Select the Product");
 		lblNewLabel.setBounds(159, 14, 285, 57);
 		lblNewLabel.setForeground(new Color(255, 0, 0));
 		lblNewLabel.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
@@ -179,7 +179,7 @@ public class Calculate extends JFrame {
 				
 			}
 		});
-		btnSelect.setBounds(309, 326, 40, 40);
+		btnSelect.setBounds(326, 333, 40, 40);
 		contentPane.add(btnSelect);
 		btnSelect.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\insert2.png")
 				.getImage()
@@ -254,7 +254,7 @@ public class Calculate extends JFrame {
 				}
 			}
 		});
-		btnSearch.setBounds(396, 67, 60, 45);
+		btnSearch.setBounds(396, 60, 60, 52);
 		contentPane.add(btnSearch);
 		btnSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search3.png")
 				.getImage()
@@ -369,9 +369,9 @@ public class Calculate extends JFrame {
 		btnLast.setContentAreaFilled(false);
 		btnLast.setBorderPainted(false);
 		
-		JLabel lbSelect = new JLabel("Select Quantity :");
-		lbSelect.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lbSelect.setBounds(111, 339, 117, 22);
+		JLabel lbSelect = new JLabel("Select Quantity  :");
+		lbSelect.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lbSelect.setBounds(83, 337, 140, 22);
 		contentPane.add(lbSelect);
 		
 		tfSelect = new JTextField();
@@ -380,18 +380,18 @@ public class Calculate extends JFrame {
 		tfSelect.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u0E15\u0E31\u0E27");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblNewLabel_1.setBounds(287, 312, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel label_1 = new JLabel("\u0E15\u0E31\u0E27");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		label_1.setBounds(287, 345, 46, 14);
 		contentPane.add(label_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("\u0E40\u0E25\u0E37\u0E2D\u0E01");
+		JLabel lblNewLabel_2 = new JLabel("\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32");
 		lblNewLabel_2.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
-		lblNewLabel_2.setBounds(359, 341, 46, 21);
+		lblNewLabel_2.setBounds(373, 341, 115, 21);
 		contentPane.add(lblNewLabel_2);
 		
 		

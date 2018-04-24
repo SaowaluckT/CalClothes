@@ -94,6 +94,12 @@ public class Insert extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		JComboBox cbType = new JComboBox();
+		cbType.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		cbType.setBounds(165, 127, 175, 21);
+		cbType.setModel(new DefaultComboBoxModel(new String[] {"Shirt", "Dress"}));
+		contentPane.add(cbType);
+		
 		JButton btHome = new JButton();
 		btHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -111,14 +117,24 @@ public class Insert extends JFrame {
 		btHome.setBorderPainted(false); 
 		btHome.setContentAreaFilled(false);
 		
+		tfQuantity = new JTextField();
+		tfQuantity.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent c) {				
+						char caracter = c.getKeyChar();
+		                if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+		                    c.consume();
+		                    JOptionPane.showMessageDialog(null, "Please enter numeric");
+		                }
+			}
+		});
+		tfQuantity.setColumns(10);
+		tfQuantity.setBounds(165, 276, 86, 21);
+		contentPane.add(tfQuantity);
 		
-		
-		JComboBox cbType = new JComboBox();
-		cbType.setBounds(165, 127, 175, 21);
-		cbType.setModel(new DefaultComboBoxModel(new String[] {"Shirt", "Dress"}));
-		contentPane.add(cbType);
 		
 		JLabel lblProductId = new JLabel("Product ID");
+		lblProductId.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblProductId.setBounds(65, 94, 107, 13);
 		contentPane.add(lblProductId);
 		
@@ -128,19 +144,23 @@ public class Insert extends JFrame {
 		tfProID.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Type");
+		lblNewLabel.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblNewLabel.setBounds(65, 131, 45, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Pattern");
-		lblNewLabel_1.setBounds(65, 172, 45, 13);
+		lblNewLabel_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(65, 172, 90, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		tfPattern = new JTextField();
+		tfPattern.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		tfPattern.setBounds(165, 169, 175, 25);
 		contentPane.add(tfPattern);
 		tfPattern.setColumns(10);
 		
 		JLabel lblColor = new JLabel("Color");
+		lblColor.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblColor.setBounds(65, 214, 45, 13);
 		contentPane.add(lblColor);
 		
@@ -156,6 +176,7 @@ public class Insert extends JFrame {
 		contentPane.add(lblInsert);
 		
 		JLabel lblPrice = new JLabel("Price");
+		lblPrice.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
 		lblPrice.setBounds(65, 249, 45, 13);
 		contentPane.add(lblPrice);
 		
@@ -171,16 +192,17 @@ public class Insert extends JFrame {
                 }
 			}
 		});
-		tfPrice.setBounds(165, 245, 86, 25);
+		tfPrice.setBounds(165, 245, 86, 21);
 		contentPane.add(tfPrice);
 		tfPrice.setColumns(10);
 		
 		JLabel lblPicture = new JLabel("Picture");
-		lblPicture.setBounds(65, 284, 45, 13);
+		lblPicture.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblPicture.setBounds(65, 310, 90, 13);
 		contentPane.add(lblPicture);
 
 		tfPicture = new JTextField();
-		tfPicture.setBounds(165, 281, 86, 21);
+		tfPicture.setBounds(165, 307, 86, 21);
 		contentPane.add(tfPicture);
 		tfPicture.setColumns(10);
 		
@@ -264,25 +286,11 @@ public class Insert extends JFrame {
 		lblInsert_1.setBounds(397, 372, 55, 21);
 		contentPane.add(lblInsert_1);
 		
-		tfQuantity = new JTextField();
-		tfQuantity.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				
-						char caracter = e.getKeyChar();
-		                if (((caracter < '0') || (caracter > '9'))
-		                        && (caracter != '\b')) {
-		                    e.consume();
-		                    JOptionPane.showMessageDialog(null, "Please enter numeric");
-		                }
-			}
-		});
-		tfQuantity.setColumns(10);
-		tfQuantity.setBounds(329, 245, 86, 25);
-		contentPane.add(tfQuantity);
+		
 		
 		JLabel lblQuantity = new JLabel("Quantity");
-		lblQuantity.setBounds(273, 249, 66, 13);
+		lblQuantity.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
+		lblQuantity.setBounds(65, 280, 72, 13);
 		contentPane.add(lblQuantity);
 
 	}

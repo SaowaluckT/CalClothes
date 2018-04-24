@@ -82,7 +82,7 @@ public class Home extends JFrame {
 				
 			}
 		});
-		btnCalTheProduct.setBounds(115, 121, 243, 50);
+		btnCalTheProduct.setBounds(115, 114, 243, 50);
 		contentPane.add(btnCalTheProduct);
 		
 		JButton btnAdmin = new JButton("Admin");
@@ -110,7 +110,7 @@ public class Home extends JFrame {
 		JButton btLogOut = new JButton();
 		btLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int confirm = JOptionPane.showConfirmDialog(null,"¤Ø³µéÍ§¡ÒÃÍÍ¡¨Ò¡ÃÐºº ËÃ×ÍäÁè ?", "Log out",JOptionPane.OK_CANCEL_OPTION);
+				int confirm = JOptionPane.showConfirmDialog(null,"ï¿½Ø³ï¿½ï¿½Í§ï¿½ï¿½ï¿½ï¿½Í¡ï¿½Ò¡ï¿½Ðºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ?", "Log out",JOptionPane.OK_CANCEL_OPTION);
 				if(confirm == 0) {
 					dispose();
 					Login.main(null);

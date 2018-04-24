@@ -132,7 +132,7 @@ public class Stock extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lbStock = new JLabel("");
-		lbStock.setBounds(0, -79, 460, 366);
+		lbStock.setBounds(-14, -79, 474, 366);
 		
 		lbStock.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgStock.jpg"));
 		contentPane.add(lbStock);

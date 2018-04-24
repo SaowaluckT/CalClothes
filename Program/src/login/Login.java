@@ -52,7 +52,7 @@ public class Login extends JFrame {
 					Login frame = new Login();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.setAlwaysOnTop(true);
+					frame.setAlwaysOnTop(false);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -157,7 +157,7 @@ public class Login extends JFrame {
 				clearTf();
 			}
 		});
-		btnReload.setBounds(307, 198, 33, 22);
+		btnReload.setBounds(307, 188, 40, 32);
 		contentPane.add(btnReload);
 		btnReload.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
 				.getImage()

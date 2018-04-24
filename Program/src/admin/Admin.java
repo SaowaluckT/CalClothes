@@ -123,12 +123,12 @@ public class Admin extends JFrame {
 		contentPane.add(lblPass);
 
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(107, 231, 73, 14);
+		lblName.setBounds(107, 231, 73, 26);
 		lblName.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblName);
 
 		JLabel lblSurname = new JLabel("Surname");
-		lblSurname.setBounds(107, 281, 73, 14);
+		lblSurname.setBounds(107, 273, 107, 33);
 		lblSurname.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 26));
 		contentPane.add(lblSurname);
 
@@ -158,6 +158,16 @@ public class Admin extends JFrame {
 		contentPane.add(tfSurname);
 
 		tfPhone = new JTextField();
+		tfPhone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent a1) {			
+				char caracter = a1.getKeyChar();
+                if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+                    a1.consume();
+                    JOptionPane.showMessageDialog(null, "Please enter your phone number");
+                }
+			}
+		});
 		tfPhone.setBounds(224, 316, 197, 32);
 		tfPhone.setColumns(10);
 		contentPane.add(tfPhone);
@@ -171,6 +181,7 @@ public class Admin extends JFrame {
 		btnSearch.setBounds(438, 87, 44, 42);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				conn.connect();
 				clearTf();
 				try {
@@ -202,10 +213,13 @@ public class Admin extends JFrame {
 						tfName.setText(result.getString("Name"));
 						tfSurname.setText(result.getString("Surname"));
 						tfPhone.setText(result.getString("Phone"));
+					}else {
+						JOptionPane.showMessageDialog(null, "Did not find information");
 					}
 					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
+				
 				}
 				conn.disConnect();
 			}
@@ -221,6 +235,9 @@ public class Admin extends JFrame {
 		btnEdit.setBounds(512, 187, 58, 58);
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(tfUser.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Please enter information");
+				}else {
 				conn.connect();
 				String qry1 = "UPDATE members SET UserName = '"
 						+ tfUser.getText()
@@ -244,11 +261,12 @@ public class Admin extends JFrame {
 				System.out.print(qry1);
 				try {
 					conn.stmt.execute(qry1);
+					JOptionPane.showMessageDialog(null, "Edit successfully");
 				} catch (SQLException ee) {
 					ee.printStackTrace();
 				}
 				conn.disConnect();
-
+				}
 			}
 		});
 		contentPane.add(btnEdit);
@@ -262,9 +280,12 @@ public class Admin extends JFrame {
 		btnDel.setBounds(512, 260, 58, 58);
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(tfUser.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Please enter information");
+				}else {
 				conn.connect();
 				int confirm = JOptionPane.showConfirmDialog(null,
-						"คุณต้องการจะลบคุณ " + tfUser.getText() + " ออกจากระบบหรือไม่ ?", "ยืนยันการลบผู้จัดการโปรแกรม",
+						"Delete ''" + tfUser.getText() + "'' ?", "Comfrim",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (confirm == 0) {
 				String qry = "DELETE FROM members WHERE Username like '"
@@ -280,6 +301,7 @@ public class Admin extends JFrame {
 				}
 				conn.disConnect();
 			}
+		}
 		});
 		contentPane.add(btnDel);
 		btnDel.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\delete.png")
@@ -330,7 +352,7 @@ public class Admin extends JFrame {
 		btnReload.setContentAreaFilled(false);
 		
 				JLabel lbAdmin = new JLabel("");
-				lbAdmin.setBounds(10, 0, 612, 490);
+				lbAdmin.setBounds(0, 0, 612, 490);
 				contentPane.add(lbAdmin);
 				lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));
 				contentPane.add(lbAdmin);
