@@ -63,7 +63,7 @@ public class EditDelete extends JFrame {
 		});
 
 	}
-	
+
 	public void clearTf() {
 	
 		tfSearch.setText(null);
@@ -73,7 +73,6 @@ public class EditDelete extends JFrame {
 		tfPrice.setText(null);
 		tfQuantity.setText(null);
 		tfPicture.setText(null);
-
 	}
 	
 	/**
@@ -87,7 +86,7 @@ public class EditDelete extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 570, 470);
 		frame = new JPanel();
-		frame.setBackground(new Color(255, 255, 153));
+		frame.setBackground(new Color(255, 250, 205));
 		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(frame);
 		frame.setLayout(null);
@@ -109,7 +108,7 @@ public class EditDelete extends JFrame {
 		JLabel lblSearchProductId = new JLabel(
 				"Search Product ID");
 		lblSearchProductId.setBounds(31, 78, 140, 14);
-		lblSearchProductId.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblSearchProductId.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		lblSearchProductId.setBackground(Color.GREEN);
 		frame.add(lblSearchProductId);
 
@@ -137,81 +136,36 @@ public class EditDelete extends JFrame {
 		frame.add(tfSearch);
 		tfSearch.setColumns(10);
 
-		JButton btSearch = new JButton("");
-		btSearch.setBounds(303, 70, 39, 31);
-		btSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				conn.connect();
-				try {
-					qry = "SELECT * FROM clothes where Pro_ID = '" + tfSearch.getText() + "'";
 
-					result = conn.stmt.executeQuery(qry);
 
-					if (result.last()) {
-						Rowsize = result.getRow();
-						result.beforeFirst();
-					}
-
-					if (result.next()) {
-						tfPro_ID.setText(result.getString("Pro_ID"));
-
-						tfPattern.setText(result.getString("Pattern"));
-						tfColor.setText(result.getString("Color"));
-						tfPrice.setText(result.getString("Price"));
-						tfQuantity.setText(result.getString("Quantity"));
-						tfPicture.setText(result.getString("Picture"));
-						if (result.getString("Type").equals("Shirt")) 
-						{
-							cbType.setSelectedIndex(0);
-						} else
-						{
-							cbType.setSelectedIndex(1);
-						}
-					}else {
-						JOptionPane.showMessageDialog(null, "Did not find information");
-					}
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-				conn.disConnect();
-				
-			}
-		});
-		frame.add(btSearch);
-		btSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search2.png").getImage()
-				.getScaledInstance(btSearch.getWidth(), btSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		btSearch.setBorderPainted(false);
-		btSearch.setContentAreaFilled(false);
-
-		JLabel lblProid = new JLabel("Pro_ID");
-		lblProid.setBounds(53, 125, 46, 14);
-		lblProid.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		JLabel lblProid = new JLabel("Product ID");
+		lblProid.setBounds(31, 126, 68, 14);
+		lblProid.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblProid);
 
 		JLabel lblType = new JLabel("Type");
-		lblType.setBounds(301, 125, 46, 14);
-		lblType.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblType.setBounds(301, 122, 46, 23);
+		lblType.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblType);
 
 		JLabel lblTexture = new JLabel("Pattern");
 		lblTexture.setBounds(53, 182, 46, 14);
-		lblTexture.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblTexture.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblTexture);
 
 		JLabel lblColor = new JLabel("Color");
 		lblColor.setBounds(301, 182, 46, 14);
-		lblColor.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblColor.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblColor);
 
 		JLabel lblPrice = new JLabel("Price");
 		lblPrice.setBounds(301, 234, 46, 14);
-		lblPrice.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblPrice.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblPrice);
 
 		JLabel lblPicture = new JLabel("Picture");
 		lblPicture.setBounds(53, 234, 46, 14);
-		lblPicture.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblPicture.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblPicture);
 
 		tfPro_ID = new JTextField();
@@ -241,9 +195,12 @@ public class EditDelete extends JFrame {
 
 		JButton btDelete = new JButton("");
 		btDelete.setBounds(356, 370, 91, 31);
+		btDelete.setEnabled(false);
 		btDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				conn.connect();
+				
+					conn.connect();
+				
 				int confirm = JOptionPane.showConfirmDialog(null,
 						"Delete ''" + tfPro_ID.getText() + "'' ?", "Confirm",
 						JOptionPane.OK_CANCEL_OPTION);
@@ -252,14 +209,14 @@ public class EditDelete extends JFrame {
 					System.out.print(qry);
 					try {
 						conn.stmt.executeUpdate(qry);
-						
+						JOptionPane.showMessageDialog(null, "Delete product ID: ''"+ tfPro_ID.getText()+ "'' successfully");
 					} catch (SQLException e) {
 						System.out.print(e);
 					}
 				}
 				conn.disConnect();
 				clearTf();
-				cbType.setSelectedItem("Shirt");
+				cbType.setSelectedIndex(0);
 			}
 		});
 		btDelete.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\btDe.png").getImage()
@@ -270,6 +227,7 @@ public class EditDelete extends JFrame {
 
 		JButton btEdit = new JButton("");
 		btEdit.setBounds(242, 365, 100, 41);
+		btEdit.setEnabled(false);
 		btEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
@@ -295,7 +253,7 @@ public class EditDelete extends JFrame {
 				System.out.println(qry);
 				try {
 					conn.stmt.execute(qry);
-					JOptionPane.showMessageDialog(null, "Edit successfully");
+					JOptionPane.showMessageDialog(null, "Edit  product ID: ''"+ tfPro_ID.getText()+ "'' successfully");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -330,15 +288,15 @@ public class EditDelete extends JFrame {
 		frame.add(tfQuantity);
 		
 		JLabel lblQuantity = new JLabel("Quantity");
-		lblQuantity.setBounds(53, 285, 60, 14);
-		lblQuantity.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 15));
+		lblQuantity.setBounds(42, 285, 60, 14);
+		lblQuantity.setFont(new Font("5103_tLU_JIUMJIUM", Font.PLAIN, 18));
 		frame.add(lblQuantity);
 		
 		JButton btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clearTf();
-				cbType.setSelectedItem("Shirt");
+				cbType.setSelectedIndex(0);
 			}
 		});
 		btnRefresh.setBounds(467, 365, 46, 41);
@@ -349,5 +307,55 @@ public class EditDelete extends JFrame {
 		btnRefresh.setBorderPainted(false);
 		btnRefresh.setContentAreaFilled(false);
 		
+		JButton btSearch = new JButton("");
+		btSearch.setBounds(303, 70, 39, 31);
+		btSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				conn.connect();
+				try {
+					qry = "SELECT * FROM clothes where Pro_ID = '" + tfSearch.getText() + "'";
+
+					result = conn.stmt.executeQuery(qry);
+
+					if (result.last()) {
+						Rowsize = result.getRow();
+						result.beforeFirst();
+					}
+
+					if (result.next()) {
+						tfPro_ID.setText(result.getString("Pro_ID"));
+
+						tfPattern.setText(result.getString("Pattern"));
+						tfColor.setText(result.getString("Color"));
+						tfPrice.setText(result.getString("Price"));
+						tfQuantity.setText(result.getString("Quantity"));
+						tfPicture.setText(result.getString("Picture"));
+						if (result.getString("Type").equals("Shirt")) 
+						{
+							cbType.setSelectedIndex(0);
+						} else
+						{
+							cbType.setSelectedIndex(1);
+						}
+						btDelete.setEnabled(true);
+						btEdit.setEnabled(true);
+							
+					}else {
+						JOptionPane.showMessageDialog(null, "Did not find information");
+					}
+					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				conn.disConnect();
+				
+			}
+		});
+		frame.add(btSearch);
+		btSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search2.png").getImage()
+				.getScaledInstance(btSearch.getWidth(), btSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btSearch.setBorderPainted(false);
+		btSearch.setContentAreaFilled(false);
 	}
 }

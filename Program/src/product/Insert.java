@@ -124,7 +124,7 @@ public class Insert extends JFrame {
 						char caracter = c.getKeyChar();
 		                if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
 		                    c.consume();
-		                    JOptionPane.showMessageDialog(null, "Please enter numeric");
+		                    JOptionPane.showMessageDialog(null, "Please enter numeric in text field : ''Quantity''");
 		                }
 			}
 		});
@@ -188,7 +188,7 @@ public class Insert extends JFrame {
                 if (((caracter < '0') || (caracter > '9'))
                         && (caracter != '\b')) {
                     e.consume();
-                    JOptionPane.showMessageDialog(null, "Please enter numeric");
+                    JOptionPane.showMessageDialog(null, "Please enter numeric in text field : ''Price''");
                 }
 			}
 		});
@@ -232,7 +232,9 @@ public class Insert extends JFrame {
 				+ "')";	
 				System.out.print(qry);	
 					conn.stmt.executeUpdate(qry);
-					JOptionPane.showMessageDialog(null, "Insert product ''"+ tfProID.getText() +"'' successfully");
+					JOptionPane.showMessageDialog(null, "Insert  product ID: ''"+ tfProID.getText() +"'' successfully");
+					clearTf();
+					cbType.setSelectedIndex(0);
 					} catch (SQLException ee) {
 						ee.printStackTrace();
 					}
@@ -250,7 +252,7 @@ public class Insert extends JFrame {
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clearTf();
-				cbType.setSelectedItem("Shirt");
+				cbType.setSelectedIndex(0);
 			}
 		});
 		btnRefresh.setBounds(458, 306, 61, 55);

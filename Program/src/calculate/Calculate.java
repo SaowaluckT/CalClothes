@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -24,6 +25,8 @@ import home.Home;
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Calculate extends JFrame {
 
@@ -39,7 +42,7 @@ public class Calculate extends JFrame {
 	Map<String, Integer> productSelect = new HashMap<String, Integer>();
 	private String pid = null;
 
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -50,7 +53,7 @@ public class Calculate extends JFrame {
 					Calculate frame = new Calculate();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.setAlwaysOnTop(true);
+					frame.setAlwaysOnTop(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -137,10 +140,7 @@ public class Calculate extends JFrame {
 		tfQ.setColumns(10);
 
 		JButton btnPD = new JButton("");
-		btnPD.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		btnPD.setBounds(221, 158, 100, 100);
 		
 		
@@ -155,7 +155,7 @@ public class Calculate extends JFrame {
 		
 		JLabel lblGoToCalculate = new JLabel("go to calculate");
 		lblGoToCalculate.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));
-		lblGoToCalculate.setBounds(396, 228, 105, 35);
+		lblGoToCalculate.setBounds(396, 228, 127, 40);
 		contentPane.add(lblGoToCalculate);
 		
 		tfSearch = new JTextField();
@@ -173,8 +173,16 @@ public class Calculate extends JFrame {
 		JButton btnSelect = new JButton("");
 		btnSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int aa = Integer.valueOf(tfQ.getText());
+                int bb = Integer.valueOf(tfSelect.getText());
+				if(aa >= bb) {
 				if((pid!=null) && !tfSelect.getText().equals("0")) {
 					productSelect.put(pid, Integer.parseInt(tfSelect.getText()));
+					JOptionPane.showMessageDialog(null, "Selected product successfully");
+				}
+				}else {
+					JOptionPane.showMessageDialog(null, "Product quality is not enough");
+                	tfSelect.setText(null);
 				}
 				
 			}
@@ -375,9 +383,35 @@ public class Calculate extends JFrame {
 		contentPane.add(lbSelect);
 		
 		tfSelect = new JTextField();
+		tfSelect.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent c1) {
+				char caracter = c1.getKeyChar();
+
+                if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+                    c1.consume();
+                    JOptionPane.showMessageDialog(null, "Please enter numeric");
+                }       
+			}
+		});
+		
 		tfSelect.setBounds(231, 342, 46, 20);
 		contentPane.add(tfSelect);
 		tfSelect.setColumns(10);
+		
+		JButton btnRefresh = new JButton("");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tfSearch.setText(null);
+			}
+		});
+		btnRefresh.setBounds(477, 66, 46, 43);
+		contentPane.add(btnRefresh);
+		btnRefresh.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
+				.getImage()
+				.getScaledInstance(btnRefresh.getWidth(), btnRefresh.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnRefresh.setBorderPainted(false);
+		btnRefresh.setContentAreaFilled(false);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u0E15\u0E31\u0E27");
 		lblNewLabel_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 20));

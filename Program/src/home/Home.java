@@ -110,7 +110,7 @@ public class Home extends JFrame {
 		JButton btLogOut = new JButton();
 		btLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int confirm = JOptionPane.showConfirmDialog(null,"�س��ͧ����͡�ҡ�к� ������� ?", "Log out",JOptionPane.OK_CANCEL_OPTION);
+				int confirm = JOptionPane.showConfirmDialog(null,"Log out ?", "Confirm",JOptionPane.OK_CANCEL_OPTION);
 				if(confirm == 0) {
 					dispose();
 					Login.main(null);

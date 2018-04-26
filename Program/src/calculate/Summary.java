@@ -55,7 +55,7 @@ public class Summary extends JFrame {
 					Summary frame = new Summary();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.setAlwaysOnTop(true);
+					frame.setAlwaysOnTop(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,22 +80,25 @@ public class Summary extends JFrame {
 		txtPriceSummary = new JTextField();
 		txtPriceSummary.setBounds(257, 11, 333, 47);
 		txtPriceSummary.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPriceSummary.setForeground(new Color(0, 0, 0));
+		txtPriceSummary.setForeground(new Color(218, 112, 214));
 		txtPriceSummary.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 35));
 		txtPriceSummary.setText("Price Summary");
 		txtPriceSummary.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Price =");
-		lblNewLabel.setBounds(518, 341, 72, 25);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setForeground(new Color(255, 160, 122));
+		lblNewLabel.setBounds(510, 341, 80, 25);
+		lblNewLabel.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
 		
 		JLabel lblNewLabel_1 = new JLabel("VAT 7% =");
-		lblNewLabel_1.setBounds(487, 377, 94, 25);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1.setForeground(new Color(255, 160, 122));
+		lblNewLabel_1.setBounds(485, 377, 96, 25);
+		lblNewLabel_1.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
 		
 		JLabel lblNewLabel_2 = new JLabel("Total Price =");
-		lblNewLabel_2.setBounds(464, 413, 126, 25);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_2.setForeground(new Color(255, 160, 122));
+		lblNewLabel_2.setBounds(445, 413, 145, 25);
+		lblNewLabel_2.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
 		
 		JButton btHome = new JButton("");
 		btHome.setBounds(10, 11, 59, 47);
@@ -135,26 +138,31 @@ public class Summary extends JFrame {
 		btnBack.setContentAreaFilled(false);
 		
 		JButton btnLoadData = new JButton("Load");
+		btnLoadData.setForeground(new Color(128, 128, 128));
+		btnLoadData.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 25));
 		btnLoadData.setBounds(25, 128, 80, 39);
 		contentPane.add(btnLoadData);
 		
 		tfPrice = new JTextField();
+		tfPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		tfPrice.setBounds(595, 341, 152, 25);
 		contentPane.add(tfPrice);
 		tfPrice.setColumns(10);
 		
 		tfVat = new JTextField();
+		tfVat.setHorizontalAlignment(SwingConstants.RIGHT);
 		tfVat.setBounds(595, 377, 152, 25);
 		tfVat.setColumns(10);
 		contentPane.add(tfVat);
 		
 		tfTotPrice = new JTextField();
+		tfTotPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		tfTotPrice.setBounds(595, 411, 152, 25);
 		tfTotPrice.setColumns(10);
 		contentPane.add(tfTotPrice);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(140, 128, 607, 202);
+		scrollPane.setBounds(115, 128, 632, 202);
 		contentPane.add(scrollPane);
 		
 		DefaultTableModel model = new DefaultTableModel();
@@ -218,7 +226,7 @@ public class Summary extends JFrame {
 					}
 					conn.disConnect();
 				}else {
-					JOptionPane.showMessageDialog(null, "Please select product!","WARNING!!!!!!!!!!!!!",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Please select product!","WARNING!",JOptionPane.WARNING_MESSAGE);
 					
 				}
 				

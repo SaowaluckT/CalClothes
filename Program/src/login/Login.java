@@ -115,6 +115,7 @@ public class Login extends JFrame {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+
 				if(status){
 					
 					JOptionPane.showMessageDialog(null, "Hello "+Name+" "+Surname,"Welcome to Clothes Shop",JOptionPane.PLAIN_MESSAGE);
@@ -151,19 +152,19 @@ public class Login extends JFrame {
 		btnLogIn.setContentAreaFilled(false);
 		
 		
-		JButton btnReload = new JButton("");
-		btnReload.addActionListener(new ActionListener() {
+		JButton btnRefresh = new JButton("");
+		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clearTf();
 			}
 		});
-		btnReload.setBounds(307, 188, 40, 32);
-		contentPane.add(btnReload);
-		btnReload.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
+		btnRefresh.setBounds(307, 188, 40, 32);
+		contentPane.add(btnRefresh);
+		btnRefresh.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\reload.png")
 				.getImage()
-				.getScaledInstance(btnReload.getWidth(), btnReload.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		btnReload.setBorderPainted(false);
-		btnReload.setContentAreaFilled(false);
+				.getScaledInstance(btnRefresh.getWidth(), btnRefresh.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+		btnRefresh.setBorderPainted(false);
+		btnRefresh.setContentAreaFilled(false);
 		
 		
 		

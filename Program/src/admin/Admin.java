@@ -164,7 +164,7 @@ public class Admin extends JFrame {
 				char caracter = a1.getKeyChar();
                 if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
                     a1.consume();
-                    JOptionPane.showMessageDialog(null, "Please enter your phone number");
+                    JOptionPane.showMessageDialog(null, "Please enter numeric in text field : ''Phone'' ");
                 }
 			}
 		});
@@ -177,67 +177,17 @@ public class Admin extends JFrame {
 		tfSearch.setColumns(10);
 		contentPane.add(tfSearch);
 		
-		JButton btnSearch = new JButton("");
-		btnSearch.setBounds(438, 87, 44, 42);
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				conn.connect();
-				clearTf();
-				try {
-					switch (cbbOption.getSelectedIndex()) {
-					case 0:
-						qry = "SELECT * FROM members where Username = '" + tfSearch.getText() + "'";
-						break;
-					case 1:
-						qry = "SELECT * FROM members where Name = '" + tfSearch.getText() + "'";
-						break;
-					case 2:
-						qry = "SELECT * FROM members where Surname = '" + tfSearch.getText() + "'";
-						break;
-					case 3:
-						qry = "SELECT * FROM members where Phone = '" + tfSearch.getText() + "'";
-						break;
-					}
-					System.out.println(qry);
-					result = conn.stmt.executeQuery(qry);
-					// ------------------------fine maximum value---------------------
-					if (result.last()) {
-						
-						result.beforeFirst();
-					}
-					// ---------------------------end------------------------------
-
-					if (result.next()) {
-						tfUser.setText(result.getString("Username"));
-						tfName.setText(result.getString("Name"));
-						tfSurname.setText(result.getString("Surname"));
-						tfPhone.setText(result.getString("Phone"));
-					}else {
-						JOptionPane.showMessageDialog(null, "Did not find information");
-					}
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				
-				}
-				conn.disConnect();
-			}
-		});
-		contentPane.add(btnSearch);
-		btnSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search.png")
-				.getImage()
-				.getScaledInstance(btnSearch.getWidth(), btnSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-		btnSearch.setBorderPainted(false);
-		btnSearch.setContentAreaFilled(false);
+		
 
 		JButton btnEdit = new JButton("");
 		btnEdit.setBounds(512, 187, 58, 58);
+		btnEdit.setEnabled(false);
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(tfUser.getText().equals("")) {
+				if(tfUser.getText().equals("") || tfName.getText().equals("") || tfSurname.getText().equals("") || tfPhone.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Please enter information");
 				}else {
+
 				conn.connect();
 				String qry1 = "UPDATE members SET UserName = '"
 						+ tfUser.getText()
@@ -266,6 +216,7 @@ public class Admin extends JFrame {
 					ee.printStackTrace();
 				}
 				conn.disConnect();
+				clearTf();
 				}
 			}
 		});
@@ -278,6 +229,7 @@ public class Admin extends JFrame {
 
 		JButton btnDel = new JButton("");
 		btnDel.setBounds(512, 260, 58, 58);
+		btnDel.setEnabled(false);
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(tfUser.getText().equals("")) {
@@ -294,6 +246,7 @@ public class Admin extends JFrame {
 				System.out.print(qry);
 				try {
 					conn.stmt.executeUpdate(qry);
+					JOptionPane.showMessageDialog(null, "Delete admin ''"+ tfUser.getText()+ "'' successfully");
 					clearTf();
 				} catch (SQLException e) {
 					System.out.print(e);
@@ -332,6 +285,7 @@ public class Admin extends JFrame {
 					ee.printStackTrace();
 				}
 				conn.disConnect();
+				clearTf();
 				}
 			}
 		});
@@ -350,18 +304,75 @@ public class Admin extends JFrame {
 				.getScaledInstance(btnReload.getWidth(), btnReload.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
 		btnReload.setBorderPainted(false);
 		btnReload.setContentAreaFilled(false);
-		
-				JLabel lbAdmin = new JLabel("");
-				lbAdmin.setBounds(0, 0, 612, 490);
-				contentPane.add(lbAdmin);
-				lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));
-				contentPane.add(lbAdmin);
 		btnReload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tfSearch.setText(null);
 				clearTf();
 			}
 		});
+		
+		JButton btnSearch = new JButton("");
+		btnSearch.setBounds(438, 87, 44, 42);
+		btnSearch.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
+						conn.connect();
+						clearTf();
+						try {
+							switch (cbbOption.getSelectedIndex()) {
+							case 0:
+								qry = "SELECT * FROM members where Username = '" + tfSearch.getText() + "'";
+								break;
+							case 1:
+								qry = "SELECT * FROM members where Name = '" + tfSearch.getText() + "'";
+								break;
+							case 2:
+								qry = "SELECT * FROM members where Surname = '" + tfSearch.getText() + "'";
+								break;
+							case 3:
+								qry = "SELECT * FROM members where Phone = '" + tfSearch.getText() + "'";
+								break;
+							}
+							System.out.println(qry);
+							result = conn.stmt.executeQuery(qry);
+							// ------------------------fine maximum value---------------------
+							if (result.last()) {
+								
+								result.beforeFirst();
+							}
+							// ---------------------------end------------------------------
+
+							if (result.next()) {
+								tfUser.setText(result.getString("Username"));
+								tfName.setText(result.getString("Name"));
+								tfSurname.setText(result.getString("Surname"));
+								tfPhone.setText(result.getString("Phone"));
+								btnEdit.setEnabled(true);
+								btnDel.setEnabled(true);
+								
+							}else {
+								JOptionPane.showMessageDialog(null, "Did not find information");
+							}
+							
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						
+						}
+						conn.disConnect();
+					}
+				});
+				contentPane.add(btnSearch);
+				btnSearch.setIcon(new ImageIcon(new ImageIcon(Icon.getAbsolutePath()+"\\search.png")
+						.getImage()
+						.getScaledInstance(btnSearch.getWidth(), btnSearch.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+				btnSearch.setBorderPainted(false);
+				btnSearch.setContentAreaFilled(false);
+		
+				JLabel lbAdmin = new JLabel("");
+				lbAdmin.setBounds(0, 0, 612, 490);
+				contentPane.add(lbAdmin);
+				lbAdmin.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgAdmin.jpg"));
+				contentPane.add(lbAdmin);
+		
 	}
 }

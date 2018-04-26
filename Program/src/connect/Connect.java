@@ -31,7 +31,7 @@ public class Connect {
 		try {
 			this.conn.close();
 			this.stmt.close();
-			System.out.println("close DB");
+			System.out.println("Close DB");
 			this.statusDB=false;
 		} catch (SQLException ee) {
 			ee.printStackTrace();
