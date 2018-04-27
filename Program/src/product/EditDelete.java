@@ -64,7 +64,7 @@ public class EditDelete extends JFrame {
 
 	}
 
-	public void clearTf() {
+	public void clearTf() { //สร้าง method เพื่อทำให้ text field เป็น null
 	
 		tfSearch.setText(null);
 		tfPro_ID.setText(null);
@@ -202,8 +202,7 @@ public class EditDelete extends JFrame {
 					conn.connect();
 				
 				int confirm = JOptionPane.showConfirmDialog(null,
-						"Delete ''" + tfPro_ID.getText() + "'' ?", "Confirm",
-						JOptionPane.OK_CANCEL_OPTION);
+						"Delete ''" + tfPro_ID.getText() + "'' ?", "Confirm",JOptionPane.OK_CANCEL_OPTION);//ถามเพื่อยืนยันการลบ
 				if (confirm == 0) {
 					String qry = "DELETE FROM clothes WHERE Pro_ID like '" + tfPro_ID.getText() + "'";
 					System.out.print(qry);
@@ -248,7 +247,7 @@ public class EditDelete extends JFrame {
 				+ "'"
 				+ " WHERE Pro_ID = '" 
 				+ tfPro_ID.getText() 
-				+ "';";
+				+ "';";  //สร้าง SQL ในการลบข้อมูล
 
 				System.out.println(qry);
 				try {

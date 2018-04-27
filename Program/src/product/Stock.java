@@ -102,8 +102,8 @@ public class Stock extends JFrame {
 		btnInsert.setBounds(218, 89, 167, 34);
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Insert.main(null);
+				dispose(); //ปิดหน้า
+				Insert.main(null); //เปิดหน้า Insert
 			}
 		});
 		btnInsert.setBackground(new Color(255, 153, 153));
@@ -115,8 +115,8 @@ public class Stock extends JFrame {
 		btnEditdelete.setBounds(218, 172, 167, 41);
 		btnEditdelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				EditDelete.main(null);
+				dispose(); //ปิดหน้า
+				EditDelete.main(null); //เปิดหน้า Edit Delete
 			}
 		});
 		btnEditdelete.setBackground(new Color(255, 255, 153));
@@ -136,7 +136,5 @@ public class Stock extends JFrame {
 		
 		lbStock.setIcon(new ImageIcon(Image.getAbsolutePath()+"\\bgStock.jpg"));
 		contentPane.add(lbStock);
-		
-		
 	}
 }

@@ -43,7 +43,7 @@ public class Summary extends JFrame {
 	private JTextField tfVat;
 	private JTextField tfTotPrice;
 	private JTable table;
-	public Map<String, Integer> productSelect = new HashMap<String, Integer>();
+	public Map<String, Integer> productSelect = new HashMap<String, Integer>(); //ประกาศวัตถุเก็บค่าตัวแปรหลายค่า
 	
 	/**
 	 * Launch the application.
@@ -181,7 +181,7 @@ public class Summary extends JFrame {
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				model.setRowCount(0);
+				model.setRowCount(0); //พื้นที่แสดงตาราง
 				if(!productSelect.isEmpty()) {
 					conn.connect();
 					try {
@@ -192,8 +192,8 @@ public class Summary extends JFrame {
 							System.out.println(qry);
 							result =  conn.stmt.executeQuery(qry);
 							if (result.next()) {
-								sum += Integer.parseInt(result.getString("Price"))*productSelect.get(key);
-								model.addRow(new Object[] {
+								sum += Integer.parseInt(result.getString("Price"))*productSelect.get(key); //ราคา x จำนวนสินค้าที่เลือก(ขาย)=ราคารวม
+								model.addRow(new Object[] { 
 										result.getString("Pro_ID"),
 										result.getString("Type"),
 										result.getString("Pattern"),
@@ -207,7 +207,7 @@ public class Summary extends JFrame {
 						}
 						DecimalFormat df = new DecimalFormat("#.##");
 						tfTotPrice.setText(String.valueOf(df.format(sum+sum*0.07)));
-						tfVat.setText(String.valueOf(df.format(sum*0.07)));
+						tfVat.setText(String.valueOf(df.format(sum*0.07))); //คิดภาษี
 						tfPrice.setText(String.valueOf(sum));
 						
 					} catch (SQLException e) {
@@ -215,7 +215,7 @@ public class Summary extends JFrame {
 					}
 					try {
 						for ( String key : productSelect.keySet() ) {
-							qry = "UPDATE clothes SET Quantity = "+productSelect.get(key)+" WHERE Pro_ID='"+key+"'";
+							qry = "UPDATE clothes SET Quantity = "+productSelect.get(key)+" WHERE Pro_ID='"+key+"'"; //อัปเดตจำนวนสินค้าที่เหลือในสตีอกสินค้า
 							
 							System.out.println(qry);
 							conn.stmt.executeUpdate(qry);

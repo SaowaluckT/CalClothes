@@ -62,7 +62,7 @@ public class Insert extends JFrame {
 		});
 	}
 	
-	public void clearTf() {
+	public void clearTf() { //สร้าง method เพื่อทำให้ text field เป็น null
 		tfProID.setText(null);
 		tfPattern.setText(null);
 		tfColor.setText(null);
@@ -104,7 +104,7 @@ public class Insert extends JFrame {
 		btHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Home home = new Home();
+				Home home = new Home(); //เปิดหน้า Home ดดยสร้าง opject ใหม่
 				home.setVisible(true);
 			}
 		});
@@ -120,7 +120,7 @@ public class Insert extends JFrame {
 		tfQuantity = new JTextField();
 		tfQuantity.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent c) {				
+			public void keyTyped(KeyEvent c) {	//เงื่อนไขให้ใส่เฉพาะตัวเลขใน Text Field			
 						char caracter = c.getKeyChar();
 		                if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
 		                    c.consume();
@@ -183,7 +183,7 @@ public class Insert extends JFrame {
 		tfPrice = new JTextField();
 		tfPrice.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent e) {
+			public void keyTyped(KeyEvent e) { //เงื่อนไขให้ใส่เฉพาะตัวเลขใน Text Field		
 				char caracter = e.getKeyChar();
                 if (((caracter < '0') || (caracter > '9'))
                         && (caracter != '\b')) {
@@ -212,7 +212,7 @@ public class Insert extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				conn.connect();
 				if(tfProID.getText().equals("") || tfPattern.getText().equals("") || tfColor.getText().equals("") || tfPrice.getText().equals("") || tfQuantity.getText().equals("") || tfPicture.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Please enter information");
+					JOptionPane.showMessageDialog(null, "Please enter information"); //ถ้าไม่ได้ใส่ข้อมูลใน Text Field ให้แจ้งเตือน
 				}else {
 					try {
 				String qry = "INSERT INTO clothes (Pro_ID,Type,Pattern,Color,Price,Quantity,Picture) VALUES ('"
@@ -229,7 +229,7 @@ public class Insert extends JFrame {
 				+ tfQuantity.getText()
 				+ ",'"
 				+ tfPicture.getText()
-				+ "')";	
+				+ "')";	 //สร้าง SQL ในการเพิ่มข้อมูล
 				System.out.print(qry);	
 					conn.stmt.executeUpdate(qry);
 					JOptionPane.showMessageDialog(null, "Insert  product ID: ''"+ tfProID.getText() +"'' successfully");

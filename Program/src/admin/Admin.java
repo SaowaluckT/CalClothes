@@ -60,7 +60,7 @@ public class Admin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public void clearTf() {
+	public void clearTf() {  //สร้าง method เพื่อทำให้ text field เป็น null
 		tfUser.setText(null);
 		tfPass.setText(null);
 		tfName.setText(null);
@@ -161,7 +161,7 @@ public class Admin extends JFrame {
 		tfPhone.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent a1) {			
-				char caracter = a1.getKeyChar();
+				char caracter = a1.getKeyChar(); // เงื่อนไขให้ใส่เฉพาะตัวเลขใน Text Field
                 if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
                     a1.consume();
                     JOptionPane.showMessageDialog(null, "Please enter numeric in text field : ''Phone'' ");
@@ -189,7 +189,10 @@ public class Admin extends JFrame {
 				}else {
 
 				conn.connect();
-				String qry1 = "UPDATE members SET UserName = '"
+				if(tfPass.getText().isEmpty()){
+					JOptionPane.showMessageDialog(null, "Please enter ''Password''");
+				}else {
+				String qry1 = "UPDATE members SET UserName = '" //สร้าง SQL แก้ไขข้อมูลแอดมิน
 						+ tfUser.getText()
 						+ "',"
 						+ "Password = '"
@@ -217,7 +220,7 @@ public class Admin extends JFrame {
 				}
 				conn.disConnect();
 				clearTf();
-				}
+				}}
 			}
 		});
 		contentPane.add(btnEdit);
@@ -233,14 +236,14 @@ public class Admin extends JFrame {
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(tfUser.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Please enter information");
+					JOptionPane.showMessageDialog(null, "Please enter information"); //แจ้งเมื่อข้อมูลใน Text Field ว่าง
 				}else {
 				conn.connect();
 				int confirm = JOptionPane.showConfirmDialog(null,
 						"Delete ''" + tfUser.getText() + "'' ?", "Comfrim",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (confirm == 0) {
-				String qry = "DELETE FROM members WHERE Username like '"
+				String qry = "DELETE FROM members WHERE Username like '" //ลบข้อมูลสินค้า
 						+ tfSearch.getText()
 						+"'";
 				System.out.print(qry);
@@ -276,7 +279,7 @@ public class Admin extends JFrame {
 				
 				qry = "INSERT INTO members(Username,Password,Name,Surname,Phone) VALUES ('" + tfUser.getText() + "','"
 						+ tfPass.getText() + "','" + tfName.getText() + "','" + tfSurname.getText() + "','"
-						+ tfPhone.getText() + "')";
+						+ tfPhone.getText() + "')"; //เพิ่มข้อมูลแอดมินใน database
 				System.out.println(qry);
 			
 					conn.stmt.executeUpdate(qry);
@@ -333,7 +336,7 @@ public class Admin extends JFrame {
 								qry = "SELECT * FROM members where Phone = '" + tfSearch.getText() + "'";
 								break;
 							}
-							System.out.println(qry);
+							System.out.println(qry); //ค้นหาด้วย SQL
 							result = conn.stmt.executeQuery(qry);
 							// ------------------------fine maximum value---------------------
 							if (result.last()) {
@@ -347,11 +350,10 @@ public class Admin extends JFrame {
 								tfName.setText(result.getString("Name"));
 								tfSurname.setText(result.getString("Surname"));
 								tfPhone.setText(result.getString("Phone"));
-								btnEdit.setEnabled(true);
-								btnDel.setEnabled(true);
+								btnEdit.setEnabled(true); //set ให้สามารถแก้ไข และลบได้เมื่อมีข้อมูลใน ช่องรหัสสินค้า							btnDel.setEnabled(true);
 								
 							}else {
-								JOptionPane.showMessageDialog(null, "Did not find information");
+								JOptionPane.showMessageDialog(null, "Did not find information"); //ข้อความแจ้งเมื่อไม่พบข้อมูล
 							}
 							
 						} catch (SQLException e1) {

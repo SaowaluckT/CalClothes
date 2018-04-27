@@ -26,18 +26,18 @@ import javax.swing.SwingConstants;
 import java.awt.Toolkit;
 
 public class Login extends JFrame {
-
+	//--------------------------------Special variable-------------------------
 	private JPanel contentPane;
 	private JTextField tfUser;
-	Connect conn = new Connect();
+	Connect conn = new Connect(); //สร้างวัตถุ conn ของคลาส connect
 	String qry = null;
 	ResultSet result = null;
 	private String Name;
 	private String Surname;
 	private boolean status;
 	private JPasswordField tfPass;
-	
-	public void clearTf() {
+	//--------------------------------Special variable-------------------------	
+	public void clearTf() { //สร้าง method ชื่อ clearTf สำหรับทำ Text Field ที่กำหนดในมีค่า null
 		tfUser.setText(null);
 		tfPass.setText(null);
 	}
@@ -49,10 +49,10 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-					frame.setResizable(false);
-					frame.setAlwaysOnTop(false);
+					Login frame = new Login(); 
+					frame.setVisible(true);//การกำหนดแสดงผลหน้า 
+					frame.setResizable(false);//การกำหนด Resize ได้ false = ไม่ใช่
+					frame.setAlwaysOnTop(false);//การกำหนดแสดงผลบนสุดเสมอ false = ไม่ใช่
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +64,7 @@ public class Login extends JFrame {
 	public Login() {
 		File Icon = new File("icon");
 		File Image = new File("image");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\lg.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Icon.getAbsolutePath()+"\\lg.png")); //การดึง icon มาแสดงบนปุ่ม
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -93,19 +93,19 @@ public class Login extends JFrame {
 		btnLogIn.setBounds(182, 188, 104, 32);
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				conn.connect();
+				conn.connect(); // เชื่อมต่อ database
 				qry = "SELECT * FROM members WHERE username = '"
 						+ tfUser.getText()
 						+ "' AND password = '"
 						+ String.valueOf(tfPass.getPassword())
-						+ "'"; 
+						+ "'"; //	SQL เลือกชื่อผู้ใช้และรหัสผ่านจากตาราง members
 				
 				try {
 					
 					result = conn.stmt.executeQuery(qry);
 					
 					if (result.next()) {
-						Name = result.getString("Name");
+						Name = result.getString("Name"); // รับค่าชื่อและนามสกุลจาก database
 						Surname = result.getString("Surname");
 						status = true;
 					}else {
@@ -119,15 +119,15 @@ public class Login extends JFrame {
 				if(status){
 					
 					JOptionPane.showMessageDialog(null, "Hello "+Name+" "+Surname,"Welcome to Clothes Shop",JOptionPane.PLAIN_MESSAGE);
-					dispose();
+					dispose(); //ปิดหน้า Login
 					
-					Home.main(null);
+					Home.main(null); //เปิดหน้า Home
 				}else {
 					JOptionPane.showMessageDialog(null, "Username or Password is incorrect!","Welcome to Clothes Shop",0);
 					tfUser.setText(null);
 					tfPass.setText(null);
 				}
-				conn.disConnect();
+				conn.disConnect(); //ยกเลิกการเชื่อม database
 			}
 			
 		});

@@ -1,3 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/admin/Admin.java=UTF-8
+encoding//src/calculate/Calculate.java=UTF-8
+encoding//src/calculate/Summary.java=UTF-8
+encoding//src/connect/Connect.java=UTF-8
 encoding//src/home/Home.java=UTF-8
+encoding//src/login/Login.java=UTF-8
+encoding//src/product/EditDelete.java=UTF-8
 encoding//src/product/Insert.java=UTF-8
+encoding//src/product/Stock.java=UTF-8

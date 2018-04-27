@@ -207,43 +207,41 @@ public class Calculate extends JFrame {
 					conn.connect();
 				}
 				try {
-					switch (comboBoxPD.getSelectedIndex()) {
+					switch (comboBoxPD.getSelectedIndex()) { //ค้นหาจากเงื่อนไข
 					case 0:
 						qry = "SELECT * FROM clothes";
 						break;
 					case 1:
-						qry = "SELECT * FROM clothes where Pro_ID = '" + tfSearch.getText() + "'";
+						qry = "SELECT * FROM clothes where Pro_ID = '" + tfSearch.getText() + "'"; //ค้นหาจากรหัสสินค้า
 						break;
 					case 2:
-						qry = "SELECT * FROM clothes where Type = '" + tfSearch.getText() + "'";
+						qry = "SELECT * FROM clothes where Type = '" + tfSearch.getText() + "'"; //ค้นหาจากประเภท
 						break;
 					case 3:
-						qry = "SELECT * FROM clothes where Pattern = '" + tfSearch.getText() + "'";
+						qry = "SELECT * FROM clothes where Pattern = '" + tfSearch.getText() + "'"; //ค้นหาจากลาย
 						break;
 					case 4:
-						qry = "SELECT * FROM clothes where Color = '" + tfSearch.getText() + "'";
+						qry = "SELECT * FROM clothes where Color = '" + tfSearch.getText() + "'"; //ค้นหาจากสี
 						break;
 					case 5:
-						qry = "SELECT * FROM clothes where Price = " + tfSearch.getText() ;
+						qry = "SELECT * FROM clothes where Price = " + tfSearch.getText() ; //ค้นหาจากราคา
 						break;
 					case 6:
-						qry = "SELECT * FROM clothes where Quantity = " + tfSearch.getText() ;
+						qry = "SELECT * FROM clothes where Quantity = " + tfSearch.getText() ; //ค้นหาจากจำนวน
 						break;
 					case 7:
-						qry = "SELECT * FROM clothes where Picture = '" + tfSearch.getText() +"'";
+						qry = "SELECT * FROM clothes where Picture = '" + tfSearch.getText() +"'"; //ค้นหาจากชื่อรูป
 						break;	
 					}
 					System.out.println(qry);
 					result = conn.stmt.executeQuery(qry);
-					// ------------------------fine maximum value---------------------
-					if (result.last()) {
-						Rowsize = result.getRow();
-						result.beforeFirst();
-						
-					}
-					// ---------------------------end------------------------------
 
-					if (result.next()) {
+					if (result.last()) { //แสดงเลขหน้าที่แสดง
+						Rowsize = result.getRow();
+						result.beforeFirst();					
+					}
+
+					if (result.next()) { //แสดงเลขหน้าทั้งหมด
 						tfSelect.setText("0");
 						pid=result.getString("Pro_ID");
 						tfPro_ID.setText(pid);
@@ -270,7 +268,7 @@ public class Calculate extends JFrame {
 		btnSearch.setBorderPainted(false);
 		btnSearch.setContentAreaFilled(false);
 		
-		JButton btnFirst = new JButton("");
+		JButton btnFirst = new JButton("");  //ปุ่มไปหน้าแรก
 		btnFirst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -297,11 +295,11 @@ public class Calculate extends JFrame {
 		btnFirst.setContentAreaFilled(false);
 		btnFirst.setBorderPainted(false);
 		
-		JButton btnBack = new JButton("");
+		JButton btnBack = new JButton(""); //ปุ่มไปหน้าก่อนหน้า
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if (result.previous()) {
+					if (result.previous()) { 
 						tfSelect.setText("0");
 						pid=result.getString("Pro_ID");
 						tfPro_ID.setText(result.getString("Pro_ID"));
@@ -325,7 +323,7 @@ public class Calculate extends JFrame {
 		btnBack.setContentAreaFilled(false);
 		btnBack.setBorderPainted(false);
 		
-		JButton btnNext = new JButton("");
+		JButton btnNext = new JButton(""); //ปุ่มไปหน้าถัดไป
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -350,7 +348,7 @@ public class Calculate extends JFrame {
 		btnNext.setContentAreaFilled(false);
 		btnNext.setBorderPainted(false);
 		
-		JButton btnLast = new JButton("");
+		JButton btnLast = new JButton("");  //ปุ่มไปหน้าสุดท้าย
 		btnLast.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -387,7 +385,7 @@ public class Calculate extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent c1) {
 				char caracter = c1.getKeyChar();
-
+				// เงื่อนไขให้ใส่เฉพาะตัวเลขใน Text Field
                 if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
                     c1.consume();
                     JOptionPane.showMessageDialog(null, "Please enter numeric");

@@ -33,10 +33,9 @@ public class Home extends JFrame {
 			public void run() {
 				try {
 					Home frame = new Home();
-					frame.setVisible(true);
-					frame.setResizable(false);
-					frame.setAlwaysOnTop(true);
-					
+					frame.setVisible(true);//การกำหนดแสดงผลหน้า 
+					frame.setResizable(false);//การกำหนด Resize ได้ false = ไม่ใช่
+					frame.setAlwaysOnTop(false);//การกำหนดแสดงผลบนสุดเสมอ false = ไม่ใช่				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -77,8 +76,8 @@ public class Home extends JFrame {
 		btnCalTheProduct.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 25));
 		btnCalTheProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Calculate.main(null);
+				dispose(); //ปิดหน้า
+				Calculate.main(null); //เปิดหน้า Calculate
 				
 			}
 		});
@@ -90,8 +89,8 @@ public class Home extends JFrame {
 		btnAdmin.setFont(new Font("5103_tLU_JIUMJIUM", Font.BOLD, 30));
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Admin.main(null);
+				dispose();//ปิดหน้า
+				Admin.main(null);//เปิดหน้า Admin
 			}
 		});
 		btnAdmin.setBounds(115, 182, 243, 50);
@@ -112,8 +111,8 @@ public class Home extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				int confirm = JOptionPane.showConfirmDialog(null,"Log out ?", "Confirm",JOptionPane.OK_CANCEL_OPTION);
 				if(confirm == 0) {
-					dispose();
-					Login.main(null);
+					dispose();//ปิดหน้า
+					Login.main(null);//เปิดหน้า Login
 				}
 				
 			}
